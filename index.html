@@ -1,14 +1,280 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Proyecto</h1>
-    <p>Hola soy un cambio</p>
-    <p>prueba</p>
-  </body>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APPILCHA</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="./stylos.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </head>
+    <body>
+        <header class="row">
+            <!--Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                  <a class="navbar-brand" href="./Imagenes/logo.jpg">
+                      <img src="./Imagenes/logo.jpg" alt="Bootstrap"  height="70em">
+                  </a>
+                  <a class="navbar-brand"  href=""> <span>STORE </span> </a>
+                  <div class="container navbar-collapse justify-content-end">
+                    <ul class="navbar-nav text-start text-sm-center">
+                      <li class="nav-item">                         
+                        <a class="nav-link active" href="#Productos">Productos</a></li>
+                      <li class="nav-item">
+                        <a class="nav-link " href="#oradores">Locales</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link " href="#">Contactos</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link " href="#">Quienes somos</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link link-success" id="buy" href="#">Iniciar sesión</a>
+                      </li>
+                      <a class="nav-link" href="https://github.com/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                        </svg>
+                    </a>
+                    </ul>
+                                       
+                  </div>
+                </div>
+
+              </nav>
+        </header>
+        <main>
+            <div id="principal">
+            <!--container-->
+                <section class="container-fluid mb-3" id="imageappilcha" height="200%">
+                    <div class="row p-md-5 text-end align-content-center">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 my-5 py-5 p-5">
+                            <h1 class="text-light justify-content-end">
+                                APPILCHA
+                        </h1>
+                        <p class="text-light justify-content-lg-end">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error molestias et ipsam nemo voluptate accusantium, quia quae possimus sequi? Cum, ipsum saepe? Nulla aliquam corporis vitae, quo recusandae impedit magnam!
+                        </p>
+                        <button class="btn btn-outline-light fw-bolder m-2">Productos</button>
+                        <a href="#">
+                            <button id="buy1" class="btn btn-success fw-bolder m-2">Iniciar Sesión</button>
+                        </a>
+                        
+                        
+                        </div>
+                        
+                    </div>
+                    
+                </section>
+                <!--Productos-->
+                <section class="container-fluid">
+                    <div class="text-center p-3">
+                        
+                        <h2 class="text-center">
+                            Productos
+                        </h2>
+
+                    </div> 
+                    <div class="container mx-sm-5"> 
+                        <div class="row">
+                            <!--Campera Negra-->
+                            <div class="col-md-4">
+                                <div class="card" >
+                                    <img src="./Imagenes/Campera negra.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            <span class="badge text-bg-warning">Favoritos</span>
+                                            <span class="badge text-bg-info">Comprar</span>
+                                        </p>
+                                        <h4>Campera</h4>
+                                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id tempore iusto iure repellat architecto, et dolorum libero dicta facilis voluptates totam accusantium delectus facere nobis inventore sequi sapiente, in doloribus!.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Campera Inflada-->
+                            <div class="col-md-4">
+                                <div class="card" >
+                                    <img src="./Imagenes/Campera inflada.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            <span class="badge text-bg-warning">Favoritos</span>
+                                            <span class="badge text-bg-info">Comprar</span>
+                                        </p>
+                                        <h4>Campera Inflada</h4>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur laborum, quasi omnis alias inventore quam cum illo labore iusto nemo ipsum est reprehenderit, voluptatum unde corrupti eum? Cum, ipsa quibusdam.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Remera-->
+                            <div class="col-md-4">
+                                <div class="card" >
+                                    <img src="./Imagenes/Hoodie.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            <span class="badge text-bg-warning">Favoritos</span>
+                                            <span class="badge text-bg-info">Comprar</span>
+                                        </p>
+                                        <h4>Hoodie</h4>
+                                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id aperiam qui eaque? Hic nobis, atque aliquid suscipit obcaecati delectus odit sit similique, nulla magni, velit deserunt autem cupiditate tenetur repudiandae?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg border p-0">
+                                <img class="img-fluid" src="./Imagenes/appilcha.jpg" alt="Alex">
+        
+                            </div>
+                            <div class="col-lg border text-bg-dark">
+                                <div class="m-3">
+                                    <h3>Quienes somos</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem sequi enim reiciendis dicta? Placeat laudantium illo repudiandae pariatur in rerum architecto. Delectus vel voluptas hic esse. Maxime recusandae veritatis libero?
+                                    </p>
+                                    <button class="btn btn-dark btn-outline-light">Locales</button>
+            
+                                </div>
+                                
+                            </div>
+        
+                        </div>         
+                    </div>
+                    <br>
+                    <br>
+                    <!--Contáctanos-->
+                    <section>
+                        <div class="container-fluid bg-dark border">
+                            <h3 class="text-center text-light mt-5 mb-5" id="contacto" >Contáctanos</h3>
+                            <div class="row">
+                                <div class="col-md-6 border-none">
+                                    <img class="img-fluid" height="70%" width="100%" src="./IMAGENES/remeras_n.jpg" alt="Alex">
+            
+                                </div>
+                                <div class="col-md-6 border-none text-light">
+                                    <div class="m-3">
+                                         <h5>Déjanos tu consulta y nuestro personal se pondrá en contacto a la brevedad:</h5>
+                                         <form class="needs-validation" id="formulario" novalidate >
+                                            <div class="row my-2">
+                                                 <div class="col-md-12">
+                                                    <label for="">Nombre</label>
+                                                    <input class="form-control" type="text" name="nombre"  id="nombre" required placeholder="Nombre">
+                                                </div>
+                                            </div>
+                                            <div class="row my-2">
+                                                <div class="col-md-12" id="apellid">
+                                                    <label for="">Apellido</label>
+                                                    <input class="form-control" type="text" name="apellido"  id="apellido" required placeholder="Apellido">
+                                                </div>
+                    
+                                            </div>
+                                            <div class="row my-2">
+                                                <div class="col-md-12" id="correo">
+                                                    <label for="">Correo</label>
+                                                    <input class="form-control" type="email" name="email" id="email" cols="20" required
+                                                    placeholder="Correo"></input>
+                                                </div>
+                                            </div>
+                                            <div class="row my-2">
+                                                <div class="col">
+                                                    <label for="">Consulta:</label>
+                                                    <textarea class="form-control" name="message" id="message" cols="20" rows="5"
+                                                        placeholder="Sobre qué quieres hablar?">
+                                                    </textarea>
+                                                                          
+                                                </div>
+                            
+                                            </div>
+                                            <div class="row my-2">
+                                                <div class="btn">
+                                                    <button class="btn bg-light text-dark" id="enviar">
+                                                        Enviar
+                                                    </button>
+                    
+                                                </div>
+                    
+                                            </div>
+                
+                                    </div>
+                                    
+                                </div>
+            
+                            </div>
+            
+        </main>
+    
+        <!--Pie de Pagina-->
+        <footer class="container-fluid text-center py-3" id="footer">
+            <div class="container">
+                <div class="row container align-items-center">
+                    <div class="col-lg">
+                        <a class="navbar-brand" href="#">
+                            <img src="IMAGENES/logo.jpg" alt="" width="48" height="48" class="d-inline-block align-text-top">
+                            
+                        </a>
+    
+                    </div>
+                    
+                    <div class="col-lg">
+                        <h6 class="text-decoration-none">MENU</h6>
+                        <ul>
+                            <ul><a class="text-decoration-none"  href="#">Home</a></ul>
+                            <ul><a class="text-decoration-none"  href="#producto">Productos</a></ul>
+                            <ul><a class="text-decoration-none"  href="">Locales</a></ul>
+                            <ul><a class="text-decoration-none"  href="#contacto">Contactos</a></ul>
+                            <ul><a class="text-decoration-none"  href="">Quienes Somos</a></ul>   
+                        </ul>
+    
+                    </div>
+                    
+                    <div class="col-lg">
+                        <h6 class="text-decoration-none" href="">NAVEGACION</h6>
+                        <ul> 
+                                              
+                            <ul><a class="text-decoration-none"  href="">Preguntas frecuentes</a></ul>
+                            <ul><a class="text-decoration-none"  href="">Distribuidores</a></ul>
+                            <ul><a class="text-decoration-none"  href="">Prensa</a></ul>
+                            
+                        </ul>
+    
+                    </div>
+                    <div class="col-lg-2">
+                        <h6 class="text-decoration-none text-start" href="">REDES</h6>
+                        <ul>
+                            <ul><a class="text-decoration-none"  href="https://es-la.facebook.com/"><i class="fa-brands fa-facebook icon_tamanio"></i></a></ul>
+                            <ul><a class="text-decoration-none"  href="https://www.instagram.com/"><i class="fa-brands fa-instagram icon_tamanio"></i></a></ul>
+                            <ul><a class="text-decoration-none"  href="https://www.tiktok.com/en/"><i class="fa-brands fa-tiktok icon_tamanio"></i></a></ul>
+                            
+                            
+                        </ul>
+    
+                    </div>
+                    <div class="col-lg-2">
+                        <h6 class="text-decoration-none"  href="">Ubicación</h6>
+                        <h6>CABA</h6>
+    
+                    </div>
+                    
+    
+                </div>
+    
+            </div>
+    
+        </footer>
+    
+    <!--Scripts de Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    </body>
 </html>
+                 
+
+

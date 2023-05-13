@@ -1,0 +1,50 @@
+
+#imageappilcha{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./Imagenes/appilcha.jpg");
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  
+}
+.comprart{
+    display: none;
+}
+
+a:hover{
+   background-color: grey;
+   text-decoration-color: aqua;
+    
+}
+
+.ignite{
+    border-bottom: 3px dotted #000;
+    text-decoration: none;
+}
+
+#pagar {
+    background-color: rgb(154, 220, 231);
+    color:rgb(12, 5, 68);
+}
+
+#enviar, #borrar {
+    background-color: rgb(110, 201, 19);
+    color:white;
+}
+
+#footer {
+    width: 100%;
+    bottom: 0;
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+ul{
+    text-align: left;
+    
+    padding: 0;
+}
+a {
+    color: whitesmoke;
+}
