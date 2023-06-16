@@ -9,8 +9,8 @@ return (
         </div>
         <nav className="flex justify-center">
             <ul className="flex">
-                <li className="hover:bg-black hover:text-white rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/'>Inicio</Link></li>
-                <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium relative"><Link to='/Nosotros'>Nosotros</Link></li>
+                <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/'>Inicio</Link></li>
+                <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/Nosotros'>Nosotros</Link></li>
                 <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/Tienda'>Tienda</Link></li>
                 <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/Contacto'>Contacto</Link></li>
                 <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/Ingresar'>ingresar</Link></li>
@@ -19,6 +19,6 @@ return (
         
     </div>
 )
-};
+}
 
-export default Header;
+export default Header

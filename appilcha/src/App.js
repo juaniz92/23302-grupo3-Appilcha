@@ -14,7 +14,7 @@ function App() {
     <html lang="en" className='h-screen'>
       <body className='h-screen'>
         <div className='flex flex-col h-full justify-between'>
-          <Header />;
+          <Header />
           <Routes>
             <Route path='/' element={<Inicio />} />
             <Route path='/Nosotros' element={<Nosotros />} />
