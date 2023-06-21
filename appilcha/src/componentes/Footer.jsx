@@ -13,7 +13,7 @@ export default function Footer() {
                 <Columna title={'Contacto'}/>
                 <a href="#" className="w-[25%]">
 
-                    <img alt="Logo e-commerce" src="/e-commerce.png" className="h-[9rem] ml-20"/>
+                    <img alt="Logo e-commerce" src="./g" className="h-[9rem] ml-20"/>
 
                 </a>
                 <p className="mt-4">&copy; {fechaActual.getFullYear()}</p>
@@ -22,7 +22,7 @@ export default function Footer() {
     );
 }
 
-function Columna({ title, icon }) {
+function Columna({ title}) {
     
     return(
 

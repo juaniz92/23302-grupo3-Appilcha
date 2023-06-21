@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 function Tienda() {
 
   const [datos, setDatos] =useState([])
-    const [pagina, setPagina] =useState(1)
+    //const [pagina, setPagina] =useState(1)
 
     useEffect(() => {
         cargarProductos()
     }, [])
 
-    const btnAnterior = (e)=>{
+    /*const btnAnterior = (e)=>{
         if(pagina > 1){
             setPagina(pagina-1)
             cargarProductos();
@@ -22,7 +22,7 @@ function Tienda() {
             setPagina(pagina+1)
             cargarProductos();
         }
-    }
+    }*/
 
     async function cargarProductos() {
       const respuesta = await axios.get(`https://fakestoreapi.com/products`);
@@ -53,13 +53,6 @@ function Tienda() {
                       
                   </div>
                 </div>
-
-
-                /*<div key={item.id} className="pelicula">
-                <img className="poster" src={item.image} ></img>
-                <h3 className="titulo">{item.title}</h3>
-                <p>{item.description}</p>
-                </div>*/
           ))}
         </div>
           

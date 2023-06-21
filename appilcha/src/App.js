@@ -1,8 +1,6 @@
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import Inicio from './componentes/Inicio';
-import Nosotros from './componentes/Nosotros';
-import Contacto from './componentes/Contacto';
 import Registro from './componentes/Registro';
 import Ingresar from './componentes/Ingresar';
 import Tienda from './componentes/Tienda';
@@ -17,8 +15,6 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Inicio />} />
-            <Route path='/Nosotros' element={<Nosotros />} />
-            <Route path='/Contacto' element={<Contacto />} />
             <Route path='/Registro' element={<Registro />} />
             <Route path='/Ingresar' element={<Ingresar />} />
             <Route path='/Tienda' element={<Tienda />} />

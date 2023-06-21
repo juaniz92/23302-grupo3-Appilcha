@@ -2,7 +2,7 @@ function Nosotros(){
   return (
 
       <div className="px-36 py-5">
-          <h2 className="text-4xl mb-2">Sobre nosotros</h2><br/>
+          <h2 className="text-4xl mb-2" id="Nosotros">Sobre nosotros</h2><br/>
           
           <section>Este emprendimiento se dedica a la venta de indumentaria. La tienda cuenta con una amplia variedad de marcas y modelos de ropa de hombre, mujeres y niños.<br/><br/>
 
@@ -28,7 +28,7 @@ function Nosotros(){
           </div>
           </section><br/><br/><br/>
 
-          <h2 className="text-2xl">Nuestra ubicación</h2><br/>
+          <h2 className="text-4xl">Nuestra ubicación</h2><br/>
 
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.4534024668!2d-58.515698767740496!3d-34.615654769927005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20CABA!5e0!3m2!1ses!2sar!4v1682901159113!5m2!1ses!2sar" width={600} height={450} className="m-5"></iframe>
 

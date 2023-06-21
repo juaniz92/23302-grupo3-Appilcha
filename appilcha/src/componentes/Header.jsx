@@ -10,9 +10,9 @@ return (
         <nav className="flex justify-center">
             <ul className="flex">
                 <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/'>Inicio</Link></li>
-                <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/Nosotros'>Nosotros</Link></li>
+                <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><a href='#Nosotros'>Nosotros</a></li>
                 <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/Tienda'>Tienda</Link></li>
-                <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/Contacto'>Contacto</Link></li>
+                <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><a href='#Contacto'>Contacto</a></li>
                 <li className="hover:bg-black hover:text-white hover:rounded-md px-2 py-1 mx-2 text-center uppercase font-medium"><Link to='/Ingresar'>ingresar</Link></li>
             </ul>
         </nav>

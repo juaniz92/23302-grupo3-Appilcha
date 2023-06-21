@@ -2,12 +2,12 @@ function Contacto(){
     
   return (
 
-      <div className='flex relative grow'>
-          <div className='absolute top-0 left-0 w-full h-full mix-blend-overlay'></div>
-          <form action="#" className="flex items-center justify-center relative z-2 m-auto">
+      <div className='px-36'>
+          <div className='top-0 left-0 w-full h-full mix-blend-overlay'></div>
+          <form action="#" className="flex relative z-2">
                   <fieldset className="formulario-contacto__contenido">
                       <div className="flex flex-col">
-                      <legend className="formulario-contacto__contenido__titulo text-2xl mb-2">Contacto</legend>
+                      <legend className="formulario-contacto__contenido__titulo text-4xl mb-2" id="Contacto">Contacto</legend>
                       <legend className="formulario-contacto__contenido__titulo text-1 mb-2">Complete el siguiente formulario y me pondré en contacto con usted lo antes posible.</legend>
                               <div className="flex flex-1 flex-col">
                                   <label for='nombreyapellido' className="text-1">Nombre y apellido</label>
@@ -27,7 +27,7 @@ function Contacto(){
                                   <span className="formulario-contacto__contenido__span"></span>
                               </div>
                       </div>
-                      <a href="#" className="flex self-center m-2 hover:text-indigo-500"><strong>Enviar</strong></a>
+                      <a href="#" className="relative text-2xl p-2 hover:bg-black hover:text-white hover:rounded-md "><strong>Enviar</strong></a>
                   </fieldset>
 
               </form>
