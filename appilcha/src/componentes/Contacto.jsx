@@ -27,7 +27,7 @@ function Contacto(){
                                   <span className="formulario-contacto__contenido__span"></span>
                               </div>
                       </div>
-                      <a href="#" className="relative text-2xl p-2 hover:bg-black hover:text-white hover:rounded-md "><strong>Enviar</strong></a>
+                      <a href="#" className="relative text-2xl p-2 hover:bg-black hover:text-white hover:rounded-md"><strong>Enviar</strong></a>
                   </fieldset>
 
               </form>

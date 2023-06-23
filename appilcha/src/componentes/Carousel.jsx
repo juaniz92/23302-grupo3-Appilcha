@@ -21,7 +21,7 @@ function ControlledCarousel() {
       <Carousel.Item className='invert'>
       <div className="flex items-center justify-center w-3/5 m-auto">
             <img
-              className="relativeh-96 w-96"
+              className="relative h-96 w-96"
               src='./imagen2.jpg'
               alt="Primera imagen"
             />
