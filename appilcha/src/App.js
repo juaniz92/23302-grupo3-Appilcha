@@ -6,6 +6,9 @@ import Ingresar from './componentes/Ingresar';
 import Tienda from './componentes/Tienda';
 import Header from './componentes/Header';
 import Footer from './componentes/Footer';
+import SignIn from './componentes/Auth/SignIn';
+
+import Registrarse from './componentes/Auth/Registrarse';
 
 function App() {
   return (
@@ -15,7 +18,7 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Inicio />} />
-            <Route path='/Registro' element={<Registro />} />
+            <Route path='/Registrarse' element={<Registrarse />} />
             <Route path='/Ingresar' element={<Ingresar />} />
             <Route path='/Tienda' element={<Tienda />} />
           </Routes>
