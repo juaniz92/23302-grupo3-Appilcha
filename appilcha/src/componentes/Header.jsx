@@ -7,6 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function Header() {
 
 return (
+    //Navbar de react-boostrap
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#home">Appilcha</Navbar.Brand>

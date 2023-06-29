@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 function ControlledCarousel() {
   
   return (
+    //Carrousel de react-bootstrap: contiene 3 productos con imagenes y descripciones
     <Carousel className='m-auto p-5 bg-black text-white rounded-3 mb-3'>
       <Carousel.Item className=''>
         <div className="row w-100">
