@@ -22,6 +22,10 @@ body {
 	color: #1d1d1d;
 }
 
+p {
+	margin-bottom: 1rem;
+}
+
 .export{
 	margin: 0;
 	padding: 0;

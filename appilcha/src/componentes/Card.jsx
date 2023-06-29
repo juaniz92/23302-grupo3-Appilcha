@@ -4,7 +4,9 @@ import {Link} from 'react-router-dom';
 
 function GroupExample() {
   return (
-    <CardGroup className='p-36'>
+   <>
+   <h2 className='h1 text-center'>Productos del mes</h2>
+    <CardGroup className='p-3'>
       <Card className="flex items-center justify-center m-auto border-none">
       <Link to='/Tienda'><Card.Img className="h-72 w-72" variant="top" src="./img1.jpg" /></Link>
         <Card.Body>
@@ -24,6 +26,7 @@ function GroupExample() {
         </Card.Body>
       </Card>
     </CardGroup>
+    </> 
   );
 }
 
