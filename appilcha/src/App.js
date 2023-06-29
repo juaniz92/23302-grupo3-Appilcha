@@ -12,9 +12,7 @@ import Registrarse from './componentes/Auth/Registrarse';
 
 function App() {
   return (
-    <html lang="en" className='h-screen'>
-      <body className='h-screen'>
-        <div className='flex flex-col h-full justify-between'>
+      <div className='container'>
           <Header />
           <Routes>
             <Route path='/' element={<Inicio />} />
@@ -23,9 +21,7 @@ function App() {
             <Route path='/Tienda' element={<Tienda />} />
           </Routes>
           <Footer />;
-        </div>
-      </body>
-    </html>
+      </div>
   );
 
   

@@ -12,7 +12,7 @@ return (
         <Navbar.Brand href="#home">Appilcha</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto text-uppercase">
             <Nav.Link href="/">Inicio</Nav.Link>
             <Nav.Link href="#Nosotros">Nosotros</Nav.Link>
             <Nav.Link href="/Tienda">Tienda</Nav.Link>
