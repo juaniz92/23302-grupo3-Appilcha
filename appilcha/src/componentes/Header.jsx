@@ -10,7 +10,12 @@ return (
     //Navbar de react-boostrap
     <Navbar expand="lg" className="light">
       <Container>
-        <Navbar.Brand href="/">Appilcha</Navbar.Brand>
+        <Navbar.Brand href="/"><img
+              src="../appilcha.png"
+              width="150"
+              className="d-inline-block align-top"
+              alt="Appilcha Logo"
+            /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto text-uppercase">
