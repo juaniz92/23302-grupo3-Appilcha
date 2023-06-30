@@ -1,37 +1,12 @@
-/*-import React, {useState,useEffect} from "react";
-import {Link} from 'react-router-dom';
-import {useNavigate,useParams} from 'react-router-dom';
-import {getDoc, doc} from 'firebase/firestore';
-import {db} from '../../firebaseConfig/firebase';
-import {async} from '@firebase/util';
-import Swal from 'sweetalert2';
+/*import React, {useState} from "react";
+import {auth} from "../../firebase";
+import {signInwithEmailAndPassword} from "firebase/auth"
 
 const SignIn = () => {
-    //se declaran variables
-    const [form, setForm] = useState({
-        Email: "",
-        Password:""
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    })
-    const navigate = useNavigate();
-    const {id} = useParams
-
-    //Declaramos el alert
-    const alertingreso = () => (
-
-        Swal.fire({
-            title: 'Ingresaste',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-    )
-
-    // Declaramos la existencia
-    const getUsuarioByID= async (id) => {
+    const signIn = (e) => {
         e.preventDefault();
         signInwithEmailAndPassword(auth, email, password)
         .then ((userCredential)=>{
