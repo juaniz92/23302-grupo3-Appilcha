@@ -8,9 +8,9 @@ function Header() {
 
 return (
     //Navbar de react-boostrap
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="light">
       <Container>
-        <Navbar.Brand href="#home">Appilcha</Navbar.Brand>
+        <Navbar.Brand href="/">Appilcha</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto text-uppercase">
