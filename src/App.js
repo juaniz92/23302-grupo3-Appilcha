@@ -11,10 +11,13 @@ import Mostrar from './componentes/Auth/Mostrar';
 import SignIn from './componentes/Auth/SignIn';
 
 import Registrarse from './componentes/Auth/Registrarse';
+import Carrito from './componentes/Carrito';
+import DataProvider from './componentes/Datos';
 
 function App() {
   return (
       <div className='container'>
+        <DataProvider>
           <Header />
           <Routes>
             <Route path='/' element={<Inicio />} />
@@ -26,6 +29,7 @@ function App() {
             <Route path='/Mostrar' element={<Mostrar />} />
           </Routes>
           <Footer />;
+        </DataProvider>;
       </div>
   );
 
