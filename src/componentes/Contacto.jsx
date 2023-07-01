@@ -1,38 +1,42 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 function Contacto(){
     
   return (
 
-      <div className='px-36'>
-          <div className='top-0 left-0 w-full h-full mix-blend-overlay'></div>
-          <form action="#" className="flex relative z-2">
-                  <fieldset className="formulario-contacto__contenido">
-                      <div className="flex flex-col">
-                      <legend className="formulario-contacto__contenido__titulo text-4xl mb-2" id="Contacto">Contacto</legend>
-                      <legend className="formulario-contacto__contenido__titulo text-1 mb-2">Complete el siguiente formulario y me pondré en contacto con usted lo antes posible.</legend>
-                              <div className="flex flex-1 flex-col">
-                                  <label for='nombreyapellido' className="text-1">Nombre y apellido</label>
-                                  <input type="text" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su nombre y apellido" data-input="text" id="nombreyapellido"/>
-                                  <span className="formulario-contacto__contenido__span"></span>
+      <div className='row g-0 p-3 py-4 bg-dark text-white'>
 
-                                  <label for='email' className="text-1">E-mail</label>
-                                  <input type="email" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su correo electrónico" data-input="email" id="email"/>
-                                  <span className="formulario-contacto__contenido__span"></span>
+            <h2 className='h2 mb-4'>Contacto</h2>
 
-                                  <label for='asunto' className="text-1">Asunto</label>
-                                  <input type="text" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba el asunto" data-input="text" id="asunto"/>
-                                  <span className="formulario-contacto__contenido__span"></span>
+            <Form>
 
-                                  <label for='mensaje' className="text-1">Mensaje</label>
-                                  <textarea type="text" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 h-40 text-black bg-gray-300" placeholder="Escriba su mensaje..." data-input="text" id="mensaje"/>
-                                  <span className="formulario-contacto__contenido__span"></span>
-                              </div>
-                      </div>
-                      <a href="#" className="relative text-2xl p-2 hover:bg-black hover:text-white hover:rounded-md"><strong>Enviar</strong></a>
-                  </fieldset>
+                <Form.Group className="mb-3" controlId="nombre">
+                    <Form.Label>Nombre</Form.Label>
+                    <Form.Control type="text" placeholder="Escribe tu nombre" required />
+                </Form.Group>
 
-              </form>
+                <Form.Group className="mb-3" controlId="apellido">
+                    <Form.Label>Apellido</Form.Label>
+                    <Form.Control type="text" placeholder="Escribe tu apellido" required />
+                </Form.Group>
 
-      </div>
+                <Form.Group className="mb-3" controlId="email">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" placeholder="Escribe tu email" required />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="mensaje">
+                    <Form.Label>Mensaje</Form.Label>
+                    <Form.Control as="textarea" rows={3} placeholder="Escribe tu mensaje" required />
+                </Form.Group>
+
+                <Button variant="dark" className='fs-4' type="submit">
+                    Enviar
+                </Button>
+
+            </Form>
+        </div>
   );
 }
   
