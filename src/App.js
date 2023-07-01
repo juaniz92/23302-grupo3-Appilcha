@@ -9,18 +9,23 @@ import Footer from './componentes/Footer';
 import SignIn from './componentes/Auth/SignIn';
 
 import Registrarse from './componentes/Auth/Registrarse';
+import Carrito from './componentes/Carrito';
+import DataProvider from './componentes/Datos';
 
 function App() {
   return (
       <div className='container'>
+        <DataProvider>
           <Header />
           <Routes>
             <Route path='/' element={<Inicio />} />
             <Route path='/Registrarse' element={<Registrarse />} />
             <Route path='/Ingresar' element={<Ingresar />} />
             <Route path='/Tienda' element={<Tienda />} />
+            <Route path='/Carrito' element={<Carrito />} />
           </Routes>
-          <Footer />;
+          <Footer />
+        </DataProvider>;
       </div>
   );
 
