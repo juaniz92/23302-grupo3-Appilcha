@@ -15,7 +15,7 @@ function Admin() {
                                     <br/>
                                     <Link to="/Mostrar" className="flex self-center text-center m-2 hover:text-gray-500 mx-5"><strong>USUARIOS</strong></Link> <br/>
                                     <Link to="/Registrarse" className="flex self-center text-center  m-2 hover:text-gray-500 mx-5"><strong>REGISTRO</strong></Link> <br/>
-                                    <Link to="/Editar" className="flex self-center text-center m-2 hover:text-gray-500 mx-5"><strong>EDITAR</strong></Link>
+                                    
 
                                 </div>
 
