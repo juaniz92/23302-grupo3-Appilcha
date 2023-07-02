@@ -28,8 +28,8 @@ function App() {
             <Route path='/Admin' element={<Admin />} />
             <Route path='/Mostrar' element={<Mostrar />} />
           </Routes>
-          <Footer />;
-        </DataProvider>;
+          <Footer />
+        </DataProvider>
       </div>
   );
 

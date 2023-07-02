@@ -7,8 +7,8 @@ function Contacto(){
 
       <div className='row g-0 p-3 py-4 bg-dark text-white'>
 
-            <h2 className='h2 mb-4'>Contacto</h2>
-
+            <h2 className='h2 mb-4' id='Contacto'>Contacto</h2>
+            <p>Si tienes alguna consulta puedes enviarnos un mensaje llenando los siguientes datos:</p>
             <Form>
 
                 <Form.Group className="mb-3" controlId="nombre">
