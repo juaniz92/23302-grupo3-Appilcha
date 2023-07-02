@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {collection, getDocs, getDoc, deleteDoc, doc} from 'firebase/firestore';
+import {collection, getDocs, deleteDoc, doc} from 'firebase/firestore';
 import { db } from '../../firebaseConfig/firebase';
 import Swal from 'sweetalert2';
 import {async} from '@firebase/util';
@@ -9,14 +9,14 @@ const MySwal = withReactContent(Swal);
 
 const Mostrar = () => {
 
-    //1 configuración de los hook de mostrar
+    //configuración de los hook de mostrar
     const usuariosCollection = collection(db, "Usuarios");
 
     const [usuarios, setUsuarios] = useState([]);
 
-    //2 referenciar la db de firebase
+    
 
-    //3 creamos la funcionabilidad para mostrar los documentos con asincronismo
+    //Asincronismo
 
     const getUsuarios = async ()=> { 
         const data = await getDocs(usuariosCollection); 
@@ -31,7 +31,8 @@ const Mostrar = () => {
         getUsuarios();
         
     }, [ ])
-    //4 declaración función delete para eliminar registros
+
+    //declaración función delete para eliminar registros
     console.log(usuarios);
     const deleteUsuario = async (id)=>{
         const usuarioDoc = doc(db, "Usuarios", id);
@@ -39,7 +40,7 @@ const Mostrar = () => {
         getUsuarios();
     }
 
-    //5 configuración sweetalert
+    //configuración sweetalert
     const confirmDelete = (id) => {
         Swal.fire({
             title: 'Vas a eliminar el usuario?',
@@ -54,7 +55,7 @@ const Mostrar = () => {
             deleteUsuario(id);
             Swal.fire(
                 'Borrado',
-                'El producto fue eliminado.',
+                'El usuario fue eliminado.',
                 'Listo'
             )
             }
@@ -62,10 +63,10 @@ const Mostrar = () => {
 
     }
 
-    //6 declaramos el useEffect
+  
  
 
-    //7 mostrar datos en estructura
+    //mostrar datos en estructura
 
   return (
     <div className='container'>
@@ -87,7 +88,7 @@ const Mostrar = () => {
                             <th>Domicilio</th>
                             <th>Postal</th>
                             <th>Password</th>
-                            <th>Repassword</th>
+                            <th>Reppassword</th>
                         </tr>
                     </thead>
                     <tbody className='text-light bg-primary'>
@@ -102,9 +103,9 @@ const Mostrar = () => {
                                 <td key={usuari.Domicilio} className='text-light'>{usuari.Domicilio || ''} </td>
                                 <td key={usuari.Postal} className='text-light'>{usuari.Postal || ''}</td>
                                 <td key={usuari.Password} className='text-light'>{usuari.Password || ''}</td>
-                                <td key={usuari.Repassword} className='text-light'>{usuari.Reppassword || ''} </td>
+                                <td key={usuari.Reppassword} className='text-light'>{usuari.Reppassword || ''} </td>
                                 <td>
-                                    
+                                    <Link to={`/editarusuario/${usuari.id}`} className="btn btn-info"><i className="fa-solid fa-pen-to-square"></i></Link>  
                                     <button onClick={()=>{confirmDelete(usuari.id)}} className="bg-danger"><i className="fa-solid fa-trash "></i>Eliminar</button>
                                 </td>
                             </tr>
