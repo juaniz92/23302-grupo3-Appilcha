@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import {useNavigate, useParams} from 'react-router-dom';
 import {getDoc, doc, updateDoc} from 'firebase/firestore';
 import { db } from '../../firebaseConfig/firebase';
 import { dbCollection } from '../../firebaseConfig/collections';
+import {async} from '@firebase/util';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
@@ -12,16 +14,17 @@ const Editar = () =>{
     //Declaración de variables
 
     const [form, setForm] = useState({
-        nombre: '',
-        apellido:'',
-        edad:'',
-        email:'',
-        pais:'',
-        ciudad:'',
-        postal:'',
-        password:'',
+        Nombre: '',
+        Apellido:'',
+        Edad:'',
+        Email:'',
+        Pais:'',
+        Ciudad:'',
+        Postal:'',
+        Password:'',
+        Reppassword:''
 
-    });
+    })
 
     const navigate = useNavigate();
     const {id} =useParams();
@@ -32,9 +35,7 @@ const Editar = () =>{
     const cambio = (e)=> {
         setForm({
             ...form, [e.target.name]: e.target.value
-        }
-
-        );
+        });
     }
 
     // declarar alerta
@@ -59,14 +60,15 @@ const Editar = () =>{
 
         const usuario = doc(db, dbCollection.Usuarios, id);
         const data  = {
-            nombre: form.nombre,
-            apellido: form.apellido,
-            edad: form.edad,
-            email: form.email,
-            pais: form.pais,
-            ciudad: form.ciudad,
-            postal: form.postal,
-            password: form.password
+            Nombre: form.Nombre,
+            Apellido: form.Apellido,
+            Edad: form.Edad,
+            Email: form.Email,
+            Pais: form.Pais,
+            Ciudad: form.Ciudad,
+            Postal: form.Postal,
+            Password: form.Password,
+            Reppassword: form.Reppassword,
 
         }
         await updateDoc(usuario, data);
@@ -75,36 +77,36 @@ const Editar = () =>{
 
     }
 
-        //5 asincronismo de existencia con la bd
+    //asincronismo de existencia con la bd
 
-        const getUsuarioById = async (id) =>{
-            const usuario = await getDoc(doc(db, dbCollection.Usuarios, id));
-            console.log(usuario.data());
+    const getUsuarioById = async (id) =>{
+        const usuario = await getDoc(doc(db, dbCollection.Usuarios, id));
+        console.log(usuario.data());
     
-            if (usuario.exists()){
-                setForm({
+        if (usuario.exists()){
+            setForm({
+                Nombre: usuario.data().Nombre,
+                Apellido: usuario.data().Apellido,
+                Edad: usuario.data().Edad,
+                Email: usuario.data().Email,
+                Pais: usuario.data().Pais,
+                Ciudad: usuario.data().Ciudad,
+                Postal: usuario.data().Postal,
+                Password: usuario.data().Password,
+                Reppasword: usuario.data().Reppassword
                     
-                    nombre: usuario.data().nombre,
-                    apellido: usuario.data().apellido,
-                    edad: usuario.data().edad,
-                    email: usuario.data().email,
-                    pais: usuario.data().pais,
-                    ciudad: usuario.data().ciudad,
-                    postal: usuario.data().postal,
-                    password: usuario.data().password,
-                    reppasword: usuario.data().repassword
-                });
-            }
-            else{
-                console.log("no existe");
-            }
-        };
+                    
+            });
+        }else{            
+            console.log("no existe");
+        }
+    };
     
-        //6 useEffect
+    //useEffect
         
-        useEffect(()=>{
-            getUsuarioById(id);
-        }, [id])
+    useEffect(()=>{
+        getUsuarioById(id);
+    }, [id])
 
 
     return(
@@ -112,14 +114,14 @@ const Editar = () =>{
             <div className='row'>
                 <div className='col'>
 
-                    <h1 className='mt-3 text-light'>Editar el Usuario</h1>
+                    <h1 className='mt-3 h2 text-black text-center'>Editar el Usuario</h1>
 
                     <form onSubmit={update} className="mt-5">
                         <div className='mb-4'>
-                            <label className='form-label h3 text-light'>Nombre:</label>
+                            <label className='form-label h3 text-black'>Nombre:</label>
                             <input 
                                 name='nombre'
-                                value={form.nombre}
+                                value={form.Nombre}
                                 type="text"
                                 className='form-control w-50 m-auto'
                                 onChange={cambio}
@@ -127,10 +129,10 @@ const Editar = () =>{
                         </div>
 
                         <div className='mb-4'>
-                            <label className='form-label h3 text-light'>Apellido:</label>
+                            <label className='form-label h3 text-black'>Apellido:</label>
                             <input 
                                 name="¨apellido"
-                                value={form.apellido}
+                                value={form.Apellido}
                                 type="text"
                                 className='form-control w-50 m-auto'
                                 onChange={cambio}
@@ -138,10 +140,10 @@ const Editar = () =>{
                         </div>
 
                         <div className='mb-3'>
-                            <label className='form-label h3 text-light'>Edad:</label>
+                            <label className='form-label h3 text-black'>Edad:</label>
                             <input 
                                 name="edad"
-                                value={form.edad}
+                                value={form.Edad}
                                 type="text"
                                 className='form-control w-50 m-auto'
                                 onChange={cambio}
@@ -149,10 +151,10 @@ const Editar = () =>{
                         </div>
                        
                         <div className='mb-4'>
-                            <label className='form-label h3 text-light'>Email:</label>
+                            <label className='form-label h3 text-black'>Email:</label>
                             <input 
                                 name='email'
-                                value={form.email}
+                                value={form.Email}
                                 type="email"
                                 className='form-control w-50 m-auto'
                                 onChange={cambio}
@@ -160,10 +162,10 @@ const Editar = () =>{
                         </div>
 
                         <div className='mb-4'>
-                            <label className='form-label h3 text-light'>Pais:</label>
+                            <label className='form-label h3 text-black'>Pais:</label>
                             <input 
                                 name="¨pais"
-                                value={form.pais}
+                                value={form.Pais}
                                 type="text"
                                 className='form-control w-50 m-auto'
                                 onChange={cambio}
@@ -171,20 +173,20 @@ const Editar = () =>{
                         </div>
 
                         <div className='mb-3'>
-                            <label className='form-label h3 text-light'>Ciudad:</label>
+                            <label className='form-label h3 text-black'>Ciudad:</label>
                             <input 
                                 name="ciudad"
-                                value={form.ciudad}
+                                value={form.Ciudad}
                                 type="text"
                                 className='form-control w-50 m-auto'
                                 onChange={cambio}
                             />
                         </div>
                         <div className='mb-4'>
-                            <label className='form-label h3 text-light'>Codigo Postal:</label>
+                            <label className='form-label h3 text-black'>Codigo Postal:</label>
                             <input 
                                 name="¨postal"
-                                value={form.postal}
+                                value={form.Postal}
                                 type="text"
                                 className='form-control w-50 m-auto'
                                 onChange={cambio}
@@ -192,18 +194,29 @@ const Editar = () =>{
                         </div>
 
                         <div className='mb-3'>
-                            <label className='form-label h3 text-light'>Password:</label>
+                            <label className='form-label h3 text-black'>Password:</label>
                             <input 
                                 name="password"
-                                value={form.password}
-                                type="text"
+                                value={form.Password}
+                                type="password"
+                                className='form-control w-50 m-auto'
+                                onChange={cambio}
+                            />
+                        </div>
+
+                        <div className='mb-3'>
+                            <label className='form-label h3 text-black'>Reppassword:</label>
+                            <input 
+                                name="password"
+                                value={form.Reppassword}
+                                type="password"
                                 className='form-control w-50 m-auto'
                                 onChange={cambio}
                             />
                         </div>
                        
 
-                        <button type="submit" className='btn btn-outline-light btn-lg mt-3'>Guardar</button>
+                        <button type="submit" className='btn btn-outline-dark btn-lg mt-3'>Guardar</button>
                     
                     </form>
                 </div>
