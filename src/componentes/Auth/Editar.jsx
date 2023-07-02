@@ -12,6 +12,7 @@ const MySwal = withReactContent(Swal);
 const Editar = () =>{
 
     //Declaración de variables
+   
 
     const [form, setForm] = useState({
         Nombre: '',
@@ -32,7 +33,7 @@ const Editar = () =>{
     
     //Asignar datos modificados
 
-    const cambio = (e)=> {
+    const cambio = (e) => {
         setForm({
             ...form, [e.target.name]: e.target.value
         });
@@ -71,6 +72,7 @@ const Editar = () =>{
             Reppassword: form.Reppassword,
 
         }
+        console.log(data());
         await updateDoc(usuario, data);
         alertaEditado();
         navigate("/Admin");
@@ -93,7 +95,7 @@ const Editar = () =>{
                 Ciudad: usuario.data().Ciudad,
                 Postal: usuario.data().Postal,
                 Password: usuario.data().Password,
-                Reppasword: usuario.data().Reppassword
+                Reppassword: usuario.data().Reppassword
                     
                     
             });
