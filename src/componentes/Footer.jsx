@@ -6,41 +6,47 @@ export default function Footer() {
     
     return(
 
-            <footer className="flex flex-wrap pt-4 mb-2 justify-center" id="rodapie">
+            <footer className="p-4 mt-4 text-center">
 
-                <Columna title={'Métodos de pago'}/>
-                <Columna title={'Política y privacidad'}/>
-                <Columna title={'Contacto'}/>
-                <a href="#" className="w-[25%]">
-
-                    <img alt="Logo e-commerce" src="./g" className="h-[9rem] ml-20"/>
-
+            <ul className='row g-0 text-center'>
+                <li className=' col-md-3 col-12 my-2 fw-bold'><a href="/">Inicio</a></li>
+                <li className='col-md-3 col-12 my-2 fw-bold'><a href="/Tienda">Productos</a></li>
+                <li className='col-md-3 col-12 my-2 fw-bold'><a href="/Preguntas-frecuentes">Preguntas Frecuentes</a></li>
+                <li className='col-md-3 col-12 my-2 fw-bold'><a href="/#Contacto">Contacto</a></li>
+            </ul>
+                
+                
+            <div className="d-flex justify-content-center align-items-center mt-4">
+                <a href="/">
+                    <img alt="Icono Appilcha" src="./icono-fav.svg" width={75} className="svg-icon" />
                 </a>
-                <p className="mt-4">&copy; {fechaActual.getFullYear()}</p>
+            </div>
+            
+
+                <p className="mt-4">Appilcha Tienda de Ropa - Todos los Derechos Reservados &copy; {fechaActual.getFullYear()}</p>
 
             </footer>
     );
 }
 
-function Columna({ title}) {
+// function Columna({ title}) {
     
-    return(
+//     return(
 
-            <div className="text-center [&:not(:nth-child(3))]:border-r-4 border-solid border-white">
-                <div className="flex justify-center">
+//             <div className="text-center [&:not(:nth-child(3))]:border-r-4 border-solid border-white">
+//                 <div className="flex justify-center">
 
-                    <h2 className="color-footer font-black text-xl">{title}</h2>
+//                     <h2 className="color-footer font-black text-xl">{title}</h2>
 
-                </div>
-                <ol className="leading-8 mt-4 text-sm ">
+//                 </div>
+//                 <ol className="leading-8 mt-4 text-sm ">
 
-                    <hr className="w-3/4 mr-auto ml-auto"/>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
+//                     <hr className="w-3/4 mr-auto ml-auto"/>
+//                     <li>Lorem ipsum dolor sit amet.</li>
+//                     <li>Lorem ipsum dolor sit amet.</li>
+//                     <li>Lorem ipsum dolor sit amet.</li>
 
-                </ol>
+//                 </ol>
 
-            </div>
-    );
-}
+//             </div>
+//     );
