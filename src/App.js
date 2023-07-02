@@ -11,7 +11,7 @@ import Mostrar from './componentes/Auth/Mostrar';
 import SignIn from './componentes/Auth/SignIn';
 
 import Registrarse from './componentes/Auth/Registrarse';
-import Carrito from './componentes/Carrito';
+import Compra from './componentes/Compra';
 import DataProvider from './componentes/Datos';
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
             <Route path='/Editar/:idUsuario' element={<Editar/>}/>
             <Route path='/Admin' element={<Admin />} />
             <Route path='/Mostrar' element={<Mostrar />} />
+            <Route path='/Compra' element={<Compra />} />
           </Routes>
           <Footer />
         </DataProvider>
