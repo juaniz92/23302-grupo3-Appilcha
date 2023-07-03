@@ -18,11 +18,11 @@ const CarritoElementos = () => {
 
     return carrito.map((item) => {
         return (
-            <div className='flex flex-row justify-between' key={item.id}>
-                <h3>{item.title}</h3>
-                <CarritoProductoContar producto = {item}/>
-                <h4 className='fw-bold'>$ {parseFloat(item.price * item.cantidad).toFixed(2)}</h4>
-                <h3 onClick={() => eliminarProducto(item.id)}>❌</h3>
+            <div className='d-flex p-2 border rounded my-1' key={item.id}>
+                <h3 className='col'>{item.title}</h3>
+                <CarritoProductoContar producto = {item} />
+                <h4 className='text-right col fw-bold my-auto'>$ {parseFloat(item.price * item.cantidad).toFixed(2)}</h4>
+                <h3 className='col text-right my-auto' onClick={() => eliminarProducto(item.id)}>❌</h3>
             </div>
         );
     });
