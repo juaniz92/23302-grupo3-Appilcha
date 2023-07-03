@@ -1,3 +1,5 @@
 export const dbCollection = {
-    Usuarios: "Usuarios"
+    Usuarios: "Usuarios",
+    Productos: "Productos"
+
 }
