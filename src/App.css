@@ -122,6 +122,25 @@ p {
 	background: #07099e;
 }
 
+.img-productos-tienda {
+	max-height: 150px;
+	width: auto;
+
+}
+
+.btn-comprar {
+	font-weight: bold;
+	width: 50%;
+	height: auto;
+	border-radius: 7px;
+	border: #000 1px solid;
+	margin: 0 auto;
+}
+.btn-comprar:hover {	
+	background-color: #000;
+	color: #fff;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

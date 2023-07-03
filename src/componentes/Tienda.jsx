@@ -30,38 +30,34 @@ function Tienda() {
 
     return (
       <div className="flex flex-col">
-        <div className="relative flex flex-col self-end">
-          <button className="flex justify-end text-3xl" onClick={flagCarrito}>🛒 {carrito.length > 0 ? <Totalproductos /> : null}</button>
-        </div>
-        <div>  
+          <div className="relative flex flex-col self-end">
+            <button className="flex justify-end text-3xl" onClick={flagCarrito}>🛒 {carrito.length > 0 ? <Totalproductos /> : null}</button>
+          </div> 
           <div>
             {mostrarCarrito &&
             <div className="flex absolute end-48 bg-white border rounded-md shadow-md">
             <Carrito />
-          </div>}
+            </div>}
           </div>
-        </div>
 
-        <div className="grid grid-cols-2 gap-4 mt-10 px-5">
+        <div className="row">
           { datos.map((item) => (
-                <div  key={item.id} className="grid grid-cols-3 border-2">
-                  <div className="h-full border-2">
-                      <img src={item.image} className="h-48 w-48"></img>
+                <div  key={item.id} className="col-12 col-md-6 col-lg-4 p-4">
+                  <div className="my-2">
+                      <img src={item.image} className="img-productos-tienda mx-auto d-block"></img>
                   </div>
                       
-                  <div className="grid col-span-2">
                     <div>
-                      <h3><strong>{item.title}</strong></h3>
-                      <h4>Detalles:</h4>
+                      <h3 className="h3 my-3"><strong>{item.title}</strong></h3>
+                      <h4 className="h4 my-3">Detalles:</h4>
                       <p>{item.description}</p>
                     </div>  
-
-                    <div className="flex flex-row justify-around self-end">
-                        <span className="ml-10 m-5 text-3xl">${item.price}</span>
-                        <button onClick={()=> anadirProducto(item)} className="bg-black text-white rounded-md text-2 m-5 ml-10 px-8" type="submit"><strong>Añadir al carrito</strong></button> 
+                    
+                    <div className="row">
+                        <span className="col-12 fs-2 text-end">${item.price}</span>
+                        <button onClick={()=> anadirProducto(item)} className="col-12 p-2 btn-comprar" type="submit">Añadir al carrito</button> 
                     </div>
-                      
-                  </div>
+
                 </div>
           ))}
         </div>
@@ -71,6 +67,7 @@ function Tienda() {
               <button onClick={btnSiguiente} id="btnSiguiente">Siguiente</button>
           </div>*/}
     </div>
+
     );
   }
   
