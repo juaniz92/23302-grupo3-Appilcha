@@ -21,7 +21,7 @@ const CarritoElementos = () => {
             <div className='flex flex-row justify-between' key={item.id}>
                 <h3>{item.title}</h3>
                 <CarritoProductoContar producto = {item}/>
-                <h4>$ {item.price * item.cantidad}</h4>
+                <h4 className='fw-bold'>$ {parseFloat(item.price * item.cantidad).toFixed(2)}</h4>
                 <h3 onClick={() => eliminarProducto(item.id)}>❌</h3>
             </div>
         );

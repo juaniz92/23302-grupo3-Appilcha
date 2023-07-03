@@ -29,13 +29,13 @@ function Tienda() {
     const { datos, anadirProducto, carrito } = useContext(data);
 
     return (
-      <div className="flex flex-col">
+      <div className="d-flex flex-column">
           <div className="relative flex flex-col self-end">
             <button className="flex justify-end text-3xl" onClick={flagCarrito}>🛒 {carrito.length > 0 ? <Totalproductos /> : null}</button>
           </div> 
           <div>
             {mostrarCarrito &&
-            <div className="flex absolute end-48 bg-white border rounded-md shadow-md">
+            <div className="">
             <Carrito />
             </div>}
           </div>
