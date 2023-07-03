@@ -11,10 +11,13 @@ const CarritoProductoContar = ({producto}) => {
     }
 
     return (
-        <div className='flex justify-center items-center px-4'>
-            <p className='px-2 cursor-pointer' onClick={restar} >-</p>
-            <p className='px-1 fw-bold'>{producto.cantidad}</p>
-            <p className='px-2 cursor-pointer' onClick={() => anadirProducto(producto)} >+</p>
+        <div className='col my-auto'>
+            <div className="d-flex justify-content-center">
+                
+            <p className='px-2 cursor-pointer my-auto' onClick={restar} >-</p>
+            <p className='px-1 fw-bold my-auto'>{producto.cantidad}</p>
+            <p className='px-2 cursor-pointer my-auto' onClick={() => anadirProducto(producto)} >+</p>
+            </div>
         </div>
     );
 };

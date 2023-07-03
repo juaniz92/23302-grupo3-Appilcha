@@ -5,8 +5,8 @@ const CarritoTotal = () => {
     const { carrito } = useContext(data);
 
     const total = carrito.reduce((acc,el) => acc + el.price * el.cantidad, 0);
-    return <div className='pb-3'>
-        <h3><span className='fw-bold'>Total a pagar:</span>  $ {parseFloat(total.toFixed(2))}</h3>
+    return <div className='ps-2 pb-3 mt-2'>
+        <h3><span className='fw-bold fs-4'>Total a pagar:</span>  $ {parseFloat(total.toFixed(2))}</h3>
     </div>
 }
 
