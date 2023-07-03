@@ -150,8 +150,6 @@ function Registrarse(){
                             </div>
                             <div className='flex flex-col items-center p-2'>
                                 <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2 m-2 px-5" type="submit" formaction="./menu-administrador.html">REGISTRAR</button>
-                                <div className="recaptcha m-2">
-                                </div>
                             </div>
                 </fieldset>
             </form>
