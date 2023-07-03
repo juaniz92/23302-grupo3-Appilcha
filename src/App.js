@@ -28,6 +28,7 @@ function App() {
             <Route path='/Admin' element={<Admin />} />
             <Route path='/Mostrar' element={<Mostrar />} />
             <Route path='/Compra' element={<Compra />} />
+            
           </Routes>
           <Footer />
         </DataProvider>

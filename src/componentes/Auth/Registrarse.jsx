@@ -36,6 +36,26 @@ function Registrarse(){
 
     }
 
+    const alertIncompleto = () => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Completa todos los campos',
+            text: 'Something went wrong!',
+            footer: '<a href="">Why do I have this issue?</a>'
+          })
+
+    }
+
+    const alertPassword = () => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Password Erroneo',
+            text: 'El password no coincide!',
+            footer: '<a href="">Why do I have this issue?</a>'
+          })
+
+    }
+
      //Expresiones Regulares
      const expresiones = {
         usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -50,11 +70,26 @@ function Registrarse(){
     const nuevo = async (e) => {
         e.preventDefault();
 
+        if (nombre ==="" || apellido ==="" || email ==="" || password ==="" || edad ==="" || pais ==="" || ciudad ==="" || domicilio ==="" || postal ===""|| reppassword ===""){
+            alertIncompleto();
+            if (password.length>0){
+                if(password !== reppassword){
+                    alertPassword();  
+                }
+            }
+        }
+       
+        else{
+            await addDoc(usuariosCollection, {Nombre: nombre, Apellido: apellido,  Email: email, Password: password, Edad: edad, Pais: pais, Ciudad: ciudad, Domicilio: domicilio, Postal: postal, Reppassword: reppassword});
+            alertCreacion();
+            navigate("/Ingresar");
+    
+
+        }
+
       
 
-       await addDoc(usuariosCollection, {Nombre: nombre, Apellido: apellido,  Email: email, Password: password, Edad: edad, Pais: pais, Ciudad: ciudad, Domicilio: domicilio, Postal: postal, Reppassword: reppassword});
-        alertCreacion();
-        navigate("/Ingresar");
+      
     }
 
     //Validar repassword
