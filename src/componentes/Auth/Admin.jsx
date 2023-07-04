@@ -16,7 +16,17 @@ function Admin() {
                                     
 
                         </div>  
-                        </fieldset>
+                    </fieldset>
+                    <fieldset className="formulario-contacto__contenido">
+                        <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2">Gestión de Productos</legend>
+                        <div className='text-center'>
+                            <br />
+                            <Link to="/CrearProductos" className="flex self-center text-center m-2 hover:text-gray-500 mx-5"><strong>Crear productos</strong></Link> <br />
+                            <Link to="/MostrarProductos" className="flex self-center text-center  m-2 hover:text-gray-500 mx-5"><strong>Mostrar productos</strong></Link> <br />
+                            <Link to="/EditarProductos" className="flex self-center text-center  m-2 hover:text-gray-500 mx-5"><strong>Editar Productos</strong></Link> <br />
+
+                        </div>
+                    </fieldset>
                 </form>
 
             </div>

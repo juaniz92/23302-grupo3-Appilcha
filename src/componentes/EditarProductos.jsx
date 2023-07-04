@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig/firebase';
-import { dbCollections } from '../firebaseConfig/collections';
+import { dbCollection } from '../firebaseConfig/collections';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
@@ -48,7 +48,7 @@ const EditarProductos = () => {
 
     const update = async (e) => {
         e.preventDefault();
-        const producto = doc(db, dbCollections.Productos, id);
+        const producto = doc(db, dbCollection.Productos, id);
         const data = {
             Descripcion: form.Descripcion,
             Nombre: form.Nombre,
@@ -58,13 +58,13 @@ const EditarProductos = () => {
         };
         await updateDoc(producto, data);
         alertaGuardado();
-        navigate("/");
+        navigate("/Admin");
     }
 
     //5 asincronismo de existencia con la bd
 
     const getProductoById = async (id) => {
-        const producto = await getDoc(doc(db, dbCollections.Productos, id));
+        const producto = await getDoc(doc(db, dbCollection.Productos, id));
         console.log(producto.data());
 
         if (producto.exists()) {
@@ -72,7 +72,7 @@ const EditarProductos = () => {
                 Descripcion: producto.data().Descripcion,
                 Nombre: producto.data().Nombre,
                 Precio: producto.data().Precio,
-                Precio: producto.data().PrecioCosto,
+                PrecioCosto: producto.data().PrecioCosto,
                 Stock: producto.data().Stock
             });
         }
