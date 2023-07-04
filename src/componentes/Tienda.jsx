@@ -26,13 +26,16 @@ function Tienda() {
         }
     }*/
 
+    //Traemos la data del componente Datos
     const { datos, anadirProducto, carrito } = useContext(data);
-
+    
     return (
       <div className="d-flex flex-column">
           <div className="relative flex flex-col self-end">
+            {/*Renderizamos la cant de productos en caso de que no sea 0*/}
             <button className="flex justify-end text-3xl" onClick={flagCarrito}>🛒 {carrito.length > 0 ? <Totalproductos /> : null}</button>
-          </div> 
+          </div>
+          {/*Renderizamos el carrito*/}
           <div>
             {mostrarCarrito &&
             <div className="">
@@ -40,6 +43,7 @@ function Tienda() {
             </div>}
           </div>
 
+          {/*Renderizamos los productos*/}
         <div className="row">
           { datos.map((item) => (
                 <div  key={item.id} className="col-12 col-md-6 col-lg-4 p-4">
