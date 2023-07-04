@@ -92,17 +92,7 @@ function Registrarse(){
       
     }
 
-    //Validar repassword
-/*
-    const validarRepassword = () =>{
-        if (password.length>0){
-            if(password !== reppassword){
-                
-            }
-
-        }
-    }*/
-
+    
     const [usuarioValido, cambiarUsuarioValido] = useState(false);
 
    
@@ -116,79 +106,130 @@ function Registrarse(){
       
     return (
 
-        <div className='flex relative grow'>
-        <div className='absolute top-0 left-0 w-full h-full mix-blend-overlay'></div>
-        <form action="#" className="w-2/4 h-full p-5 relative z-2 m-auto" onSubmit={nuevo}>
-                <fieldset className="formulario-contacto__contenido">
-                    <legend className="formulario-contacto__contenido__titulo text-3xl mb-2">Formulario de registro</legend>
-                            <div className="flex justify-between gap-10">
-                                <div className="flex flex-col w-1/2">
-                                    <label for='nombre' className="text-1">Nombre</label>
-                                    <input 
-                                    value={nombre} 
-                                    onBlur={manejarBlur} 
-                                    type="text" 
-                                    className="formulario-contacto__contenido__nombre rounded-md p-1 text-black bg-gray-300 mb-2" 
-                                    placeholder="Escriba su nombre" 
-                                    data-input="text" 
-                                    id="nombre" 
-                                    onChange={(e)=>setNombre(e.target.value)}
-                                    expresionRegular={expresiones.nombre}/>
-                                    {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
-                                    <span className="formulario-contacto__contenido__span"></span>
+        <div className='Container'>
+            <div className='Container'>
+                <form action="#" className=" h-full  relative z-2 m-2 px-10" onSubmit={nuevo}>
+                    <fieldset className="formulario-contacto__contenido">
+                        <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2">Formulario de registro</legend>
+                                    <div className="row my-2">
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='nombre' className="text-1">Nombre</label>
+                                            </div>
+                                            <div className="col-md-12">
+                                                <input 
+                                                value={nombre} 
+                                                onBlur={manejarBlur} 
+                                                type="text" 
+                                                className="form-control rounded-md p-1 text-black bg-gray-300 mb-2" 
+                                                placeholder="Escriba su nombre" 
+                                                data-input="text" 
+                                                id="nombre" 
+                                                onChange={(e)=>setNombre(e.target.value)}
+                                                expresionRegular={expresiones.nombre}/>
+                                                {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
+                                                <span className="formulario-contacto__contenido__span"></span>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='apellido' className="text-1">Apellido</label>
+                                            </div>
+                                            <input value={apellido}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su apellido" data-input="text" id="apellido" onChange={(e)=>setApellido(e.target.value)}/>
+                                            {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
+                                            <span className="formulario-contacto__contenido__span"></span>
 
-                                    <label for='email' className="text-1">E-mail</label>
-                                    <input value= {email} type="email" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su correo electrónico" data-input="email" id="email" onChange={(e)=>setEmail(e.target.value)}/>
-                                    {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
-                                    <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                    </div>
+                                    <div className="row my-2"> 
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='email' className="text-1">E-mail</label>
+                                            </div>
+                                            <input value= {email} type="email" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su correo electrónico" data-input="email" id="email" onChange={(e)=>setEmail(e.target.value)}/>
+                                            {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='edad' className="text-1">Edad</label>
+                                            </div>
+                                            <input value={edad}  type="number" mode="numeric" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su edad" data-input="number" id="edad" onChange={(e)=>setEdad(e.target.value)}/>
+                                            {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
+                                            <span className="formulario-contacto__contenido__span"></span>
 
-                                    <label for='pais' className="text-1">País de residencia</label>
-                                    <input value={pais}  type="text" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su país" data-input="text" id="pais" onChange={(e)=>setPais(e.target.value)}/>
-                                    <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                    
+                                    </div>
+                                    <div className="row my-2"> 
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='pais' className="text-1">País de residencia</label>
+                                            </div>
+                                            <input value={pais}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su país" data-input="text" id="pais" onChange={(e)=>setPais(e.target.value)}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='ciudad' className="text-1">Ciudad de residencia</label>
+                                            </div>
+                                            <input value={ciudad} type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su ciudad" data-input="text" id="ciudad" onChange={(e)=>setCiudad(e.target.value)}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                    </div>
+                                    <div className="row my-2">
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='domicilio' className="text-1">Domicilio</label>
+                                            </div>
+                                            <input value={domicilio}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su domicilio" data-input="text" id="domicilio" onChange={(e)=>setDomicilio(e.target.value)}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='postal' className="text-1">Código postal</label>
+                                            </div>
+                                            <input value={postal}  type="number" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su código postal" data-input="number" id="postal" onChange={(e)=>setPostal(e.target.value)}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>                                
+                                    </div>
+                                    <div className="row my-2">
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='password' className="text-1">Contraseña</label>
+                                            </div>
+                                            <input value={password}  type="password" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su contraseña" data-input="password" id="password" onChange={(e)=>setPassword(e.target.value)}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='password' className="text-1">Repetir contraseña</label>
+                                            </div>
+                                            <input value={reppassword}  className="form-control rounded-md mb-1 p-1 text-black bg-gray-300" type="password" placeholder="Repita su contraseña" data-input="password" id="reppassword" onChange={(e)=>setReppassword(e.target.value)}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
 
-                                    <label for='ciudad' className="text-1">Ciudad de residencia</label>
-                                    <input value={ciudad} type="text" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su ciudad" data-input="text" id="ciudad" onChange={(e)=>setCiudad(e.target.value)}/>
-                                    <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
 
-                                    <label for='password' className="text-1">Contraseña</label>
-                                    <input value={password}  type="password" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su contraseña" data-input="password" id="password" onChange={(e)=>setPassword(e.target.value)}/>
-                                    <span className="formulario-contacto__contenido__span"></span>
-                                </div>
-                                <div className="flex flex-col w-1/2">
-                                    <label for='apellido' className="text-1">Apellido</label>
-                                    <input value={apellido}  type="text" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su apellido" data-input="text" id="apellido" onChange={(e)=>setApellido(e.target.value)}/>
-                                    {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
-                                    <span className="formulario-contacto__contenido__span"></span>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <input type="checkbox" name="terminos" id="terminos"/> Aceptar los términos y condiciones
+                                        </label>
+                                    </div>
+                                    <div className='flex flex-col items-center p-2'>
+                                        <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2 m-2 px-5" type="submit" formaction="./menu-administrador.html">REGISTRAR</button>
+                                        <div className="recaptcha m-2">
+                                        </div>
+                                    </div>
+                        </fieldset>
+                </form>
 
-                                    <label for='edad' className="text-1">Edad</label>
-                                    <input value={edad}  type="number" mode="numeric" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su edad" data-input="number" id="edad" onChange={(e)=>setEdad(e.target.value)}/>
-                                    {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
-                                    <span className="formulario-contacto__contenido__span"></span>
-
-                                    <label for='domicilio' className="text-1">Domicilio</label>
-                                    <input value={domicilio}  type="text" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su domicilio" data-input="text" id="domicilio" onChange={(e)=>setDomicilio(e.target.value)}/>
-                                    <span className="formulario-contacto__contenido__span"></span>
-
-                                    <label for='postal' className="text-1">Código postal</label>
-                                    <input value={postal}  type="number" className="formulario-contacto__contenido__nombre rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su código postal" data-input="number" id="postal" onChange={(e)=>setPostal(e.target.value)}/>
-                                    <span className="formulario-contacto__contenido__span"></span>
-
-                                    <label for='password' className="text-1">Repetir contraseña</label>
-                                    <input value={reppassword}  className="formulario-contacto__contenido__nombre rounded-md mb-1 p-1 text-black bg-gray-300" type="password" placeholder="Repita su contraseña" data-input="password" id="reppassword" onChange={(e)=>setReppassword(e.target.value)}/>
-                                    <span className="formulario-contacto__contenido__span"></span>
-                                </div>
-                            </div>
-                            <div>
-                                <label>
-                                    <input type="checkbox" name="terminos" id="terminos"/> Aceptar los términos y condiciones
-                                </label>
-                            </div>
-                            <div className='flex flex-col items-center p-2'>
-                                <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2 m-2 px-5" type="submit" formaction="./menu-administrador.html">REGISTRAR</button>
-                            </div>
-                </fieldset>
-            </form>
-    </div>
+            </div>
+    
+        
+        </div>
     );
 }
   
