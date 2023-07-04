@@ -10,7 +10,7 @@ const MySwal = withReactContent(Swal);
 const Mostrar = () => {
 
     //configuración de los hook de mostrar
-    const usuariosCollection = collection(db, "Usuarios");
+    const UsuariosCollection = collection(db, "Usuarios");
 
     const [usuarios, setUsuarios] = useState([]);
 
@@ -19,7 +19,7 @@ const Mostrar = () => {
     //Asincronismo
 
     const getUsuarios = async ()=> { 
-        const data = await getDocs(usuariosCollection); 
+        const data = await getDocs(UsuariosCollection); 
         console.log(data.docs);
  
         setUsuarios(
@@ -89,6 +89,7 @@ const Mostrar = () => {
                             <th>Postal</th>
                             <th>Password</th>
                             <th>Reppassword</th>
+                            <th>Rol</th>
                         </tr>
                     </thead>
                     <tbody className='text-light bg-primary'>
@@ -104,6 +105,7 @@ const Mostrar = () => {
                                 <td key={usuari.Postal} className='text-light'>{usuari.Postal || ''}</td>
                                 <td key={usuari.Password} className='text-light'>{usuari.Password || ''}</td>
                                 <td key={usuari.Reppassword} className='text-light'>{usuari.Reppassword || ''} </td>
+                                <td key={usuari.rol} className='text-light'>{usuari.rol || ''} </td>
                                 <td>
                                     <Link to={`/editarusuario/${usuari.id}`} className="btn btn-info"><i className="fa-solid fa-pen-to-square"></i></Link>  
                                     <button onClick={()=>{confirmDelete(usuari.id)}} className="bg-danger"><i className="fa-solid fa-trash "></i>Eliminar</button>

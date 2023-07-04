@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {collection, addDoc} from 'firebase/firestore';
+import {collection, addDoc, getFirestore} from 'firebase/firestore';
 import { db } from '../../firebaseConfig/firebase';
 import {async} from '@firebase/util';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { Container } from 'react-bootstrap';
+import firebaseApp from '../../firebaseConfig/firebase';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {doc, setDoc} from "firebase/firestore";
+const auth = getAuth (firebaseApp);
+const firestore = getFirestore(firebaseApp);
 const MySwal = withReactContent(Swal);
 
 function Registrarse(){
@@ -81,9 +86,17 @@ function Registrarse(){
         }
        
         else{
-            await addDoc(usuariosCollection, {Nombre: nombre, Apellido: apellido,  Email: email, Password: password, Edad: edad, Pais: pais, Ciudad: ciudad, Domicilio: domicilio, Postal: postal, Reppassword: reppassword});
+            const infoUsuario = await createUserWithEmailAndPassword(auth, email, password)
+            .then((usuarioFirebase) =>{
+                return usuarioFirebase;
+
+            });
+            console.log(infoUsuario.user.uid);
+            //await addDoc(usuariosCollection, {Nombre: nombre, Apellido: apellido,  Email: email, Password: password, Edad: edad, Pais: pais, Ciudad: ciudad, Domicilio: domicilio, Postal: postal, Reppassword: reppassword, rol: 'user'});
+            const docuRef = doc(firestore, `Usuarios/${infoUsuario.user.uid}`);
+            setDoc(docuRef, { Nombre: nombre, Apellido: apellido,  Email: email, Password: password, Edad: edad, Pais: pais, Ciudad: ciudad, Domicilio: domicilio, Postal: postal, Reppassword: reppassword, rol: 'user' });
             alertCreacion();
-            navigate("/Ingresar");
+            navigate("/LogIn");
     
 
         }

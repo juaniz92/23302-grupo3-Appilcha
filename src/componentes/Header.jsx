@@ -23,7 +23,7 @@ return (
             <Nav.Link href="#Nosotros">Nosotros</Nav.Link>
             <Nav.Link href="/Tienda">Tienda</Nav.Link>
             <Nav.Link href="#Contacto">Contacto</Nav.Link>
-            <Nav.Link href="/Ingresar">Ingresar</Nav.Link>
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

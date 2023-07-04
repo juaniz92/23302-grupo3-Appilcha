@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+/*import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
 function Ingresar() {
@@ -23,7 +23,7 @@ function Ingresar() {
                         <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2 m-2 p-1" type="submit" formaction="./menu-administrador.html">INGRESAR</button>
                         <Link to="/Registrarse" className="flex self-center m-2 hover:text-gray-500"><strong>REGISTRARSE</strong></Link>
                         <Link to="/Admin" className="flex self-center m-2 hover:text-gray-500"><strong>ADMINISTRAR</strong></Link>
-                        
+                        <Link to="/SignIn" className="flex self-center m-2 hover:text-gray-500"><strong>SignIn</strong></Link>
                     </div>
                 </fieldset>
                 </form>
@@ -31,4 +31,4 @@ function Ingresar() {
     );
 }
   
-  export default Ingresar;
+  export default Ingresar;*/

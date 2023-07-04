@@ -3,6 +3,8 @@ import Nosotros from './Nosotros';
 import Contacto from './Contacto';
 import Card from './Card';
 
+
+
 function Inicio() {
     return (
       <div>
@@ -10,6 +12,7 @@ function Inicio() {
         <Card />
         <Nosotros />
         <Contacto />
+        
       </div>
     );
   }
