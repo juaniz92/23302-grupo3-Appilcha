@@ -106,17 +106,7 @@ function Registrarse(){
       
     }
 
-    //Validar repassword
-/*
-    const validarRepassword = () =>{
-        if (password.length>0){
-            if(password !== reppassword){
-                
-            }
-
-        }
-    }*/
-
+    
     const [usuarioValido, cambiarUsuarioValido] = useState(false);
 
    
@@ -184,77 +174,24 @@ function Registrarse(){
                                             {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
                                             <span className="formulario-contacto__contenido__span"></span>
 
-                                        </div>
                                     
-                                    </div>
-                                    <div className="row my-2"> 
-                                        <div className="col-md-6">
-                                            <div className="col-md-12">
-                                                <label for='pais' className="text-1">País de residencia</label>
-                                            </div>
-                                            <input value={pais}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su país" data-input="text" id="pais" onChange={(e)=>setPais(e.target.value)}/>
-                                            <span className="formulario-contacto__contenido__span"></span>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="col-md-12">
-                                                <label for='ciudad' className="text-1">Ciudad de residencia</label>
-                                            </div>
-                                            <input value={ciudad} type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su ciudad" data-input="text" id="ciudad" onChange={(e)=>setCiudad(e.target.value)}/>
-                                            <span className="formulario-contacto__contenido__span"></span>
-                                        </div>
-                                    </div>
-                                    <div className="row my-2">
-                                        <div className="col-md-6">
-                                            <div className="col-md-12">
-                                                <label for='domicilio' className="text-1">Domicilio</label>
-                                            </div>
-                                            <input value={domicilio}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su domicilio" data-input="text" id="domicilio" onChange={(e)=>setDomicilio(e.target.value)}/>
-                                            <span className="formulario-contacto__contenido__span"></span>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="col-md-12">
-                                                <label for='postal' className="text-1">Código postal</label>
-                                            </div>
-                                            <input value={postal}  type="number" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su código postal" data-input="number" id="postal" onChange={(e)=>setPostal(e.target.value)}/>
-                                            <span className="formulario-contacto__contenido__span"></span>
-                                        </div>                                
-                                    </div>
-                                    <div className="row my-2">
-                                        <div className="col-md-6">
-                                            <div className="col-md-12">
-                                                <label for='password' className="text-1">Contraseña</label>
-                                            </div>
-                                            <input value={password}  type="password" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su contraseña" data-input="password" id="password" onChange={(e)=>setPassword(e.target.value)}/>
-                                            <span className="formulario-contacto__contenido__span"></span>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="col-md-12">
-                                                <label for='password' className="text-1">Repetir contraseña</label>
-                                            </div>
-                                            <input value={reppassword}  className="form-control rounded-md mb-1 p-1 text-black bg-gray-300" type="password" placeholder="Repita su contraseña" data-input="password" id="reppassword" onChange={(e)=>setReppassword(e.target.value)}/>
-                                            <span className="formulario-contacto__contenido__span"></span>
-
-                                        </div>
-
-                                    </div>
-                                    <div>
-                                        <label>
-                                            <input type="checkbox" name="terminos" id="terminos"/> Aceptar los términos y condiciones
-                                        </label>
-                                    </div>
-                                    <div className='flex flex-col items-center p-2'>
-                                        <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2 m-2 px-5" type="submit" formaction="./menu-administrador.html">REGISTRAR</button>
-                                        <div className="recaptcha m-2">
-                                        </div>
-                                    </div>
-                        </fieldset>
-                </form>
-
-            </div>
-        
-            
-        </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="terminos" id="terminos"/> Aceptar los términos y condiciones
+                                </label>
+                            </div>
+                            <div className='flex flex-col items-center p-2'>
+                                <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2 m-2 px-5" type="submit" formaction="./menu-administrador.html">REGISTRAR</button>
+                                <div className="recaptcha m-2">
+                                </div>
+                            </div>
+                </fieldset>
+            </form>
+    </div>
+    </div>
     );
 }
   
-  export default Registrarse;
+export default Registrarse;
