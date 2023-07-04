@@ -51,8 +51,10 @@ const Compra = () => {
             email:"jiz@jiz.com",
             telefono: "115526644",
             domicilio: "asfer 123",
+            cp: "1010",
             barrio: "San Telmo",
-            provincia: "CABA",
+            ciudad: "CABA",
+            provincia: "BSAS",
             items: carrito,
             total: obtenerTotal(),
             formaRetiro: formaRetiro,
@@ -86,6 +88,10 @@ const Compra = () => {
 
     return (
         <div className=''>
+            <p>Datos comprador:</p>
+            <p>Nombre: {orden.compra.nombre}</p>
+            <p>Domicilio: {orden.compra.domicilio} (CP {orden.compra.cp}), {orden.compra.barrio} - {orden.compra.ciudad}, {orden.compra.provincia}</p>
+            <p>Teléfono: {orden.compra.telefono}</p>
 
             <CarritoElementos />
             <CarritoTotal />

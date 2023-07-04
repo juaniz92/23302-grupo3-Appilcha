@@ -20,9 +20,7 @@ return (
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto text-uppercase">
             <Nav.Link href="/">Inicio</Nav.Link>
-            <Nav.Link href="#Nosotros">Nosotros</Nav.Link>
             <Nav.Link href="/Tienda">Tienda</Nav.Link>
-            <Nav.Link href="#Contacto">Contacto</Nav.Link>
             <Nav.Link href="/Ingresar">Ingresar</Nav.Link>
           </Nav>
         </Navbar.Collapse>
