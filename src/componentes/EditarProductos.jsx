@@ -61,7 +61,7 @@ const EditarProductos = () => {
         console.log(data())    ;
         await updateDoc(producto, data);
         alertaGuardado();
-        navigate("/Admin");
+        navigate("/EditarProductos");
     }
 
     //5 asincronismo de existencia con la bd
