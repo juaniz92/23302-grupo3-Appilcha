@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Inicio from './componentes/Inicio';
-import Ingresar from './componentes/Ingresar';
 import Tienda from './componentes/Tienda';
 import Header from './componentes/Header';
 import Footer from './componentes/Footer';
@@ -39,7 +38,7 @@ function App() {
       const userData = {
         uid: usuarioFirebase.uid,
         email: usuarioFirebase.email,
-        rol: rol,
+        rol,
       };
       setUser(userData);
       console.log("userData final", userData);
@@ -67,18 +66,15 @@ function App() {
           <Route path='/Home' element={<Home />} />
           <Route path='/Inicio' element={<Inicio />} />
           <Route path='/Registrarse' element={<Registrarse />} />
-          <Route path='/Ingresar' element={<Ingresar />} />
           <Route path='/Tienda' element={<Tienda />} />
           <Route path='/editarusuario/:id' element={<Editar />} />
           <Route path='/Admin' element={<Admin />} />
           <Route path='/Mostrar' element={<Mostrar />} />
-          <Route path='/Compra' element={<Compra />} />
+          <Route path='/Compra' element={<Compra user={user} />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/MostrarProductos" element={<MostrarProductos />} />
           <Route path="/CrearProductos" element={<CrearProductos />} />
           <Route path="/EditarProductos/:id" element={<EditarProductos />} />
-
-
         </Routes>
         <Footer />
       </DataProvider>
