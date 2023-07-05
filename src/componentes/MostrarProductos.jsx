@@ -25,14 +25,14 @@ const MostrarProductos = () => {
         console.log(data.docs);
 
         setProductos(
-            data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+            data.docs.map((doc) => ({...doc.data(), id: doc.id }))
         );
 
     }
     useEffect(() => {
         getProductos();
 
-    }, [])
+    }, [ ])
 
     // Función borrar  registros
     console.log(productos);
@@ -88,7 +88,7 @@ const MostrarProductos = () => {
                                 <th>Precio de Costo</th>
                             </tr>
                         </thead>
-                        <tbody className='text-light'>
+                        <tbody className='text-light bg-primary'>
                             {productos.map((prod) => (
                                 <tr key={prod.id}>
                                     <td key={prod.Descripcion} className='text-light'>{prod.Descripcion || ''}</td>

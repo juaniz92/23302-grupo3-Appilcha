@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig/firebase';
 import { dbCollection } from '../firebaseConfig/collections';
+import { async } from '@firebase/util';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
@@ -19,7 +21,7 @@ const EditarProductos = () => {
     });
 
     const navigate = useNavigate();
-    const { id } = useParams();
+    const {id} =useParams();
 
     // Función para asignar valores al formulario
 
@@ -44,7 +46,7 @@ const EditarProductos = () => {
         });
     }
 
-    // Declaracion de Update
+    // Declaración de Update
 
     const update = async (e) => {
         e.preventDefault();
@@ -55,7 +57,8 @@ const EditarProductos = () => {
             Precio: form.Precio,
             PrecioCosto: form.PrecioCosto,
             Stock: form.Stock
-        };
+        }
+        console.log(data())    ;
         await updateDoc(producto, data);
         alertaGuardado();
         navigate("/Admin");
@@ -94,7 +97,7 @@ const EditarProductos = () => {
             <div className='row'>
                 <div className='col'>
 
-                    <h1 className='mt-3 text-light'>Editar el Producto</h1>
+                    <h1 className='mt-3 text-black text-center'>Editar el Producto</h1>
 
                     <form onSubmit={update} className="mt-5">
                         <div className='mb-4'>
@@ -152,7 +155,7 @@ const EditarProductos = () => {
                             />
                         </div>
 
-                        <button type="submit" className='btn btn-outline-light btn-lg mt-3'>Guardar</button>
+                        <button type="submit" className='btn btn-outline-dark btn-lg mt-3'>Guardar</button>
 
                     </form>
                 </div>
