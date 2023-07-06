@@ -7,7 +7,7 @@ import firebaseApp from "../firebaseConfig/firebase";
 import { getAuth, signOut } from "firebase/auth";
 const auth = getAuth(firebaseApp);
 
-function Home({ user }) {
+function Home({user}) {
   return (
     <div>
       Home
