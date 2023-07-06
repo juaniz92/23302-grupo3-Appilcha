@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/juaniz92/23302-grupo3-Appilcha/static/css/main.d24ac50d.css",
+    "main.js": "/juaniz92/23302-grupo3-Appilcha/static/js/main.e67c1c2f.js",
+    "static/js/496.545a8fe2.chunk.js": "/juaniz92/23302-grupo3-Appilcha/static/js/496.545a8fe2.chunk.js",
+    "index.html": "/juaniz92/23302-grupo3-Appilcha/index.html",
+    "main.d24ac50d.css.map": "/juaniz92/23302-grupo3-Appilcha/static/css/main.d24ac50d.css.map",
+    "main.e67c1c2f.js.map": "/juaniz92/23302-grupo3-Appilcha/static/js/main.e67c1c2f.js.map",
+    "496.545a8fe2.chunk.js.map": "/juaniz92/23302-grupo3-Appilcha/static/js/496.545a8fe2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d24ac50d.css",
+    "static/js/main.e67c1c2f.js"
+  ]
+}
