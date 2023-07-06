@@ -2,6 +2,7 @@
   "name": "appilcha",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -9,6 +10,7 @@
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.4.0",
     "firebase": "^9.23.0",
+    "gh-pages": "^5.0.0",
     "html2canvas": "^1.4.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
@@ -23,6 +25,8 @@
     "web-vitals": "^3.3.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
