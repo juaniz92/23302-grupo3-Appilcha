@@ -80,7 +80,7 @@ const Compra = ({user}) => {
         compra: {
             nombre: "Juan",
             email:"jiz@jiz.com",
-            telefono: "115526644",
+            telefono: "11552664455",
             domicilio: "asfer 123",
             cp: "1010",
             barrio: "San Telmo",
