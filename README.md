@@ -4,10 +4,12 @@
 
 ---
 
-Figma prototype:
+- [Documentación Proyecto Appilcha versión PDF](ProyectoAppilcha.pdf)
+
+- Figma prototype:
 https://www.figma.com/file/JJeTZM9aVOAedzW73lrYQs/React-23302%233-Appilcha?node-id=0-1
 
-Api:
+- Api:
 https://fakestoreapi.com/
 =======
 # Getting Started with Create React App
