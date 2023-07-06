@@ -19,8 +19,8 @@ return (
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto text-uppercase">
-            <Nav.Link href="/">Inicio</Nav.Link>
-            <Nav.Link href="/Tienda">Tienda</Nav.Link>
+            <Nav.Link  as={Link} to="/">Inicio</Nav.Link>
+            <Nav.Link  as={Link} to="/Tienda">Tienda</Nav.Link>
             
             
           </Nav>
