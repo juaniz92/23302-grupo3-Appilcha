@@ -130,7 +130,7 @@ const Compra = ({user}) => {
                     <li><span className='fw-bold'>Nombre:</span> {orden.compra.nombre}</li>
                     <li><span className='fw-bold'>Domicilio:</span> {orden.compra.domicilio} (CP {orden.compra.cp}), {orden.compra.barrio} - {orden.compra.ciudad}, {orden.compra.provincia}</li>
                     <li><span className='fw-bold'>Teléfono:</span> {orden.compra.telefono}</li>
-                    <li><span className='fw-bold'>Email:</span> {user.email}</li>
+                    {/* <li><span className='fw-bold'>Email:</span> {user.email}</li> */}
                     <li><span className='fw-bold'>Rol:</span> {user.rol}</li>
                 </ul>
                 <h3 className='h3 my-3'>Productos</h3>
