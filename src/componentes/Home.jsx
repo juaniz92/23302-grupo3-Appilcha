@@ -10,8 +10,7 @@ const auth = getAuth(firebaseApp);
 function Home({user}) {
   return (
     <div>
-      Home
-      <button onClick={() => signOut(auth)}> Cerrar sesión</button>
+      <button className="d-block ms-auto" onClick={() => signOut(auth)}>Cerrar sesión</button>
       {user.rol === "admin" ? <Admin /> : <Inicio />}
     </div>
   );

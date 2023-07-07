@@ -23,7 +23,7 @@ function Header() {
 return (
 
     //Navbar de react-boostrap
-    <Navbar expand="lg" className="light">
+    <Navbar expand="md" className="light">
       <Container>
         <Navbar.Brand href="/"><img
               src="../appilcha.png"
@@ -33,9 +33,9 @@ return (
             /></Navbar.Brand>
         <Navbar.Toggle onClick={e => handleTogglerNav(e)} aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto text-uppercase">
-            <Nav.Link as={Link} to="/">Inicio</Nav.Link>
-            <Nav.Link as={Link} to="/Tienda">Tienda</Nav.Link>
+          <Nav className="ms-auto text-uppercase fw-bolder">
+            <Nav.Link as={Link} to="/" className='ms-auto'>Inicio</Nav.Link>
+            <Nav.Link as={Link} to="/Tienda" className='ms-auto'>Tienda</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
