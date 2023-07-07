@@ -1,5 +1,5 @@
 import React from "react";
-
+import {useNavigate} from 'react-router-dom';
 import Admin from "../componentes/Auth/Admin";
 import Inicio from "../componentes/Inicio";
 
@@ -8,9 +8,18 @@ import { getAuth, signOut } from "firebase/auth";
 const auth = getAuth(firebaseApp);
 
 function Home({user}) {
+  const navigate = useNavigate();
+  function cerrar () {
+    
+    signOut(auth);
+    navigate("/LogIn");
+
+  } 
+  
+
   return (
     <div>
-      <button className="d-block ms-auto" onClick={() => signOut(auth)}>Cerrar sesión</button>
+      <button className="d-block ms-auto" onClick={cerrar }>Cerrar sesión</button>
       {user.rol === "admin" ? <Admin /> : <Inicio />}
     </div>
   );

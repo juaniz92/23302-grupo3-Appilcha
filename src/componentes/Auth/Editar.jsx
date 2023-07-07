@@ -21,6 +21,7 @@ const Editar = () =>{
         Email:'',
         Pais:'',
         Ciudad:'',
+        Domicilio:'',
         Postal:'',
         Password:'',
         Reppassword:''
@@ -67,6 +68,7 @@ const Editar = () =>{
             Email: form.Email,
             Pais: form.Pais,
             Ciudad: form.Ciudad,
+            Domicilio: form.Domicilio,
             Postal: form.Postal,
             Password: form.Password,
             Reppassword: form.Reppassword,
@@ -93,6 +95,7 @@ const Editar = () =>{
                 Email: usuario.data().Email,
                 Pais: usuario.data().Pais,
                 Ciudad: usuario.data().Ciudad,
+                Domicilio: usuario.data().Domicilio,
                 Postal: usuario.data().Postal,
                 Password: usuario.data().Password,
                 Reppassword: usuario.data().Reppassword
@@ -179,6 +182,16 @@ const Editar = () =>{
                             <input 
                                 name="ciudad"
                                 value={form.Ciudad}
+                                type="text"
+                                className='form-control w-50 m-auto'
+                                onChange={cambio}
+                            />
+                        </div>
+                        <div className='mb-3'>
+                            <label className='form-label h3 text-black'>Domicilio:</label>
+                            <input 
+                                name="domicilio"
+                                value={form.Domicilio}
                                 type="text"
                                 className='form-control w-50 m-auto'
                                 onChange={cambio}
