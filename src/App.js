@@ -78,7 +78,7 @@ function App() {
           {user ? <Home user={user} /> : <LogIn />}
           <Routes>
             <Route path='/Home' element={<Home />} />
-            <Route path='/Inicio' element={<Inicio />} />
+            <Route path='/' element={<Inicio />} />
             <Route path='/Registrarse' element={<Registrarse />} />
             <Route path='/Tienda' element={<Tienda />} />
             <Route path='/editarusuario/:id' element={<Editar />} />

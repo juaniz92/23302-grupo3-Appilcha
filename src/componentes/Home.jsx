@@ -20,7 +20,7 @@ function Home({user}) {
   return (
     <div>
       <button className="d-block ms-auto" onClick={cerrar }>Cerrar sesión</button>
-      {user.rol === "admin" ? <Admin /> : <Inicio />}
+      {user.rol === "admin" ? <Admin /> : null}
     </div>
   );
 }
