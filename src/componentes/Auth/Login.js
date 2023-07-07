@@ -31,14 +31,20 @@ function Login() {
             await signInWithEmailAndPassword(auth, email, password);
             navigate("/");
         } catch (error) {
+
+            //Agrego condicional para personalizar el mensaje de error
+            if(error.message === "Firebase: Error (auth/invalid-email)."){
+                setError("Email o contraseña inválidos.");
+            } else {
             setError(error.message);
+            }
         }
         
     }
     
     return (
         <div>
-            <h1>{isRegistrando ? "Registrate" : "Inicia Sesión" }</h1>
+            <h1 className="text-right px-3 mb-3">{isRegistrando ? "Registrate" : "Inicia Sesión" }</h1>
             {error && <Alert message={error} />}
             <form action="#" className="flex items-center justify-center relative z-2 m-auto" onSubmit={submitHandler}>
                 <fieldset className="formulario-contacto__contenido">
@@ -56,7 +62,7 @@ function Login() {
                         name="password"
                         id="password"
                         onChange={handleChange}
-                        className='formulario-contacto__contenido__nombre rounded-md p-1 text-black bg-gray-300 mb-2' placeholder='Escriba su contraseña' data='password' id='password' />
+                        className='formulario-contacto__contenido__nombre rounded-md p-1 text-black bg-gray-300 mb-2' placeholder='Escriba su contraseña' data='password' />
                         <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2 m-2 p-1" type="submit" formaction="./menu-administrador.html" onClick={() => setIsRegistrando(!isRegistrando)}>INGRESAR</button>
                         <Link to="/Registrarse" className="flex self-center m-2 hover:text-gray-500"><strong>REGISTRARSE</strong></Link>
                         
