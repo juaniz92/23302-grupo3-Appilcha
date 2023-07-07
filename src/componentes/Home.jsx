@@ -10,9 +10,9 @@ const auth = getAuth(firebaseApp);
 function Home({user}) {
   const navigate = useNavigate();
   function cerrar () {
-    
+    navigate("/");
     signOut(auth);
-    navigate("/LogIn");
+    
 
   } 
   
