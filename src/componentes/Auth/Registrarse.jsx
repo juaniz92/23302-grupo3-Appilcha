@@ -14,16 +14,19 @@ const firestore = getFirestore(firebaseApp);
 const MySwal = withReactContent(Swal);
 
 function Registrarse(){
-    const [nombre, setNombre] = useState('');
-    const [apellido, setApellido] = useState('');
+    const [Nombre, setNombre] = useState('');
+    const [Apellido, setApellido] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [edad, setEdad] = useState('');
-    const [ciudad, setCiudad] = useState('');
-    const [pais, setPais] = useState('');
-    const [domicilio, setDomicilio] = useState('');
-    const [postal, setPostal] = useState('');
-    const [reppassword, setReppassword] = useState('');
+    const [Edad, setEdad] = useState('');
+    const [Ciudad, setCiudad] = useState('');
+    const [Pais, setPais] = useState('');
+    const [Provincia, setProvincia] = useState('');
+    const [Barrio, setBarrio] = useState('');
+    const [Domicilio, setDomicilio] = useState('');
+    const [Postal, setPostal] = useState('');
+    const [Telefono, setTelefono] = useState('');
+    const [Reppassword, setReppassword] = useState('');
 
     const navigate = useNavigate();
     //referenciar db
@@ -76,10 +79,10 @@ function Registrarse(){
     const nuevo = async (e) => {
         e.preventDefault();
 
-        if (nombre ==="" || apellido ==="" || email ==="" || password ==="" || edad ==="" || pais ==="" || ciudad ==="" || domicilio ==="" || postal ===""|| reppassword ===""){
+        if (Nombre ==="" || Apellido ==="" || email ==="" || password ==="" || Edad ==="" || Pais ==="" || Ciudad ==="" || Domicilio ==="" || Postal ===""|| Reppassword ===""){
             alertIncompleto();
             if (password.length>0){
-                if(password !== reppassword){
+                if(password !== Reppassword){
                     alertPassword();  
                 }
             }
@@ -94,7 +97,7 @@ function Registrarse(){
             console.log(infoUsuario.user.uid);
             //await addDoc(usuariosCollection, {Nombre: nombre, Apellido: apellido,  Email: email, Password: password, Edad: edad, Pais: pais, Ciudad: ciudad, Domicilio: domicilio, Postal: postal, Reppassword: reppassword, rol: 'user'});
             const docuRef = doc(firestore, `Usuarios/${infoUsuario.user.uid}`);
-            setDoc(docuRef, { Nombre: nombre, Apellido: apellido,  Email: email, Password: password, Edad: edad, Pais: pais, Ciudad: ciudad, Domicilio: domicilio, Postal: postal, Reppassword: reppassword, rol: 'user' });
+            setDoc(docuRef, { Nombre: Nombre, Apellido: Apellido,  Email: email, Password: password, Edad: Edad, Pais: Pais, Ciudad: Ciudad,Barrio:Barrio, Provincia:Provincia, Domicilio: Domicilio, Postal: Postal, Telefono:Telefono, Reppassword: Reppassword, rol: 'user' });
             alertCreacion();
             navigate("/");
     
@@ -132,7 +135,7 @@ function Registrarse(){
                                             </div>
                                             <div className="col-md-12">
                                                 <input 
-                                                value={nombre} 
+                                                value={Nombre} 
                                                 onBlur={manejarBlur} 
                                                 type="text" 
                                                 className="form-control rounded-md p-1 text-black bg-gray-300 mb-2" 
@@ -151,7 +154,13 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='apellido' className="text-1">Apellido</label>
                                             </div>
-                                            <input value={apellido}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su apellido" data-input="text" id="apellido" onChange={(e)=>setApellido(e.target.value)}/>
+                                            <input value={Apellido}  
+                                            type="text" 
+                                            className="form-control rounded-md p-1 text-black bg-gray-300 mb-2" 
+                                            placeholder="Escriba su apellido" 
+                                            data-input="text" 
+                                            id="apellido" 
+                                            onChange={(e)=>setApellido(e.target.value)}/>
                                             {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
                                             <span className="formulario-contacto__contenido__span"></span>
 
@@ -162,7 +171,13 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='email' className="text-1">E-mail</label>
                                             </div>
-                                            <input value= {email} type="email" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su correo electrónico" data-input="email" id="email" onChange={(e)=>setEmail(e.target.value)}/>
+                                            <input value= {email} 
+                                            type="email" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su correo electrónico" 
+                                            data-input="email" 
+                                            id="email" 
+                                            onChange={(e)=>setEmail(e.target.value)}/>
                                             {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
@@ -170,7 +185,13 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='edad' className="text-1">Edad</label>
                                             </div>
-                                            <input value={edad}  type="number" mode="numeric" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su edad" data-input="number" id="edad" onChange={(e)=>setEdad(e.target.value)}/>
+                                            <input value={Edad}  
+                                            type="number" mode="numeric" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su edad" 
+                                            data-input="number" 
+                                            id="edad" 
+                                            onChange={(e)=>setEdad(e.target.value)}/>
                                             {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
                                             <span className="formulario-contacto__contenido__span"></span>
 
@@ -182,14 +203,36 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='pais' className="text-1">País de residencia</label>
                                             </div>
-                                            <input value={pais}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su país" data-input="text" id="pais" onChange={(e)=>setPais(e.target.value)}/>
+                                            <input value={Pais}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su país" data-input="text" id="pais" onChange={(e)=>setPais(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="col-md-12">
                                                 <label for='ciudad' className="text-1">Ciudad de residencia</label>
                                             </div>
-                                            <input value={ciudad} type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su ciudad" data-input="text" id="ciudad" onChange={(e)=>setCiudad(e.target.value)}/>
+                                            <input value={Ciudad} type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su ciudad" data-input="text" id="ciudad" onChange={(e)=>setCiudad(e.target.value)}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                    </div>
+                                    <div className="row my-2"> 
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='pais' className="text-1">Provincia</label>
+                                            </div>
+                                            <input value={Provincia}  
+                                            type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su provincia" 
+                                            data-input="text" 
+                                            id="pais" 
+                                            onChange={(e)=>setProvincia(e.target.value)}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='ciudad' className="text-1">Barrio</label>
+                                            </div>
+                                            <input value={Barrio} type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su Barrio" data-input="text" id="ciudad" onChange={(e)=>setBarrio(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                     </div>
@@ -198,16 +241,26 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='domicilio' className="text-1">Domicilio</label>
                                             </div>
-                                            <input value={domicilio}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su domicilio" data-input="text" id="domicilio" onChange={(e)=>setDomicilio(e.target.value)}/>
+                                            <input value={Domicilio}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su domicilio" data-input="text" id="domicilio" onChange={(e)=>setDomicilio(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="col-md-12">
                                                 <label for='postal' className="text-1">Código postal</label>
                                             </div>
-                                            <input value={postal}  type="number" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su código postal" data-input="number" id="postal" onChange={(e)=>setPostal(e.target.value)}/>
+                                            <input value={Postal}  type="number" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su código postal" data-input="number" id="postal" onChange={(e)=>setPostal(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>                                
+                                    </div>
+                                    <div className="row my-2">
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='domicilio' className="text-1">Teléfono</label>
+                                            </div>
+                                            <input value={Telefono}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su Teléfono" data-input="text" id="domicilio" onChange={(e)=>setTelefono(e.target.value)}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                                                      
                                     </div>
                                     <div className="row my-2">
                                         <div className="col-md-6">
@@ -221,7 +274,7 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='password' className="text-1">Repetir contraseña</label>
                                             </div>
-                                            <input value={reppassword}  className="form-control rounded-md mb-1 p-1 text-black bg-gray-300" type="password" placeholder="Repita su contraseña" data-input="password" id="reppassword" onChange={(e)=>setReppassword(e.target.value)}/>
+                                            <input value={Reppassword}  className="form-control rounded-md mb-1 p-1 text-black bg-gray-300" type="password" placeholder="Repita su contraseña" data-input="password" id="reppassword" onChange={(e)=>setReppassword(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
 
                                         </div>
