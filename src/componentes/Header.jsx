@@ -8,15 +8,17 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function Header() {
   
   
-  // Función para cerrar el menú hamburguesa al pasar X segundos
-  
+  // Función para cerrar el menú hamburguesa al scrollear
   const handleTogglerNav = e =>{
-    
-    if((e.target.nodeName === "BUTTON" && e.target.classList.contains("collapsed")) || (e.target.nodeName === "SPAN" && e.target.parentElement.classList.contains("collapsed"))){  
-      setTimeout(()=>{
-        e.target.click();
-      }, 4000);
-    }
+      
+      const basicNavBar = document.getElementById("basic-navbar-nav");
+      
+      window.addEventListener("scroll", ()=>{
+        if(basicNavBar.classList.contains("show")){
+          e.target.click();
+        }
+      });
+
   }
   
 
