@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 import Totalproductos from './TotalProductos';
 import Carrito from './Carrito';
 
-function Tienda() {
+function Tienda({user}) {
   const [mostrarCarrito, setMostrarCarrito] = useState();
   const { datos, anadirProducto, carrito } = useContext(data);
   const [currentPage, setCurrentPage] = useState(0);
@@ -35,7 +35,7 @@ function Tienda() {
       <div>
         {mostrarCarrito && (
           <div className="">
-            <Carrito />
+            <Carrito user={user}  />
           </div>
         )}
       </div>

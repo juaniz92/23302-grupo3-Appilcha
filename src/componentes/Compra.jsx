@@ -13,10 +13,6 @@ const MySwal = withReactContent(Swal);
 
 
 const Compra = ({user}) => {
-
-    console.log('este es' ,user)
-    console.log('este es' ,user.nombre)
-    console.log('este es' ,user.domicilio)
     const { carrito } = useContext(data);
 
     //Selecciona forma de pago
@@ -24,6 +20,9 @@ const Compra = ({user}) => {
 
     //Obtener número de tarjeta
     const [numeroTarjeta, setNumeroTarjeta] = useState('');
+
+    //Obtener número de tarjeta
+    const [comprobante, setComprobante] = useState('');
 
     //Forma de retiro
     const [formaRetiro, setFormaRetiro] = useState('');
@@ -70,8 +69,14 @@ const Compra = ({user}) => {
         btn.classList.add("btn", "btn-success");
         btn.onclick = descarga;
         contenedorBotones.appendChild(btn);
-
+        
+        setTimeout(()=>{
+            navigate('/');
+            window.location.reload();
+          }, 5000);
+        
         return btn;
+        
     }
 
     //Total de la compra del carrito
@@ -80,30 +85,62 @@ const Compra = ({user}) => {
         return parseFloat(total.toFixed(2));
       };
 
+      //Fecha de compra
+      const getCurrentDate = () => {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        return `${day}-${month}-${year}`;
+      };
+
     const orden = {
         compra: {
-            nombre: "Juan",
-            email:"jiz@jiz.com",
-            telefono: "115526644",
-            domicilio: "asfer 123",
-            cp: "1010",
-            barrio: "San Telmo",
-            ciudad: "CABA",
-            provincia: "BSAS",
+            nombre: user.nombre,
+            email: user.email,
+            telefono: user.telefono,
+            domicilio: user.domicilio,
+            barrio: user.barrio,
+            ciudad: user.ciudad,
+            provincia: user.provincia,
+            postal: user.postal,
+            fechaCompra: getCurrentDate(),
             items: carrito,
             total: obtenerTotal(),
             formaRetiro: formaRetiro,
             formaPago: formaPago,
-            numeroTarjeta: numeroTarjeta
+            numeroTarjeta: numeroTarjeta,
+            comprobante: comprobante
         },
         
     }
 
     //Función del botón Comprar
     const pagar = async (e) => {
-        e.preventDefault();
-        await addDoc(ordenesCollection, orden.compra)
-        alertCreacion();
+        if (formaRetiro === '' || formaPago === '') {
+            Swal.fire({
+              position: 'center-center',
+              icon: 'warning',
+              title: 'Seleccione una forma de retiro y una forma de pago',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            return;
+          }
+        
+          if (formaPago === 'tarjeta' && numeroTarjeta === '') {
+            Swal.fire({
+              position: 'center-center',
+              icon: 'warning',
+              title: 'Ingrese número de tarjeta!!',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            return;
+          }
+
+          await addDoc(ordenesCollection, orden.compra);
+          alertCreacion();
 
         // se añade ocultar el estilo para ocultar el boton pagar y se llama al boton de descarga de la factura
         e.target.style.display = "none";
@@ -125,18 +162,23 @@ const Compra = ({user}) => {
     setNumeroTarjeta(e.target.value);
     };
 
+    //Obtener comprobante
+    const manejarComprobante = (e) => {
+        setComprobante(e.target.value);
+    };
+
     return (
         <div className='mt-3'>
             <div id='exportar' className=' p-2'>
                 <img src="./appilcha.png" className='mx-auto mb-3' width={150} alt="" />
                 <h2 className='h2'>Datos comprador:</h2>
                 <ul className=''>
-                    <li><span className='fw-bold'>Nombre:</span> {user.nombre}</li>
+                    <li><span className='fw-bold'>Nombre:</span> {user.apellido}, {user.nombre}</li>
                     <li><span className='fw-bold'>Domicilio:</span> {user.domicilio} (CP {user.postal}), {orden.compra.barrio} - {user.ciudad}, {orden.compra.provincia}</li>
                     <li><span className='fw-bold'>Teléfono:</span> {orden.compra.telefono}</li>
-                    {/* <li><span className='fw-bold'>Email:</span> {user.email}</li>
-                    <li><span className='fw-bold'>Rol:</span> {user.rol}</li> */}
                 </ul>
+
+                <p className='h4 my-3'>Fecha: {getCurrentDate()}</p>
                 <h3 className='h3 my-3'>Productos</h3>
                 <CarritoElementos />
                 <CarritoTotal />
@@ -175,14 +217,19 @@ const Compra = ({user}) => {
                     <div key={`inline-${type}`} className="flex flex-col mb-3">
                     <Form.Check
                         inline
-                        label="Efectivo"
+                        label="Transferencia"
                         name="group1"
                         type={type}
                         id={`inline-${type}-1`}
-                        value="efectivo"
-                        checked={formaPago === 'efectivo'}
+                        value="transferencia"
+                        checked={formaPago === 'transferencia'}
                         onChange={seleccionarFormaPago}
                     />
+                    {formaPago == "transferencia" &&
+                    <div className="">
+                        <p type="text">CBU 0001145663456556</p>
+                        <p type="text">Adjuntar comprobante</p><input className='pb-2' onChange={manejarComprobante} value={comprobante} type="file" />
+                    </div>}
                     <Form.Check
                         inline
                         label="Tarjeta"
@@ -193,12 +240,13 @@ const Compra = ({user}) => {
                         checked={formaPago === 'tarjeta'}
                         onChange={seleccionarFormaPago}
                     />
+                    {formaPago == "tarjeta" &&
+                    <div className="">
+                        <input value={numeroTarjeta} onChange={manejarNumeroTarjeta} type="text" placeholder="Ingrese el número de tarjeta"/>
+                    </div>}
                     </div>
                 ))}
-                {formaPago == "tarjeta" &&
-                <div className="">
-                    <input value={numeroTarjeta} onChange={manejarNumeroTarjeta} type="text" placeholder="Ingrese el número de tarjeta"/>
-                </div>}
+                
             </Form>
             <div id='contenedorBotones'>
             <button id='btnPagar' className='btn btn-primary mt-3' onClick={pagar}>Pagar</button>

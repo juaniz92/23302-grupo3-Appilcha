@@ -40,18 +40,16 @@ function App() {
       const userData = {
         uid: usuarioFirebase.uid,
         email: usuarioFirebase.email,
-        userfire,
         rol: userfire.rol,
         nombre: userfire.Nombre,
         apellido: userfire.Apellido,
         pais: userfire.Pais,
         ciudad: userfire.Ciudad,
-        provincia: userfire.Provincia,
         domicilio: userfire.Domicilio,
-        barrio: userfire.Barrio,
-        telefono: userfire.Telefono,
         postal:userfire.Postal,
-
+        telefono:userfire.Telefono,
+        barrio:userfire.Barrio,
+        provincia:userfire.Provincia
       };
       
     
@@ -83,7 +81,7 @@ function App() {
             <Route path='/Home' element={<Home />} />
             <Route path='/' element={<Inicio />} />
             <Route path='/Registrarse' element={<Registrarse />} />
-            <Route path='/Tienda' element={<Tienda />} />
+            <Route path='/Tienda' element={<Tienda user={user} />} />
             <Route path='/editarusuario/:id' element={<Editar />} />
             <Route path='/Admin' element={<Admin />} />
             <Route path='/Mostrar' element={<Mostrar />} />
