@@ -46,8 +46,11 @@ function App() {
         apellido: userfire.Apellido,
         pais: userfire.Pais,
         ciudad: userfire.Ciudad,
+        provincia: userfire.Provincia,
         domicilio: userfire.Domicilio,
-        postal:userfire.postal,
+        barrio: userfire.Barrio,
+        telefono: userfire.Telefono,
+        postal:userfire.Postal,
 
       };
       

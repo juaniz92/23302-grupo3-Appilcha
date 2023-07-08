@@ -75,9 +75,9 @@ const Mostrar = () => {
     <div className='container'>
         <div className='row'>
             <div className='col'>
-                <legend className="formulario-contacto__contenido__titulo text-2xl mb-2 self-center text-center">USUARIOS</legend>
+                <legend className="formulario-contacto__contenido__titulo text-2xl mb-2 self-center text-center m-2">USUARIOS</legend>
                 <div className='d-grid gap-2'>
-                    <Link to="/Registrarse" className='btn btn-outline-light btn-lg mt-3 mb-4 w-25 text-black' >Registrar Usuario <i className="fa-solid fa-plus"></i></Link>
+                    <Link to="/Registrarse" className='btn btn-outline-light btn-lg mt-3 mb-4 w-25 text-black m-2' >Registrar Usuario <i className="fa-solid fa-plus"></i></Link>
                 </div>
                 <Table striped bordered hover responsive="sm" variant="dark">
                     <thead>

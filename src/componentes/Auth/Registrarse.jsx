@@ -217,7 +217,7 @@ function Registrarse(){
                                     <div className="row my-2"> 
                                         <div className="col-md-6">
                                             <div className="col-md-12">
-                                                <label for='pais' className="text-1">Provincia</label>
+                                                <label for='provincia' className="text-1">Provincia</label>
                                             </div>
                                             <input value={Provincia}  
                                             type="text" 
@@ -230,7 +230,7 @@ function Registrarse(){
                                         </div>
                                         <div className="col-md-6">
                                             <div className="col-md-12">
-                                                <label for='ciudad' className="text-1">Barrio</label>
+                                                <label for='barrio' className="text-1">Barrio</label>
                                             </div>
                                             <input value={Barrio} type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su Barrio" data-input="text" id="ciudad" onChange={(e)=>setBarrio(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
@@ -257,7 +257,7 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='domicilio' className="text-1">Teléfono</label>
                                             </div>
-                                            <input value={Telefono}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su Teléfono" data-input="text" id="domicilio" onChange={(e)=>setTelefono(e.target.value)}/>
+                                            <input value={Telefono}  type="number" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su Teléfono" data-input="text" id="domicilio" onChange={(e)=>setTelefono(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                                                       

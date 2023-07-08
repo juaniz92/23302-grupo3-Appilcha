@@ -246,24 +246,24 @@ const Editar = () =>{
                                         </div>
                                     </div>
                                     <div className="row my-2"> 
-                                        <div className="col-md-6">
+                                    <div className="col-md-6">
                                             <div className="col-md-12">
-                                                <label for='pais' className="text-1">Provincia</label>
+                                                <label for='Provincia' className="text-1">Provincia</label>
                                             </div>
                                             <input 
                                             name='Provincia'
-                                            value={form.Provincia}  
+                                            value={form.Provincia} 
                                             type="text" 
                                             className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
-                                            placeholder="Escriba su provincia" 
+                                            placeholder="Escriba su Barrio" 
                                             data-input="text" 
-                                            id="pais" 
+                                            id="ciudad" 
                                             onChange={cambio}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="col-md-12">
-                                                <label for='ciudad' className="text-1">Barrio</label>
+                                                <label for='Barrio' className="text-1">Barrio</label>
                                             </div>
                                             <input 
                                             name='Barrio'
@@ -278,19 +278,19 @@ const Editar = () =>{
                                         </div>
                                     </div>
                                     <div className="row my-2">
-                                        <div className="col-md-6">
+                                    <div className="col-md-6">
                                             <div className="col-md-12">
-                                                <label for='domicilio' className="text-1">Domicilio</label>
+                                                <label for='Domicilio' className="text-1">Domicilio</label>
                                             </div>
                                             <input 
                                             name='Domicilio'
-                                            value={form.Domicilio}  
+                                            value={form.Domicilio} 
                                             type="text" 
                                             className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
-                                            placeholder="Escriba su domicilio" 
+                                            placeholder="Escriba su Barrio" 
                                             data-input="text" 
-                                            id="domicilio" 
-                                            oonChange={cambio}/>
+                                            id="ciudad" 
+                                            onChange={cambio}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                         <div className="col-md-6">
@@ -312,7 +312,7 @@ const Editar = () =>{
                                     <div className="row my-2">
                                         <div className="col-md-6">
                                             <div className="col-md-12">
-                                                <label for='domicilio' className="text-1">Teléfono</label>
+                                                <label for='Telefono' className="text-1">Teléfono</label>
                                             </div>
                                             <input 
                                             name='Telefono'
