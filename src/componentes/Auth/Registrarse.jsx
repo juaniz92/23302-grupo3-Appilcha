@@ -96,7 +96,7 @@ function Registrarse(){
             const docuRef = doc(firestore, `Usuarios/${infoUsuario.user.uid}`);
             setDoc(docuRef, { Nombre: nombre, Apellido: apellido,  Email: email, Password: password, Edad: edad, Pais: pais, Ciudad: ciudad, Domicilio: domicilio, Postal: postal, Reppassword: reppassword, rol: 'user' });
             alertCreacion();
-            navigate("/LogIn");
+            navigate("/");
     
 
         }
