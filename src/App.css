@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .App {
   text-align: center;
+font-family: 'Quicksand', sans-serif;
+
+
 }
 
 .App-logo {
@@ -120,6 +124,25 @@ p {
 
 .lista-clase button:hover {
 	background: #07099e;
+}
+
+.img-productos-tienda {
+	max-height: 150px;
+	width: auto;
+
+}
+
+.btn-comprar {
+	font-weight: bold;
+	width: 50%;
+	height: auto;
+	border-radius: 7px;
+	border: #000 1px solid;
+	margin: 0 auto;
+}
+.btn-comprar:hover {	
+	background-color: #000;
+	color: #fff;
 }
 
 @media (prefers-reduced-motion: no-preference) {
