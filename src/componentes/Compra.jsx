@@ -54,6 +54,12 @@ const Compra = ({user}) => {
           link.download = "ticket-compra.jpg";
           link.href = img;
           link.click();
+          
+        
+            setTimeout(()=>{
+                navigate('/');
+                window.location.reload();
+            }, 5000);
         }); 
       }
 
@@ -69,11 +75,6 @@ const Compra = ({user}) => {
         btn.classList.add("btn", "btn-success");
         btn.onclick = descarga;
         contenedorBotones.appendChild(btn);
-        
-        setTimeout(()=>{
-            navigate('/');
-            window.location.reload();
-          }, 5000);
         
         return btn;
         
@@ -133,6 +134,17 @@ const Compra = ({user}) => {
               position: 'center-center',
               icon: 'warning',
               title: 'Ingrese número de tarjeta!!',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            return;
+          }
+
+          if (formaPago === 'transferencia' && !comprobante) {
+            Swal.fire({
+              position: 'center-center',
+              icon: 'warning',
+              title: 'Adjunte el comprobante de pago',
               showConfirmButton: false,
               timer: 1500
             });
