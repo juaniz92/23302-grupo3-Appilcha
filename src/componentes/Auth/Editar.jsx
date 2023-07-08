@@ -6,6 +6,8 @@ import { db } from '../../firebaseConfig/firebase';
 import { dbCollection } from '../../firebaseConfig/collections';
 import {async} from '@firebase/util';
 import Swal from 'sweetalert2';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faFloppyDisk} from '@fortawesome/free-solid-svg-icons'
 import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
 
@@ -21,8 +23,11 @@ const Editar = () =>{
         Email:'',
         Pais:'',
         Ciudad:'',
+        Provincia:'',
+        Barrio:'',
         Domicilio:'',
         Postal:'',
+        Telefono:'',
         Password:'',
         Reppassword:''
 
@@ -55,6 +60,13 @@ const Editar = () =>{
         })
     }
 
+    const [mostrarError, cambiarMostrarError] = useState(false);
+
+      const manejarBlur = (e) => {
+        const mensajeError = e.target.value;
+        cambiarMostrarError(mensajeError === "");
+      };
+
     // declaramos el update
 
     const update = async (e) => {
@@ -68,8 +80,11 @@ const Editar = () =>{
             Email: form.Email,
             Pais: form.Pais,
             Ciudad: form.Ciudad,
+            Provincia: form.Provincia,
+            Barrio: form.Barrio,
             Domicilio: form.Domicilio,
             Postal: form.Postal,
+            Telefono: form.Telefono,
             Password: form.Password,
             Reppassword: form.Reppassword,
 
@@ -95,8 +110,11 @@ const Editar = () =>{
                 Email: usuario.data().Email,
                 Pais: usuario.data().Pais,
                 Ciudad: usuario.data().Ciudad,
+                Provincia: usuario.data().Provincia,
+                Barrio: usuario.data().Barrio,
                 Domicilio: usuario.data().Domicilio,
                 Postal: usuario.data().Postal,
+                Telefono: usuario.data().Telefono,
                 Password: usuario.data().Password,
                 Reppassword: usuario.data().Reppassword
                     
@@ -106,6 +124,7 @@ const Editar = () =>{
             console.log("no existe");
         }
     };
+
     
     //useEffect
         
@@ -115,127 +134,246 @@ const Editar = () =>{
 
 
     return(
-        <div className='container'>
-            <div className='row'>
-                <div className='col'>
+        <div className='Container'>
+            <div className='Container'>
+                <form action="#" className=" h-full  relative z-2 m-2 px-10" onSubmit={update}>
+                    <fieldset className="formulario-contacto__contenido">
+                        <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2">Formulario Editar Usuario</legend>
+                                    <div className="row my-2">
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='nombre' className="text-1">Nombre</label>
+                                            </div>
+                                            <div className="col-md-12">
+                                                <input 
+                                                name='Nombre'
+                                                value={form.Nombre} 
+                                                onBlur={manejarBlur} 
+                                                type="text" 
+                                                className="form-control rounded-md p-1 text-black bg-gray-300 mb-2" 
+                                                placeholder="Escriba su nombre" 
+                                                data-input="text" 
+                                                id="nombre" 
+                                                onChange={cambio}/>
+                                                {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
+                                                <span className="formulario-contacto__contenido__span"></span>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='apellido' className="text-1">Apellido</label>
+                                            </div>
+                                            <input 
+                                            name='Apellido'
+                                            value={form.Apellido}  
+                                            type="text" 
+                                            className="form-control rounded-md p-1 text-black bg-gray-300 mb-2" 
+                                            placeholder="Escriba su apellido" 
+                                            data-input="text" 
+                                            id="apellido" 
+                                            onChange={cambio}/>
+                                            {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
+                                            <span className="formulario-contacto__contenido__span"></span>
 
-                    <h1 className='mt-3 h2 text-black text-center'>Editar el Usuario</h1>
+                                        </div>
+                                    </div>
+                                    <div className="row my-2"> 
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='email' className="text-1">E-mail</label>
+                                            </div>
+                                            <input 
+                                            name='Email'
+                                            value= {form.Email} 
+                                            type="email" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su correo electrónico" 
+                                            data-input="email" 
+                                            id="email" 
+                                            onChange={cambio}/>
+                                            {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='edad' className="text-1">Edad</label>
+                                            </div>
+                                            <input 
+                                            name='Edad'
+                                            value={form.Edad}  
+                                            type="number" mode="numeric" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su edad" 
+                                            data-input="number" 
+                                            id="edad" 
+                                            onChange={cambio}/>
+                                            {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
+                                            <span className="formulario-contacto__contenido__span"></span>
 
-                    <form onSubmit={update} className="mt-5">
-                        <div className='mb-4'>
-                            <label className='form-label h3 text-black'>Nombre:</label>
-                            <input 
-                                name='Nombre'
-                                value={form.Nombre}
-                                type="text"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
+                                        </div>
+                                    
+                                    </div>
+                                    <div className="row my-2"> 
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='pais' className="text-1">País de residencia</label>
+                                            </div>
+                                            <input 
+                                            name='Pais'
+                                            value={form.Pais}  
+                                            type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su país" data-input="text" id="pais" 
+                                            onChange={cambio}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='ciudad' className="text-1">Ciudad de residencia</label>
+                                            </div>
+                                            <input 
+                                            name='Ciudad'
+                                            value={form.Ciudad} 
+                                            type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su ciudad" 
+                                            data-input="text" 
+                                            id="ciudad" 
+                                            onChange={cambio}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                    </div>
+                                    <div className="row my-2"> 
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='pais' className="text-1">Provincia</label>
+                                            </div>
+                                            <input 
+                                            name='Provincia'
+                                            value={form.Provincia}  
+                                            type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su provincia" 
+                                            data-input="text" 
+                                            id="pais" 
+                                            onChange={cambio}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='ciudad' className="text-1">Barrio</label>
+                                            </div>
+                                            <input 
+                                            name='Barrio'
+                                            value={form.Barrio} 
+                                            type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su Barrio" 
+                                            data-input="text" 
+                                            id="ciudad" 
+                                            onChange={cambio}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                    </div>
+                                    <div className="row my-2">
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='domicilio' className="text-1">Domicilio</label>
+                                            </div>
+                                            <input 
+                                            name='Domicilio'
+                                            value={form.Domicilio}  
+                                            type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su domicilio" 
+                                            data-input="text" 
+                                            id="domicilio" 
+                                            oonChange={cambio}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='postal' className="text-1">Código postal</label>
+                                            </div>
+                                            <input 
+                                            name='Postal'
+                                            value={form.Postal}  
+                                            type="number" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su código postal" 
+                                            data-input="number" 
+                                            id="postal" 
+                                            onChange={cambio}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>                                
+                                    </div>
+                                    <div className="row my-2">
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='domicilio' className="text-1">Teléfono</label>
+                                            </div>
+                                            <input 
+                                            name='Telefono'
+                                            value={form.Telefono}  
+                                            type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su Teléfono" 
+                                            data-input="text" 
+                                            id="domicilio" 
+                                            onChange={cambio}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                                                      
+                                    </div>
+                                    <div className="row my-2">
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='password' className="text-1">Contraseña</label>
+                                            </div>
+                                            
+                                            <input 
+                                            name='Password'
+                                            value={form.Password}  
+                                            type="password" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su contraseña" 
+                                            data-input="password" 
+                                            id="password" 
+                                            onChange={cambio}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='password' className="text-1">Repetir contraseña</label>
+                                            </div>
+                                            <input 
+                                            name='Reppassword'
+                                            value={form.Reppassword}  
+                                            className="form-control rounded-md mb-1 p-1 text-black bg-gray-300" 
+                                            type="password" 
+                                            placeholder="Repita su contraseña" 
+                                            data-input="password" 
+                                            id="reppassword" 
+                                            onChange={cambio}/>
+                                            <span className="formulario-contacto__contenido__span"></span>
 
-                        <div className='mb-4'>
-                            <label className='form-label h3 text-black'>Apellido:</label>
-                            <input 
-                                name="Apellido"
-                                value={form.Apellido}
-                                type="text"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
+                                        </div>
 
-                        <div className='mb-3'>
-                            <label className='form-label h3 text-black'>Edad:</label>
-                            <input 
-                                name="Edad"
-                                value={form.Edad}
-                                type="text"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
-                       
-                        <div className='mb-4'>
-                            <label className='form-label h3 text-black'>Email:</label>
-                            <input 
-                                name='Email'
-                                value={form.Email}
-                                type="email"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
+                                    </div>
+                                    
+                                    <div className='flex flex-col items-center p-2'>
+                                        <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2  px-5 py-2" type="submit" formaction="./menu-administrador.html"><FontAwesomeIcon icon={faFloppyDisk} /> Guardar Cambios</button>
+                                        <div className="recaptcha m-2">
+                                        </div>
+                                    </div>
+                        </fieldset>
+                </form>
 
-                        <div className='mb-4'>
-                            <label className='form-label h3 text-black'>Pais:</label>
-                            <input 
-                                name="¨Pais"
-                                value={form.Pais}
-                                type="text"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
-
-                        <div className='mb-3'>
-                            <label className='form-label h3 text-black'>Ciudad:</label>
-                            <input 
-                                name="Ciudad"
-                                value={form.Ciudad}
-                                type="text"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
-                        <div className='mb-3'>
-                            <label className='form-label h3 text-black'>Domicilio:</label>
-                            <input 
-                                name="Domicilio"
-                                value={form.Domicilio}
-                                type="text"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
-                        <div className='mb-4'>
-                            <label className='form-label h3 text-black'>Codigo Postal:</label>
-                            <input 
-                                name="¨Postal"
-                                value={form.Postal}
-                                type="text"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
-
-                        <div className='mb-3'>
-                            <label className='form-label h3 text-black'>Password:</label>
-                            <input 
-                                name="Password"
-                                value={form.Password}
-                                type="password"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
-
-                        <div className='mb-3'>
-                            <label className='form-label h3 text-black'>Reppassword:</label>
-                            <input 
-                                name="Reppassword"
-                                value={form.Reppassword}
-                                type="password"
-                                className='form-control w-50 m-auto'
-                                onChange={cambio}
-                            />
-                        </div>
-                       
-
-                        <button type="submit" className='btn btn-outline-dark btn-lg mt-3'>Guardar</button>
-                    
-                    </form>
-                </div>
             </div>
+    
+        
         </div>
     )
     
