@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import Table from 'react-bootstrap/Table';
 import {Link} from 'react-router-dom';
 import {collection, getDocs, deleteDoc, doc} from 'firebase/firestore';
 import { db } from '../../firebaseConfig/firebase';
 import Swal from 'sweetalert2';
 import {async} from '@firebase/util';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
 
@@ -76,7 +79,7 @@ const Mostrar = () => {
                 <div className='d-grid gap-2'>
                     <Link to="/Registrarse" className='btn btn-outline-light btn-lg mt-3 mb-4 w-25 text-black' >Registrar Usuario <i className="fa-solid fa-plus"></i></Link>
                 </div>
-                <table className='table table-dark table-hover'>
+                <Table striped bordered hover responsive="sm" variant="dark">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -85,8 +88,11 @@ const Mostrar = () => {
                             <th>Email</th>
                             <th>Pais</th>
                             <th>Ciudad</th>
+                            <th>Provincia</th>
+                            <th>Barrio</th>
                             <th>Domicilio</th>
                             <th>Postal</th>
+                            <th>Teléfono</th>
                             <th>Password</th>
                             <th>Reppassword</th>
                             <th>Rol</th>
@@ -101,20 +107,24 @@ const Mostrar = () => {
                                 <td key={usuari.Email} className='text-light'>{usuari.Email || ''}</td>
                                 <td key={usuari.Pais} className='text-light'>{usuari.Pais || ''}</td>
                                 <td key={usuari.Ciudad} className='text-light'>{usuari.Ciudad || ''} </td>
+                                <td key={usuari.Provincia} className='text-light'>{usuari.Provincia || ''} </td>
+                                <td key={usuari.Barrio} className='text-light'>{usuari.Barrio || ''} </td>
                                 <td key={usuari.Domicilio} className='text-light'>{usuari.Domicilio || ''} </td>
                                 <td key={usuari.Postal} className='text-light'>{usuari.Postal || ''}</td>
+                                <td key={usuari.Telefono} className='text-light'>{usuari.Telefono || ''}</td>
                                 <td key={usuari.Password} className='text-light'>{usuari.Password || ''}</td>
                                 <td key={usuari.Reppassword} className='text-light'>{usuari.Reppassword || ''} </td>
                                 <td key={usuari.rol} className='text-light'>{usuari.rol || ''} </td>
                                 <td>
-                                    <Link to={`/editarusuario/${usuari.id}`} className="btn btn-info"><i className="fa-solid fa-pen-to-square"></i></Link>  
-                                    <button onClick={()=>{confirmDelete(usuari.id)}} className="bg-danger"><i className="fa-solid fa-trash "></i>Eliminar</button>
+                                    <Link to={`/editarusuario/${usuari.id}`} ><FontAwesomeIcon icon={faPenToSquare} />Editar</Link> 
+                                    <br /> <br /> 
+                                    <button onClick={()=>{confirmDelete(usuari.id)}} ><FontAwesomeIcon icon={faTrash}  />Eliminar</button>
                                 </td>
                             </tr>
                         ))}
 
                     </tbody>
-                </table>
+                </Table>
             </div>
         </div>
     </div>
