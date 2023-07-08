@@ -10,12 +10,9 @@ import Admin from './componentes/Auth/Admin';
 import Mostrar from './componentes/Auth/Mostrar';
 import LogIn from './componentes/Auth/Login';
 import Registrarse from './componentes/Auth/Registrarse';
-<<<<<<< HEAD
 import Carrito from './componentes/Carrito';
 import DataProvider from './componentes/Datos';
-=======
 import Compra from './componentes/Compra';
-import DataProvider from './componentes/Datos';
 import Home from './componentes/Home';
 import MostrarProductos from './componentes/MostrarProductos';
 import CrearProductos from './componentes/CrearProductos';
@@ -26,8 +23,6 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
-
->>>>>>> appilcha
 
 function App() {
   const [user, setUser] = useState(null);
@@ -75,15 +70,9 @@ function App() {
   });
 
   return (
-<<<<<<< HEAD
-      <div className='container'>
-        <DataProvider>
-=======
     <div className='container'>
 
       <DataProvider>
-        
->>>>>>> appilcha
           <Header />
           {user ? <Home user={user} /> : <LogIn />}
           <Routes>
@@ -91,13 +80,7 @@ function App() {
             <Route path='/' element={<Inicio />} />
             <Route path='/Registrarse' element={<Registrarse />} />
             <Route path='/Tienda' element={<Tienda />} />
-<<<<<<< HEAD
             <Route path='/Carrito' element={<Carrito />} />
-          </Routes>
-          <Footer />
-        </DataProvider>;
-      </div>
-=======
             <Route path='/editarusuario/:id' element={<Editar />} />
             <Route path='/Admin' element={<Admin />} />
             <Route path='/Mostrar' element={<Mostrar />} />
@@ -108,13 +91,8 @@ function App() {
             <Route path="/EditarProductos/:id" element={<EditarProductos />} />
           </Routes>
           <Footer />
-
-        
-
-        
-      </DataProvider>
-    </div>
->>>>>>> appilcha
+        </DataProvider>;
+      </div>
   );
 
 
