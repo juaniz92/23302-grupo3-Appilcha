@@ -26,6 +26,8 @@ function Tienda({user}) {
     setMostrarCarrito(!mostrarCarrito);
   };
 
+  console.log("Productos tienda: ", paginatedData)
+
   return (
     <div className="d-flex flex-column">
       <div className="relative flex flex-col self-end">
@@ -75,7 +77,7 @@ function Tienda({user}) {
         pageRangeDisplayed={5}
         onPageChange={handlePageChange}
         containerClassName={'pagination d-flex justify-center fs-4 p-4 fw-bold'}
-        activeClassName={'active'}
+        activeClassName={'active underline'}
         previousClassName={'pagination-previous px-3 hover:underline'}
         nextClassName={'pagination-next px-3 hover:underline'}
         breakClassName={'pagination-break px-3 hover:underline'}

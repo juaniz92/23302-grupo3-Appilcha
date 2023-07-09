@@ -92,19 +92,23 @@ const Compra = ({user}) => {
         const year = currentDate.getFullYear();
         const month = String(currentDate.getMonth() + 1).padStart(2, '0');
         const day = String(currentDate.getDate()).padStart(2, '0');
-        return `${day}-${month}-${year}`;
+        const hours = String(currentDate.getHours()).padStart(2, '0');
+        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+        return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
       };
+      
 
     const orden = {
         compra: {
-            nombre: user.nombre,
-            email: user.email,
-            telefono: user.telefono,
-            domicilio: user.domicilio,
-            barrio: user.barrio,
-            ciudad: user.ciudad,
-            provincia: user.provincia,
-            postal: user.postal,
+            nombre: user.nombre || "",
+            email: user.email || "",
+            telefono: user.telefono || "",
+            domicilio: user.domicilio || "",
+            barrio: user.barrio || "",
+            ciudad: user.ciudad || "",
+            provincia: user.provincia || "",
+            postal: user.postal || "",
             fechaCompra: getCurrentDate(),
             items: carrito,
             total: obtenerTotal(),
@@ -173,7 +177,8 @@ const Compra = ({user}) => {
     
     //Obtener número de tarjeta
     const manejarNumeroTarjeta = (e) => {
-    setNumeroTarjeta(e.target.value);
+        const inputNumber = e.target.value.replace(/\D/g, '').slice(0, 16);
+        setNumeroTarjeta(inputNumber);
     };
 
     //Obtener comprobante
@@ -243,7 +248,7 @@ const Compra = ({user}) => {
                     {formaPago == "transferencia" &&
                     <div className="">
                         <p type="text">CBU 0001145663456556</p>
-                        <p type="text">Adjuntar comprobante</p><input className='pb-2' onChange={manejarComprobante} value={comprobante} type="file" />
+                        <p type="text">Adjuntar comprobante</p><input className='pb-2' onChange={manejarComprobante} value={comprobante} accept='.png, .jpg, .jpeg, .pdf' type="file" />
                     </div>}
                     <Form.Check
                         inline
@@ -257,7 +262,7 @@ const Compra = ({user}) => {
                     />
                     {formaPago == "tarjeta" &&
                     <div className="">
-                        <input value={numeroTarjeta} onChange={manejarNumeroTarjeta} type="text" placeholder="Ingrese el número de tarjeta"/>
+                        <input value={numeroTarjeta} onChange={manejarNumeroTarjeta} type="text" pattern="[0-9]*" inputMode="numeric" placeholder="Ingrese el número de tarjeta" maxLength={16} required/>
                     </div>}
                     </div>
                 ))}

@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, createContext } from "react";
+import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../firebaseConfig/firebase';
 
 export const data = createContext();
 
@@ -11,6 +13,11 @@ const DataProvider = ({ children }) => {
 
     //Almacenamos los productos que selecciona el usuario
     const [carrito, setCarrito] =useState([])
+
+    // Hooks de mostrar
+    const productosCollection = collection(db, "Productos");
+
+    //const [productos, setProductos] = useState([]);
 
     //Ejecutamos la carga de productos
     useEffect(async () => {
@@ -25,8 +32,17 @@ const DataProvider = ({ children }) => {
         const womenData = womenResponse.data;
         const menData = menResponse.data;
 
+        const querySnapshot = await getDocs(collection(db, "Productos"));
+        const productosData = querySnapshot.docs.map((doc) => doc.data());
+
+        const productos = productosData.map((doc) => ({
+          title: doc.Nombre,
+          description: doc.Descripcion,
+          price: doc.Precio,
+        }));
+
         // Combinar los resultados en una sola lista
-        const respuesta = [...womenData, ...menData];
+        const respuesta = [...womenData, ...menData, ...productos];
 
         setDatos(respuesta);
         //Agregar propiedad Cantidad a cada objeto
