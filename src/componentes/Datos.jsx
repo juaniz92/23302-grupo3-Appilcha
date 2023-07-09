@@ -15,7 +15,34 @@ const DataProvider = ({ children }) => {
     //Ejecutamos la carga de productos
     useEffect(async () => {
         //Petición de productos a la API
-        const respuesta = await axios.get(`https://fakestoreapi.com/products`);
+        // Realizar solicitudes a ambas rutas por separado
+        const [womenResponse, menResponse] = await Promise.all([
+          axios.get("https://fakestoreapi.com/products/category/women's%20clothing"),
+          axios.get("https://fakestoreapi.com/products/category/men's%20clothing")
+        ]);
+
+        // Obtener los datos de las respuestas
+        const womenData = womenResponse.data;
+        const menData = menResponse.data;
+
+        // Combinar los resultados en una sola lista
+        const respuesta = [...womenData, ...menData];
+
+        setDatos(respuesta);
+        //Agregar propiedad Cantidad a cada objeto
+        const agregarCantidad = respuesta.map(item => {
+            return {
+              ...item,
+              cantidad: 1
+            };
+          });
+        setDatos(agregarCantidad);
+    }, [])
+
+    //Ejecutamos la carga de productos
+    /*useEffect(async () => {
+        //Petición de productos a la API
+        const respuesta = await axios.get(`https://fakestoreapi.com/products/category/women's%20clothing`);
         setDatos(respuesta.data);
         //Agregar propiedad Cantidad a cada objeto
         const agregarCantidad = respuesta.data.map(item => {
@@ -25,7 +52,7 @@ const DataProvider = ({ children }) => {
             };
           });
         setDatos(agregarCantidad);
-    }, [])
+    }, [])*/
 
       //Añadimos un nuevo producto y también para sumar
       const anadirProducto = (producto) => {
@@ -41,7 +68,7 @@ const DataProvider = ({ children }) => {
       }
 
       //Retornamos valores del proveedor
-    return <data.Provider value={{ datos, carrito, setCarrito, setCarrito, anadirProducto }}>{children}</data.Provider>
+    return <data.Provider value={{ datos, carrito, setCarrito, anadirProducto }}>{children}</data.Provider>
 };
 
 export default DataProvider;

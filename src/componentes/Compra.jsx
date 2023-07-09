@@ -51,7 +51,7 @@ const Compra = ({user}) => {
           
           let img = canvas.toDataURL("image/jpeg", 0.8);
           let link = document.createElement("a");
-          link.download = "ticket-compra.jpg";
+          link.download = "factura-compra.jpg";
           link.href = img;
           link.click();
           
@@ -167,6 +167,8 @@ const Compra = ({user}) => {
     //Obtener forma de pago y habilita el input para tarjeta
     const seleccionarFormaPago = (e) => {
         setFormaPago(e.target.value);
+        formaPago === "tarjeta" && setComprobante("");
+        formaPago === "transferencia" && setNumeroTarjeta("");
       };
     
     //Obtener número de tarjeta
@@ -177,6 +179,7 @@ const Compra = ({user}) => {
     //Obtener comprobante
     const manejarComprobante = (e) => {
         setComprobante(e.target.value);
+
     };
 
     return (
