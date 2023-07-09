@@ -12,9 +12,10 @@ const Carrito = ({user}) => {
             <CarritoElementos />
             <CarritoTotal />
             {user ? (
-                <button className='bg-black text-white rounded-md'>
-                <Link to="/Compra">Comprar</Link>
-                </button>
+                <div className='row g-0'> 
+                <Link to="/Compra" role='button' className='btn btn-dark text-center rounded fw-bold p-1 col col-md-6 mx-auto'>Comprar</Link>
+                </div>
+
             ) : (
                 <p className='text-center'>
                 <Link to="/login">Iniciar sesión para realizar la compra</Link>

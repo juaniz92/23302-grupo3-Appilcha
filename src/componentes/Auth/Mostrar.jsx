@@ -72,15 +72,13 @@ const Mostrar = () => {
     //mostrar datos en estructura
 
   return (
-    <div className='container'>
-        <div className='Container'>
             <div className='row'>
-                <div className='col h-full  relative z-2 m-2 px-10 fluid-sm'>
-                    <legend className="formulario-contacto__contenido__titulo text-2xl mb-2 self-center text-center m-2 fluid-sm">USUARIOS</legend>
-                    <div className='d-grid gap-2'>
-                        <Link to="/Registrarse" className='btn btn-outline-light btn-lg mt-3 mb-4 w-25 text-black m-2 fluid-sm' >Registrar Usuario <i className="fa-solid fa-plus"></i></Link>
+                <div className='col'>
+                    <legend className="mb-2 text-center m-2 text-uppercase">Usuarios</legend>
+                    <div className='row'>
+                        <Link to="/Registrarse" className='btn btn-outline-light btn-lg mt-1 mb-4 w-25 text-black fw-semibold px-2 col-md-6 col mx-auto'>Registrar Usuario <i className="fa-solid fa-plus"></i></Link>
                     </div>
-                    <Table striped bordered hover responsive="sm" variant="dark">
+                    <Table striped bordered hover responsive="xl" variant="dark">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -128,9 +126,6 @@ const Mostrar = () => {
                     </Table>
                 </div>
             </div>
-
-        </div>
-    </div>
   )
 }
 

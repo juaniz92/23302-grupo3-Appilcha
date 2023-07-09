@@ -37,7 +37,7 @@ function Contacto(){
           <h2 className='h2 mb-4' id='Contacto'>
             Contacto
           </h2>
-          <p>Si tienes alguna consulta puedes enviarnos un mensaje llenando los siguientes datos:</p>
+          <p>Si tienes alguna consulta puedes enviarnos un mensaje completando los siguientes datos:</p>
           <Form ref={form} onSubmit={sendEmail}>
             <Form.Group className='mb-3' controlId='nombre'>
               <Form.Label>Nombre</Form.Label>
@@ -53,10 +53,11 @@ function Contacto(){
               <Form.Label>Mensaje</Form.Label>
               <Form.Control name='message' as='textarea' rows={3} placeholder='Escribe tu mensaje' required />
             </Form.Group>
-    
-            <Button variant='dark' className='fs-4' type='submit' value='Send'>
-              Enviar
-            </Button>
+            <div className='row g-0'>
+              <Button variant='dark' className='fs-4 col col-md-2 mx-auto' type='submit' value='Send'>
+                Enviar
+              </Button>
+            </div>
           </Form>
         </div>
       );
