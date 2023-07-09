@@ -3,7 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStore, faHouse } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
   
@@ -36,8 +37,8 @@ return (
         <Navbar.Toggle onClick={e => handleTogglerNav(e)} aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto text-uppercase fw-bolder">
-            <Nav.Link as={Link} to="/" className='ms-auto'>Inicio</Nav.Link>
-            <Nav.Link as={Link} to="/Tienda" className='ms-auto'>Tienda</Nav.Link>
+            <Nav.Link as={Link} to="/" className='ms-auto'><FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} /> Inicio</Nav.Link>
+            <Nav.Link as={Link} to="/Tienda" className='ms-auto'><FontAwesomeIcon icon={faStore} style={{color: "#000000",}} /> Tienda</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
