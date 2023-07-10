@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
-import { db } from '../firebaseConfig/firebase';
-import { dbCollection } from '../firebaseConfig/collections';
+import { db } from '../../firebaseConfig/firebase';
+import { dbCollection } from '../../firebaseConfig/collections';
 import { async } from '@firebase/util';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -13,22 +13,21 @@ const EditarProductos = () => {
 
     // Parámetros para el formulario
     const [form, setForm] = useState({
-        Descripcion:"",
-        Nombre: "",
-        Precio: "",
-        PrecioCosto: "",
-        Stock: ""
+        Descripcion: '',
+        Nombre: '',
+        Precio: '',
+        PrecioCosto: '',
+        Stock: ''
     });
 
     const navigate = useNavigate();
-    const {id} =useParams();
+    const {id} = useParams();
 
     // Función para asignar valores al formulario
 
     const cambio = (e) => {
         setForm({
-            ...form,
-            [e.target.name]: e.target.value
+            ...form, [e.target.name]: e.target.value
         });
     };
 
@@ -43,13 +42,14 @@ const EditarProductos = () => {
             hideClass: {
                 popup: 'animate__animated animate__fadeOutUp'
             }
-        });
+        })
     }
 
     // Declaración de Update
 
     const update = async (e) => {
         e.preventDefault();
+
         const producto = doc(db, dbCollection.Productos, id);
         const data = {
             Descripcion: form.Descripcion,
@@ -58,13 +58,13 @@ const EditarProductos = () => {
             PrecioCosto: form.PrecioCosto,
             Stock: form.Stock
         }
-        console.log(data())    ;
+        console.log(data());
         await updateDoc(producto, data);
         alertaGuardado();
-        navigate("/EditarProductos");
+        navigate("/Admin");
     }
 
-    //5 asincronismo de existencia con la bd
+    //Asincronismo de existencia con la bd
 
     const getProductoById = async (id) => {
         const producto = await getDoc(doc(db, dbCollection.Productos, id));
@@ -125,7 +125,7 @@ const EditarProductos = () => {
                         <div className='mb-4'>
                             <label className='form-label h3 text-light'>Precio:</label>
                             <input
-                                name="¨Precio"
+                                name="Precio"
                                 value={form.Precio}
                                 type="text"
                                 className='form-control w-50 m-auto'
@@ -136,7 +136,7 @@ const EditarProductos = () => {
                         <div className='mb-4'>
                             <label className='form-label h3 text-light'>Precio de Costo:</label>
                             <input
-                                name="¨PrecioCosto"
+                                name="PrecioCosto"
                                 value={form.PrecioCosto}
                                 type="text"
                                 className='form-control w-50 m-auto'

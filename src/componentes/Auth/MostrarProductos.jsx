@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import { db } from '../firebaseConfig/firebase';
+import { db } from '../../firebaseConfig/firebase';
 import Swal from 'sweetalert2';
 import { async } from '@firebase/util';
 import withReactContent from 'sweetalert2-react-content';
@@ -15,7 +15,7 @@ const MostrarProductos = () => {
 
     const [productos, setProductos] = useState([]);
 
-    
+
 
 
     // Async
@@ -25,14 +25,14 @@ const MostrarProductos = () => {
         console.log(data.docs);
 
         setProductos(
-            data.docs.map((doc) => ({...doc.data(), id: doc.id }))
+            data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         );
 
     }
     useEffect(() => {
         getProductos();
 
-    }, [ ])
+    }, [])
 
     // Función borrar  registros
     console.log(productos);

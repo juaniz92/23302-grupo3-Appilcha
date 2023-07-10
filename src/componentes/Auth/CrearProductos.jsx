@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../firebaseConfig/firebase';
+import { db } from '../../firebaseConfig/firebase';
 import { async } from '@firebase/util';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -40,7 +40,7 @@ const CrearProductos = () => {
 
     const nuevo = async (e) => {
         e.preventDefault();
-        await addDoc(productosCollection, { Descripcion: descripcion, Nombre: nombre, Precio: precio, PrecioCosto:precioCosto, Stock: stock });
+        await addDoc(productosCollection, { Descripcion: descripcion, Nombre: nombre, Precio: precio, PrecioCosto: precioCosto, Stock: stock });
         alertaCreacion();
         navigate("/Admin");
     }
