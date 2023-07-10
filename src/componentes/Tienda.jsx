@@ -3,8 +3,11 @@ import { data } from './Datos';
 import ReactPaginate from 'react-paginate';
 import Totalproductos from './TotalProductos';
 import Carrito from './Carrito';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
-function Tienda() {
+
+function Tienda({user}) {
   const [mostrarCarrito, setMostrarCarrito] = useState();
   const { datos, anadirProducto, carrito } = useContext(data);
   const [currentPage, setCurrentPage] = useState(0);
@@ -23,6 +26,8 @@ function Tienda() {
     setMostrarCarrito(!mostrarCarrito);
   };
 
+  console.log("Productos tienda: ", paginatedData)
+
   return (
     <div className="d-flex flex-column">
       <div className="relative flex flex-col self-end">
@@ -35,7 +40,7 @@ function Tienda() {
       <div>
         {mostrarCarrito && (
           <div className="">
-            <Carrito />
+            <Carrito user={user}  />
           </div>
         )}
       </div>
@@ -64,20 +69,20 @@ function Tienda() {
 
       {/* Componente de paginación */}
       <ReactPaginate
-        previousLabel={'< Anterior'}
-        nextLabel={'Siguiente >'}
+        previousLabel={<FontAwesomeIcon icon={faAngleLeft} style={{color: "#000000",}} />}
+        nextLabel={<FontAwesomeIcon icon={faAngleRight} style={{color: "#000000",}} />}
         breakLabel={'...'}
         pageCount={Math.ceil(datos.length / itemsPerPage)} // Número total de páginas
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handlePageChange}
-        containerClassName={'pagination flex justify-center p-4 text-3xl'}
-        activeClassName={'active'}
+        containerClassName={'pagination d-flex justify-center fs-4 p-4 fw-bold'}
+        activeClassName={'active underline'}
         previousClassName={'pagination-previous px-3 hover:underline'}
         nextClassName={'pagination-next px-3 hover:underline'}
         breakClassName={'pagination-break px-3 hover:underline'}
         pageClassName={'pagination-page px-3 hover:underline'}
-        disabledClassName={'pagination-disabled px- hover:underline'}
+        disabledClassName={'pagination-disabled px-3 hover:underline'}
       />
     </div>
   );

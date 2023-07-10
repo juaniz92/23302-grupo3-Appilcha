@@ -21,6 +21,9 @@ const Compra = ({user}) => {
     //Obtener número de tarjeta
     const [numeroTarjeta, setNumeroTarjeta] = useState('');
 
+    //Obtener número de tarjeta
+    const [comprobante, setComprobante] = useState('');
+
     //Forma de retiro
     const [formaRetiro, setFormaRetiro] = useState('');
 
@@ -48,9 +51,15 @@ const Compra = ({user}) => {
           
           let img = canvas.toDataURL("image/jpeg", 0.8);
           let link = document.createElement("a");
-          link.download = "ticket-compra.jpg";
+          link.download = "factura-compra.jpg";
           link.href = img;
           link.click();
+          
+        
+            setTimeout(()=>{
+                navigate('/');
+                window.location.reload();
+            }, 5000);
         }); 
       }
 
@@ -66,8 +75,9 @@ const Compra = ({user}) => {
         btn.classList.add("btn", "btn-success");
         btn.onclick = descarga;
         contenedorBotones.appendChild(btn);
-
+        
         return btn;
+        
     }
 
     //Total de la compra del carrito
@@ -76,30 +86,77 @@ const Compra = ({user}) => {
         return parseFloat(total.toFixed(2));
       };
 
+      //Fecha de compra
+      const getCurrentDate = () => {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const hours = String(currentDate.getHours()).padStart(2, '0');
+        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+        return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+      };
+      
+
     const orden = {
         compra: {
-            nombre: "Juan",
-            email:"jiz@jiz.com",
-            telefono: "115526644",
-            domicilio: "asfer 123",
-            cp: "1010",
-            barrio: "San Telmo",
-            ciudad: "CABA",
-            provincia: "BSAS",
+            nombre: user.nombre || "",
+            email: user.email || "",
+            telefono: user.telefono || "",
+            domicilio: user.domicilio || "",
+            barrio: user.barrio || "",
+            ciudad: user.ciudad || "",
+            provincia: user.provincia || "",
+            postal: user.postal || "",
+            fechaCompra: getCurrentDate(),
             items: carrito,
             total: obtenerTotal(),
             formaRetiro: formaRetiro,
             formaPago: formaPago,
-            numeroTarjeta: numeroTarjeta
+            numeroTarjeta: numeroTarjeta,
+            comprobante: comprobante
         },
         
     }
 
     //Función del botón Comprar
     const pagar = async (e) => {
-        e.preventDefault();
-        await addDoc(ordenesCollection, orden.compra)
-        alertCreacion();
+        if (formaRetiro === '' || formaPago === '') {
+            Swal.fire({
+              position: 'center-center',
+              icon: 'warning',
+              title: 'Seleccione una forma de retiro y una forma de pago',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            return;
+          }
+        
+          if (formaPago === 'tarjeta' && numeroTarjeta === '') {
+            Swal.fire({
+              position: 'center-center',
+              icon: 'warning',
+              title: 'Ingrese número de tarjeta!!',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            return;
+          }
+
+          if (formaPago === 'transferencia' && !comprobante) {
+            Swal.fire({
+              position: 'center-center',
+              icon: 'warning',
+              title: 'Adjunte el comprobante de pago',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            return;
+          }
+
+          await addDoc(ordenesCollection, orden.compra);
+          alertCreacion();
 
         // se añade ocultar el estilo para ocultar el boton pagar y se llama al boton de descarga de la factura
         e.target.style.display = "none";
@@ -114,11 +171,20 @@ const Compra = ({user}) => {
     //Obtener forma de pago y habilita el input para tarjeta
     const seleccionarFormaPago = (e) => {
         setFormaPago(e.target.value);
+        formaPago === "tarjeta" && setComprobante("");
+        formaPago === "transferencia" && setNumeroTarjeta("");
       };
     
     //Obtener número de tarjeta
     const manejarNumeroTarjeta = (e) => {
-    setNumeroTarjeta(e.target.value);
+        const inputNumber = e.target.value.replace(/\D/g, '').slice(0, 16);
+        setNumeroTarjeta(inputNumber);
+    };
+
+    //Obtener comprobante
+    const manejarComprobante = (e) => {
+        setComprobante(e.target.value);
+
     };
 
     return (
@@ -127,12 +193,12 @@ const Compra = ({user}) => {
                 <img src="./appilcha.png" className='mx-auto mb-3' width={150} alt="" />
                 <h2 className='h2'>Datos comprador:</h2>
                 <ul className=''>
-                    <li><span className='fw-bold'>Nombre:</span> {orden.compra.nombre}</li>
-                    <li><span className='fw-bold'>Domicilio:</span> {orden.compra.domicilio} (CP {orden.compra.cp}), {orden.compra.barrio} - {orden.compra.ciudad}, {orden.compra.provincia}</li>
+                    <li><span className='fw-bold'>Nombre:</span> {user.apellido}, {user.nombre}</li>
+                    <li><span className='fw-bold'>Domicilio:</span> {user.domicilio} (CP {user.postal}), {orden.compra.barrio} - {user.ciudad}, {orden.compra.provincia}</li>
                     <li><span className='fw-bold'>Teléfono:</span> {orden.compra.telefono}</li>
-                    <li><span className='fw-bold'>Email:</span> {user.email}</li>
-                    <li><span className='fw-bold'>Rol:</span> {user.rol}</li>
                 </ul>
+
+                <p className='h4 my-3'>Fecha: {getCurrentDate()}</p>
                 <h3 className='h3 my-3'>Productos</h3>
                 <CarritoElementos />
                 <CarritoTotal />
@@ -171,14 +237,19 @@ const Compra = ({user}) => {
                     <div key={`inline-${type}`} className="flex flex-col mb-3">
                     <Form.Check
                         inline
-                        label="Efectivo"
+                        label="Transferencia"
                         name="group1"
                         type={type}
                         id={`inline-${type}-1`}
-                        value="efectivo"
-                        checked={formaPago === 'efectivo'}
+                        value="transferencia"
+                        checked={formaPago === 'transferencia'}
                         onChange={seleccionarFormaPago}
                     />
+                    {formaPago == "transferencia" &&
+                    <div className="">
+                        <p type="text">CBU 0001145663456556</p>
+                        <p type="text">Adjuntar comprobante</p><input className='pb-2' onChange={manejarComprobante} value={comprobante} accept='.png, .jpg, .jpeg, .pdf' type="file" />
+                    </div>}
                     <Form.Check
                         inline
                         label="Tarjeta"
@@ -189,12 +260,13 @@ const Compra = ({user}) => {
                         checked={formaPago === 'tarjeta'}
                         onChange={seleccionarFormaPago}
                     />
+                    {formaPago == "tarjeta" &&
+                    <div className="">
+                        <input value={numeroTarjeta} onChange={manejarNumeroTarjeta} type="text" pattern="[0-9]*" inputMode="numeric" placeholder="Ingrese el número de tarjeta" maxLength={16} required/>
+                    </div>}
                     </div>
                 ))}
-                {formaPago == "tarjeta" &&
-                <div className="">
-                    <input value={numeroTarjeta} onChange={manejarNumeroTarjeta} type="text" placeholder="Ingrese el número de tarjeta"/>
-                </div>}
+                
             </Form>
             <div id='contenedorBotones'>
             <button id='btnPagar' className='btn btn-primary mt-3' onClick={pagar}>Pagar</button>
