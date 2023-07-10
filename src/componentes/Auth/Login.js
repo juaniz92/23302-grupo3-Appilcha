@@ -36,11 +36,24 @@ function Login() {
             navigate("/");
         } catch (error) {
 
-            //Agrego condicional para personalizar el mensaje de error
-            if(error.message === "Firebase: Error (auth/invalid-email)."){
-                setError("Email o contraseña inválidos.");
-            } else {
-            setError(error.message);
+            //Switch para personalizar el mensaje de error
+
+            switch (error.message) {
+                case "Firebase: Error (auth/invalid-email).":
+                    setError("No ingresaste un email.")
+                    break;
+                case "Firebase: Error (auth/user-not-found).":
+                    setError("El usuario no existe.")
+                    break;
+                case "Firebase: Error (auth/missing-password).":
+                    setError("No ingresaste la contraseña.")
+                    break;
+                case "Firebase: Error (auth/wrong-password).":
+                    setError("Contraseña incorrecta.")
+                    break;
+                default:
+                    setError(error.message);
+                    break;
             }
         }
         

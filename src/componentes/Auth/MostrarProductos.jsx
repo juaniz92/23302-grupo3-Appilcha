@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import { db } from '../firebaseConfig/firebase';
+import { db } from '../../firebaseConfig/firebase';
 import Swal from 'sweetalert2';
 import { async } from '@firebase/util';
 import withReactContent from 'sweetalert2-react-content';
+import Table from 'react-bootstrap/Table';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const MySwal = withReactContent(Swal);
 
 
@@ -76,9 +79,9 @@ const MostrarProductos = () => {
             <div className='row'>
                 <div className='col'>
                     <div className='d-grid gap-2'>
-                        <Link to="/crearproducto" className='btn btn-outline-light btn-lg mt-3 mb-4 w-25' >Crear Nuevo Producto  <i className="fa-solid fa-plus"></i></Link>
+                        <Link to="/CrearProductos" role='button' className='btn btn-dark btn-lg mt-3 mb-4 col col-md-3 mx-auto' >Crear Nuevo Producto  <i className="fa-solid fa-plus"></i></Link>
                     </div>
-                    <table className='table table-dark table-hover'>
+                    <Table striped bordered hover responsive="xl" variant="dark">
                         <thead>
                             <tr>
                                 <th>Descripción</th>
@@ -86,6 +89,7 @@ const MostrarProductos = () => {
                                 <th>Precio</th>
                                 <th>Stock</th>
                                 <th>Precio de Costo</th>
+                                <th>Editar / Borrar</th>
                             </tr>
                         </thead>
                         <tbody className='text-light bg-primary'>
@@ -96,15 +100,15 @@ const MostrarProductos = () => {
                                     <td key={prod.Precio} className='text-light'>{prod.Precio || ''}</td>
                                     <td key={prod.Stock} className='text-light'>{prod.Stock || ''} </td>
                                     <td key={prod.PrecioCosto} className='text-light'>{prod.PrecioCosto || ''}</td>
-                                    <td>
-                                        <Link to={`/editarproducto/${prod.id}`} className="btn btn-light"><i className="fa-solid fa-pen-to-square"></i></Link>
-                                        <button onClick={() => { confirmDelete(prod.id) }} className="bg-danger"><i className="fa-solid fa-trash "></i></button>
+                                    <td className='text-center'>
+                                        <Link to={`/EditarProductos/${prod.id}`} role='button' className="btn btn-info mb-1"><FontAwesomeIcon icon={faPenToSquare} style={{color: "#ffffff",}} /></Link>
+                                        <button onClick={() => { confirmDelete(prod.id) }} className="btn btn-danger mx-auto rounded"><FontAwesomeIcon icon={faTrash} style={{color: "#ffffff",}} /></button>
                                     </td>
                                 </tr>
                             ))}
 
                         </tbody>
-                    </table>
+                    </Table>
                 </div>
             </div>
         </div>

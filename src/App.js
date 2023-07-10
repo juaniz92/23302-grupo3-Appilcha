@@ -13,9 +13,9 @@ import Registrarse from './componentes/Auth/Registrarse';
 import Compra from './componentes/Compra';
 import DataProvider from './componentes/Datos';
 import Home from './componentes/Home';
-import MostrarProductos from './componentes/MostrarProductos';
-import CrearProductos from './componentes/CrearProductos';
-import EditarProductos from './componentes/EditarProductos';
+import MostrarProductos from './componentes/Auth/MostrarProductos';
+import CrearProductos from './componentes/Auth/CrearProductos';
+import EditarProductos from './componentes/Auth/EditarProductos';
 import firebaseApp from "./firebaseConfig/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
@@ -26,7 +26,7 @@ const firestore = getFirestore(firebaseApp);
 
 function App() {
   const [user, setUser] = useState(null);
-  
+
 
   async function getRol(uid) {
     const docuRef = doc(firestore, `Usuarios/${uid}`);
@@ -40,20 +40,21 @@ function App() {
       const userData = {
         uid: usuarioFirebase.uid,
         email: usuarioFirebase.email,
-        userfire,
         rol: userfire.rol,
         nombre: userfire.Nombre,
         apellido: userfire.Apellido,
         pais: userfire.Pais,
         ciudad: userfire.Ciudad,
         domicilio: userfire.Domicilio,
-        postal:userfire.postal,
-
+        postal: userfire.Postal,
+        telefono: userfire.Telefono,
+        barrio: userfire.Barrio,
+        provincia: userfire.Provincia
       };
-      
-    
+
+
       setUser(userData);
-      
+
       console.log("userData final", userData);
     });
   }
@@ -73,28 +74,28 @@ function App() {
     <div className='container'>
 
       <DataProvider>
-        
-          <Header />
-          {user ? <Home user={user} /> : <LogIn />}
-          <Routes>
-            <Route path='/Home' element={<Home />} />
-            <Route path='/' element={<Inicio />} />
-            <Route path='/Registrarse' element={<Registrarse />} />
-            <Route path='/Tienda' element={<Tienda />} />
-            <Route path='/editarusuario/:id' element={<Editar />} />
-            <Route path='/Admin' element={<Admin />} />
-            <Route path='/Mostrar' element={<Mostrar />} />
-            <Route path='/Compra' element={<Compra user={user} />} />
-            <Route path="/LogIn" element={<LogIn />} />
-            <Route path="/MostrarProductos" element={<MostrarProductos />} />
-            <Route path="/CrearProductos" element={<CrearProductos />} />
-            <Route path="/EditarProductos/:id" element={<EditarProductos />} />
-          </Routes>
-          <Footer />
 
-        
+        <Header />
+        {user ? <Home user={user} /> : <LogIn />}
+        <Routes>
+          <Route path='/Home' element={<Home />} />
+          <Route path='/' element={<Inicio />} />
+          <Route path='/Registrarse' element={<Registrarse />} />
+          <Route path='/Tienda' element={<Tienda user={user} />} />
+          <Route path='/editarusuario/:id' element={<Editar />} />
+          <Route path='/Admin' element={<Admin />} />
+          <Route path='/Mostrar' element={<Mostrar />} />
+          <Route path='/Compra' element={<Compra user={user} />} />
+          <Route path="/LogIn" element={<LogIn />} />
+          <Route path='/MostrarProductos' element={<MostrarProductos />} />
+          <Route path='/CrearProductos' element={<CrearProductos />} />
+          <Route path='/EditarProductos/:id' element={<EditarProductos />} />
+        </Routes>
+        <Footer />
 
-        
+
+
+
       </DataProvider>
     </div>
   );

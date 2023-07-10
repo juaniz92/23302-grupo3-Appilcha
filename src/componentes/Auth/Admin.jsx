@@ -1,39 +1,44 @@
 import {Link} from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUsers, faUserPlus, faCirclePlus, faEye, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import React from 'react'
 
 function Admin() {
     return (
-        <div className='Container'>
-            <div className='Container'>
-                <form action="#" className=" h-full  relative z-2 m-2 px-10">
-                    <fieldset className="formulario-contacto__contenido">
-                        <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2">MENU ADMINISTRADOR</legend>
-                        <div className='text-center'>
-                        <br/>
-                                    <Link to="/Mostrar" className="flex self-center text-center m-2 hover:text-gray-500 mx-5"><strong>USUARIOS</strong></Link> <br/>
-                                    <Link to="/Registrarse" className="flex self-center text-center  m-2 hover:text-gray-500 mx-5"><strong>REGISTRO</strong></Link> <br/>
-                                    
+        <div className='row g-0'>
+
+            <div className='col col-md-7 border border-dark rounded-3 mx-auto mb-3'>
+
+                <form action="#" className="text-center p-4">
+
+                    <fieldset>
+                        <legend className="h3 text mb-2 text-uppercase">Menú Administrador</legend>
+                        <div className='d-flex flex-column mt-3'>
+                        
+                            <Link to="/Mostrar" className="text-center mt-2 hover:text-gray-500"><FontAwesomeIcon icon={faUsers} style={{color: "#000000",}} /> <strong>USUARIOS</strong></Link>
+
+                            <Link to="/Registrarse" className="my-3 hover:text-white-500"><FontAwesomeIcon icon={faUserPlus} style={{color: "#000000",}} /> <strong>REGISTRO</strong></Link>
 
                         </div>  
                     </fieldset>
-                    <fieldset className="formulario-contacto__contenido">
-                        <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2">Gestión de Productos</legend>
-                        <div className='text-center'>
-                            <br />
-                            <Link to="/CrearProductos" className="flex self-center text-center m-2 hover:text-gray-500 mx-5"><strong>Crear productos</strong></Link> <br />
-                            <Link to="/MostrarProductos" className="flex self-center text-center  m-2 hover:text-gray-500 mx-5"><strong>Mostrar productos</strong></Link> <br />
-                            <Link to="/EditarProductos" className="flex self-center text-center  m-2 hover:text-gray-500 mx-5"><strong>Editar Productos</strong></Link> <br />
+
+                    <fieldset>
+                        <legend className="h3 text mb-2 text-uppercase">Gestión de Productos</legend>
+                        <div className='d-flex flex-column mt-3'>
+
+                            <Link to="/CrearProductos" className="text-center mt-2 hover:text-gray-500"><FontAwesomeIcon icon={faCirclePlus} style={{color: "#000000",}} /> <strong>Crear productos</strong></Link>
+
+                            <Link to="/MostrarProductos" className="my-3 hover:text-gray-500"><strong><FontAwesomeIcon icon={faPenToSquare} style={{color: "#000000",}} /> Editar productos</strong></Link>
+
+                            
 
                         </div>
                     </fieldset>
                 </form>
 
             </div>
-        
-            
         </div>
-        
+                
     )
 }
 
