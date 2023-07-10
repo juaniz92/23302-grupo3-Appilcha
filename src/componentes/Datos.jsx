@@ -36,10 +36,11 @@ const DataProvider = ({ children }) => {
         const productosData = querySnapshot.docs.map((doc) => doc.data());
 
         const productos = productosData.map((doc) => ({
+          image: doc.Imagen,
           title: doc.Nombre,
           description: doc.Descripcion,
           price: doc.Precio,
-        }));
+        }));
 
         // Combinar los resultados en una sola lista
         const respuesta = [...womenData, ...menData, ...productos];
