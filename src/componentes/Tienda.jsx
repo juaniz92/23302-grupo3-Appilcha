@@ -3,11 +3,10 @@ import { data } from './Datos';
 import ReactPaginate from 'react-paginate';
 import Totalproductos from './TotalProductos';
 import Carrito from './Carrito';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
-
-function Tienda({user}) {
+function Tienda({ user }) {
   const [mostrarCarrito, setMostrarCarrito] = useState();
   const { datos, anadirProducto, carrito } = useContext(data);
   const [currentPage, setCurrentPage] = useState(0);
@@ -15,6 +14,7 @@ function Tienda({user}) {
 
   const handlePageChange = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
+    window.scrollTo(0, 0); // Desplazamiento hacia arriba al cambiar de página
   };
 
   const paginatedData = datos.slice(
@@ -26,7 +26,7 @@ function Tienda({user}) {
     setMostrarCarrito(!mostrarCarrito);
   };
 
-  console.log("Productos tienda: ", paginatedData)
+  console.log("Productos tienda: ", paginatedData);
 
   return (
     <div className="d-flex flex-column">
@@ -40,7 +40,7 @@ function Tienda({user}) {
       <div>
         {mostrarCarrito && (
           <div className="">
-            <Carrito user={user}  />
+            <Carrito user={user} />
           </div>
         )}
       </div>
@@ -50,18 +50,29 @@ function Tienda({user}) {
         {paginatedData.map((item) => (
           <div key={item.id} className="col-12 col-md-6 col-lg-4 p-4">
             <div className="my-2">
-                <img src={item.image} className="img-productos-tienda mx-auto d-block"></img>
+              <img
+                src={item.image}
+                className="img-productos-tienda mx-auto d-block"
+              ></img>
             </div>
-                
+
             <div>
-              <h3 className="h3 my-3"><strong>{item.title}</strong></h3>
+              <h3 className="h3 my-3">
+                <strong>{item.title}</strong>
+              </h3>
               <h4 className="h4 my-3">Detalles:</h4>
               <p>{item.description}</p>
-            </div>  
-            
+            </div>
+
             <div className="row">
-                <span className="col-12 fs-2 text-end">${item.price}</span>
-                <button onClick={()=> anadirProducto(item)} className="col-12 p-2 btn-comprar" type="submit">Añadir al carrito</button> 
+              <span className="col-12 fs-2 text-end">${item.price}</span>
+              <button
+                onClick={() => anadirProducto(item)}
+                className="col-12 p-2 btn-comprar"
+                type="submit"
+              >
+                Añadir al carrito
+              </button>
             </div>
           </div>
         ))}
@@ -69,8 +80,12 @@ function Tienda({user}) {
 
       {/* Componente de paginación */}
       <ReactPaginate
-        previousLabel={<FontAwesomeIcon icon={faAngleLeft} style={{color: "#000000",}} />}
-        nextLabel={<FontAwesomeIcon icon={faAngleRight} style={{color: "#000000",}} />}
+        previousLabel={
+          <FontAwesomeIcon icon={faAngleLeft} style={{ color: '#000000' }} />
+        }
+        nextLabel={
+          <FontAwesomeIcon icon={faAngleRight} style={{ color: '#000000' }} />
+        }
         breakLabel={'...'}
         pageCount={Math.ceil(datos.length / itemsPerPage)} // Número total de páginas
         marginPagesDisplayed={2}

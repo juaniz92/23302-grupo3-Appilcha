@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState, createContext } from "react";
-import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs} from 'firebase/firestore';
 import { db } from '../firebaseConfig/firebase';
 
 export const data = createContext();
