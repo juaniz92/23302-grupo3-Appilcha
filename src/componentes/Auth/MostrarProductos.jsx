@@ -18,7 +18,11 @@ const MostrarProductos = () => {
 
     const [productos, setProductos] = useState([]);
 
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 2cd537202cacf896ce8dbff9a57ee1ce49753483
 
 
     // Async
@@ -28,14 +32,22 @@ const MostrarProductos = () => {
         console.log(data.docs);
 
         setProductos(
+<<<<<<< HEAD
+            data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+=======
             data.docs.map((doc) => ({...doc.data(), id: doc.id }))
+>>>>>>> 2cd537202cacf896ce8dbff9a57ee1ce49753483
         );
 
     }
     useEffect(() => {
         getProductos();
 
+<<<<<<< HEAD
+    }, [])
+=======
     }, [ ])
+>>>>>>> 2cd537202cacf896ce8dbff9a57ee1ce49753483
 
     // Función borrar  registros
     console.log(productos);
