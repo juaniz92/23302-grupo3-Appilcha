@@ -99,16 +99,17 @@ const Compra = ({user}) => {
       
 
       //Almacenamos los datos de la orden d compra
-    const orden = {
+      const orden = {
         compra: {
-            nombre: "Juan",
-            email:"jiz@jiz.com",
-            telefono: "11552664455",
-            domicilio: "asfer 123",
-            cp: "1010",
-            barrio: "San Telmo",
-            ciudad: "CABA",
-            provincia: "BSAS",
+            nombre: user.nombre || "",
+            email: user.email || "",
+            telefono: user.telefono || "",
+            domicilio: user.domicilio || "",
+            barrio: user.barrio || "",
+            ciudad: user.ciudad || "",
+            provincia: user.provincia || "",
+            postal: user.postal || "",
+            fechaCompra: getCurrentDate(),
             items: carrito,
             total: obtenerTotal(),
             formaRetiro: formaRetiro,
