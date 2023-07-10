@@ -187,6 +187,12 @@ const Compra = ({user}) => {
             showConfirmButton: false,
             timer: 1500
           });
+
+          setTimeout(()=>{
+            navigate('/');
+            window.scrollTo(0, 0); // Desplazamiento hacia arriba al cambiar de página
+            window.location.reload();
+        }, 3000);
         }
       };
       
