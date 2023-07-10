@@ -89,7 +89,6 @@ const MostrarProductos = () => {
                                 <th>Precio</th>
                                 <th>Stock</th>
                                 <th>Precio de Costo</th>
-                                <th>Imagen</th>
                                 <th>Editar / Borrar</th>
                             </tr>
                         </thead>
@@ -101,7 +100,6 @@ const MostrarProductos = () => {
                                     <td key={prod.Precio} className='text-light'>{prod.Precio || ''}</td>
                                     <td key={prod.Stock} className='text-light'>{prod.Stock || ''} </td>
                                     <td key={prod.PrecioCosto} className='text-light'>{prod.PrecioCosto || ''}</td>
-                                    <td key={prod.Imagen} className='text-light'>{prod.Imagen || ''}</td>
                                     <td className='text-center'>
                                         <Link to={`/EditarProductos/${prod.id}`} role='button' className="btn btn-info mb-1"><FontAwesomeIcon icon={faPenToSquare} style={{color: "#ffffff",}} /></Link>
                                         <button onClick={() => { confirmDelete(prod.id) }} className="btn btn-danger mx-auto rounded"><FontAwesomeIcon icon={faTrash} style={{color: "#ffffff",}} /></button>
