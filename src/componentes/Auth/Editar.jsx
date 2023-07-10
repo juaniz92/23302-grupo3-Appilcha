@@ -138,6 +138,7 @@ const Editar = () =>{
             <div className='Container'>
                 <form action="#" className=" h-full  relative z-2 m-2 px-10" onSubmit={update}>
                     <fieldset className="formulario-contacto__contenido">
+                        
                         <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2">Formulario Editar Usuario</legend>
                                     <div className="row my-2">
                                         <div className="col-md-6">
