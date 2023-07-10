@@ -28,9 +28,9 @@ function Admin() {
 
                             <Link to="/CrearProductos" className="text-center mt-2 hover:text-gray-500"><FontAwesomeIcon icon={faCirclePlus} style={{color: "#000000",}} /> <strong>Crear productos</strong></Link>
 
-                            <Link to="/MostrarProductos" className="my-3 hover:text-gray-500"><strong><FontAwesomeIcon icon={faEye} style={{color: "#000000",}} /> Mostrar productos</strong></Link>
+                            <Link to="/MostrarProductos" className="my-3 hover:text-gray-500"><strong><FontAwesomeIcon icon={faEye} style={{color: "#000000",}} /> Editar productos</strong></Link>
 
-                            <Link to="/EditarProductos" className="text-center hover:text-gray-500"><strong><FontAwesomeIcon icon={faPenToSquare} style={{color: "#000000",}} /> Editar Productos</strong></Link>
+                            
 
                         </div>
                     </fieldset>
