@@ -19,7 +19,8 @@ const EditarProductos = () => {
         Nombre: '',
         Precio: '',
         PrecioCosto: '',
-        Stock: ''
+        Stock: '',
+        Imagen:''
     })
 
     const navigate = useNavigate();
@@ -64,7 +65,8 @@ const EditarProductos = () => {
             Nombre: form.Nombre,
             Precio: form.Precio,
             PrecioCosto: form.PrecioCosto,
-            Stock: form.Stock
+            Stock: form.Stock,
+            Imagen: form.Imagen
         }
         
         await updateDoc(producto, data);
@@ -84,7 +86,8 @@ const EditarProductos = () => {
                 Nombre: producto.data().Nombre,
                 Precio: producto.data().Precio,
                 PrecioCosto: producto.data().PrecioCosto,
-                Stock: producto.data().Stock
+                Stock: producto.data().Stock,
+                Imagen: producto.data().Imagen
             });
         }
         else {
@@ -191,7 +194,23 @@ const EditarProductos = () => {
                                     value={form.Stock}
                                     type="number"
                                     className="form-control rounded-md mb-2 p-1 text-black bg-gray-300"
-                                    placeholder="Escriba su país" data-input="text" id="pais"
+                                    placeholder="Stock" data-input="text" id="stock"
+                                    onChange={cambio} />
+                                <span className="formulario-contacto__contenido__span"></span>
+                            </div>
+
+                        </div>
+                        <div className="row my-2">
+                            <div className="col-md-6">
+                                <div className="col-md-12">
+                                    <label for='Stock' className="text-1">Imagen</label>
+                                </div>
+                                <input
+                                    name='Imagen'
+                                    value={form.Imagen}
+                                    type="text"
+                                    className="form-control rounded-md mb-2 p-1 text-black bg-gray-300"
+                                    placeholder="Stock" data-input="text" id="stock"
                                     onChange={cambio} />
                                 <span className="formulario-contacto__contenido__span"></span>
                             </div>
