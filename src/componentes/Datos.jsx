@@ -33,14 +33,18 @@ const DataProvider = ({ children }) => {
         const menData = menResponse.data;
 
         const querySnapshot = await getDocs(collection(db, "Productos"));
-        const productosData = querySnapshot.docs.map((doc) => doc.data());
-
+        const productosData = querySnapshot.docs.map((doc) => ({
+          id: doc.id, // Agregar el ID del documento
+          ...doc.data() // Resto de los datos del documento
+        }));
+        
         const productos = productosData.map((doc) => ({
+          id: doc.id, // Incluir el ID del documento en el objeto de producto
           image: doc.Imagen,
           title: doc.Nombre,
           description: doc.Descripcion,
           price: doc.Precio,
-        }));
+        }));
 
         // Combinar los resultados en una sola lista
         const respuesta = [...womenData, ...menData, ...productos];
