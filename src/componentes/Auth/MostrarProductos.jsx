@@ -79,7 +79,7 @@ const MostrarProductos = () => {
             <div className='row'>
                 <div className='col'>
                     <div className='d-grid gap-2'>
-                        <Link to="/crearproducto" role='button' className='btn btn-dark btn-lg mt-3 mb-4 col col-md-3 mx-auto' >Crear Nuevo Producto  <i className="fa-solid fa-plus"></i></Link>
+                        <Link to="/CrearProductos" role='button' className='btn btn-dark btn-lg mt-3 mb-4 col col-md-3 mx-auto' >Crear Nuevo Producto  <i className="fa-solid fa-plus"></i></Link>
                     </div>
                     <Table striped bordered hover responsive="xl" variant="dark">
                         <thead>
