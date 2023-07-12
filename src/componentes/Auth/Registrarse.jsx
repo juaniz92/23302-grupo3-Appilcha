@@ -67,12 +67,13 @@ function Registrarse(){
 
      //Expresiones Regulares
      const expresiones = {
-        usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-        nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-        password: /^.{4,12}$/, // 4 a 12 digitos.
-        correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-        telefono: /^\d{7,14}$/ // 7 a 14 numeros.
-    }
+		usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+		nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+		password: /^.{4,12}$/, // 4 a 12 digitos.
+		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+		telefono: /^\d{7,14}$/ // 7 a 14 numeros.
+	}
+
 
     //Asincronismo
 
@@ -177,7 +178,8 @@ function Registrarse(){
                                             placeholder="Escriba su correo electrónico" 
                                             data-input="email" 
                                             id="email" 
-                                            onChange={(e)=>setEmail(e.target.value)}/>
+                                            onChange={(e)=>setEmail(e.target.value)}
+                                            expresionRegular={expresiones.correo}/>
                                             {mostrarError && <div className="text-red-500 text-xs">Completa el campo</div>}
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
@@ -203,14 +205,20 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='pais' className="text-1">País de residencia</label>
                                             </div>
-                                            <input value={Pais}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su país" data-input="text" id="pais" onChange={(e)=>setPais(e.target.value)}/>
+                                            <input value={Pais}  type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su país" data-input="text" 
+                                            id="pais" onChange={(e)=>setPais(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="col-md-12">
                                                 <label for='ciudad' className="text-1">Ciudad de residencia</label>
                                             </div>
-                                            <input value={Ciudad} type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su ciudad" data-input="text" id="ciudad" onChange={(e)=>setCiudad(e.target.value)}/>
+                                            <input value={Ciudad} type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su ciudad" data-input="text" 
+                                            id="ciudad" onChange={(e)=>setCiudad(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                     </div>
@@ -224,7 +232,7 @@ function Registrarse(){
                                             className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
                                             placeholder="Escriba su provincia" 
                                             data-input="text" 
-                                            id="pais" 
+                                            id="provincia" 
                                             onChange={(e)=>setProvincia(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
@@ -232,7 +240,10 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='barrio' className="text-1">Barrio</label>
                                             </div>
-                                            <input value={Barrio} type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su Barrio" data-input="text" id="ciudad" onChange={(e)=>setBarrio(e.target.value)}/>
+                                            <input value={Barrio} type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su Barrio" data-input="text" 
+                                            id="barrio" onChange={(e)=>setBarrio(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                     </div>
@@ -241,14 +252,20 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='domicilio' className="text-1">Domicilio</label>
                                             </div>
-                                            <input value={Domicilio}  type="text" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su domicilio" data-input="text" id="domicilio" onChange={(e)=>setDomicilio(e.target.value)}/>
+                                            <input value={Domicilio}  type="text" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su domicilio" data-input="text" 
+                                            id="domicilio" onChange={(e)=>setDomicilio(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="col-md-12">
                                                 <label for='postal' className="text-1">Código postal</label>
                                             </div>
-                                            <input value={Postal}  type="number" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su código postal" data-input="number" id="postal" onChange={(e)=>setPostal(e.target.value)}/>
+                                            <input value={Postal}  type="number" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su código postal" data-input="number" 
+                                            id="postal" onChange={(e)=>setPostal(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>                                
                                     </div>
@@ -257,7 +274,11 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='domicilio' className="text-1">Teléfono</label>
                                             </div>
-                                            <input value={Telefono}  type="number" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su Teléfono" data-input="text" id="domicilio" onChange={(e)=>setTelefono(e.target.value)}/>
+                                            <input value={Telefono}  type="number" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su Teléfono" data-input="text" 
+                                            id="telefono" onChange={(e)=>setTelefono(e.target.value)}
+                                            expresionRegular={expresiones.telefono}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                                                       
@@ -267,14 +288,21 @@ function Registrarse(){
                                             <div className="col-md-12">
                                                 <label for='password' className="text-1">Contraseña</label>
                                             </div>
-                                            <input value={password}  type="password" className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" placeholder="Escriba su contraseña" data-input="password" id="password" onChange={(e)=>setPassword(e.target.value)}/>
+                                            <input value={password}  type="password" 
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
+                                            placeholder="Escriba su contraseña" data-input="password" 
+                                            id="password" onChange={(e)=>setPassword(e.target.value)}
+                                            expresionRegular={expresiones.password}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="col-md-12">
                                                 <label for='password' className="text-1">Repetir contraseña</label>
                                             </div>
-                                            <input value={Reppassword}  className="form-control rounded-md mb-1 p-1 text-black bg-gray-300" type="password" placeholder="Repita su contraseña" data-input="password" id="reppassword" onChange={(e)=>setReppassword(e.target.value)}/>
+                                            <input value={Reppassword}  
+                                            className="form-control rounded-md mb-1 p-1 text-black bg-gray-300" 
+                                            type="password" placeholder="Repita su contraseña" data-input="password" 
+                                            id="reppassword" onChange={(e)=>setReppassword(e.target.value)}/>
                                             <span className="formulario-contacto__contenido__span"></span>
 
                                         </div>

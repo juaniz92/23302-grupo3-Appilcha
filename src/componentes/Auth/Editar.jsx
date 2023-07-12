@@ -9,13 +9,14 @@ import Swal from 'sweetalert2';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faFloppyDisk} from '@fortawesome/free-solid-svg-icons'
 import withReactContent from 'sweetalert2-react-content';
+import Select from 'react-select'
 const MySwal = withReactContent(Swal);
 
 const Editar = () =>{
 
     //Declaración de variables
    
-
+    
     const [form, setForm] = useState({
         Nombre: '',
         Apellido:'',
@@ -29,7 +30,9 @@ const Editar = () =>{
         Postal:'',
         Telefono:'',
         Password:'',
-        Reppassword:''
+        Reppassword:'',
+        rol:'',
+        selectedOption:'',
 
     })
 
@@ -87,6 +90,7 @@ const Editar = () =>{
             Telefono: form.Telefono,
             Password: form.Password,
             Reppassword: form.Reppassword,
+            rol: form.rol
 
         }
         console.log(data);
@@ -116,7 +120,8 @@ const Editar = () =>{
                 Postal: usuario.data().Postal,
                 Telefono: usuario.data().Telefono,
                 Password: usuario.data().Password,
-                Reppassword: usuario.data().Reppassword
+                Reppassword: usuario.data().Reppassword,
+                rol: usuario.data().rol
                     
                     
             });
@@ -132,6 +137,12 @@ const Editar = () =>{
         getUsuarioById(id);
     }, [id])
 
+    //array de roles
+    const options = [
+        { id: 1, label: 'User', value: 'user' },
+        { id: 2, label: 'Admin', value: 'admin'},
+      ];
+    
 
     return(
         <div className='Container'>
@@ -226,7 +237,8 @@ const Editar = () =>{
                                             value={form.Pais}  
                                             type="text" 
                                             className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
-                                            placeholder="Escriba su país" data-input="text" id="pais" 
+                                            placeholder="Escriba su país" data-input="text" 
+                                            id="pais" 
                                             onChange={cambio}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
@@ -258,7 +270,7 @@ const Editar = () =>{
                                             className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
                                             placeholder="Escriba su Barrio" 
                                             data-input="text" 
-                                            id="ciudad" 
+                                            id="provincia" 
                                             onChange={cambio}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
@@ -273,7 +285,7 @@ const Editar = () =>{
                                             className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
                                             placeholder="Escriba su Barrio" 
                                             data-input="text" 
-                                            id="ciudad" 
+                                            id="barrio" 
                                             onChange={cambio}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
@@ -290,7 +302,7 @@ const Editar = () =>{
                                             className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
                                             placeholder="Escriba su Barrio" 
                                             data-input="text" 
-                                            id="ciudad" 
+                                            id="domicilio" 
                                             onChange={cambio}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
@@ -322,9 +334,26 @@ const Editar = () =>{
                                             className="form-control rounded-md mb-2 p-1 text-black bg-gray-300" 
                                             placeholder="Escriba su Teléfono" 
                                             data-input="text" 
-                                            id="domicilio" 
+                                            id="telefono" 
                                             onChange={cambio}/>
                                             <span className="formulario-contacto__contenido__span"></span>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="col-md-12">
+                                                <label for='rol' className="text-1">Rol</label>
+                                            </div>
+                                            <select name='rol' type='select' value={form.rol} onChange={cambio}
+                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300">
+                                                {options.map((option) => (
+                                                <option key={option.id} value={option.value}>
+                                                    {option.label}
+                                                </option>
+                                                ))}
+                                            
+                                            </select>
+                                            
+                                            
+                                            
                                         </div>
                                                                       
                                     </div>
