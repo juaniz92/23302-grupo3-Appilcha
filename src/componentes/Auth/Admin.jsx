@@ -30,7 +30,7 @@ function Admin() {
 
                             <Link to="/MostrarProductos" className="my-3 hover:text-gray-500"><strong><FontAwesomeIcon icon={faPenToSquare} style={{color: "#000000",}} /> Editar productos</strong></Link>
 
-                            
+                            <Link to="/MostrarOrdenes" className="my-3 hover:text-gray-500"><strong>👁 Mostrar ordenes</strong></Link>
 
                         </div>
                     </fieldset>
