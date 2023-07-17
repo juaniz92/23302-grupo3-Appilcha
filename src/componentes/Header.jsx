@@ -94,7 +94,7 @@ return (
             <Nav.Link as={Link} to="/" className='ms-auto'><FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} /> Inicio</Nav.Link>
             <Nav.Link as={Link} to="/Tienda" className='ms-auto'><FontAwesomeIcon icon={faStore} style={{color: "#000000",}} /> Tienda</Nav.Link>
           </Nav>
-          <Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase ml-4" style={{ maxHeight: '200px' }} navbarScroll>
+          <Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase ml-4 fw-bolder" style={{ maxHeight: '200px' }} navbarScroll>
 									{user === null ? (<>
 										<Nav.Link as={Link} to= "/Login"  onClick={closeMenu} >Iniciar sesion</Nav.Link>
 										
