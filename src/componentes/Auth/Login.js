@@ -4,6 +4,9 @@ import {Link, useNavigate} from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from "../../firebaseConfig/firebase";
 import { Alert } from "./Alert";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
 const auth = getAuth(firebaseApp);
 
 
@@ -33,6 +36,7 @@ function Login() {
 
         try {
             await signInWithEmailAndPassword(auth, email, password);
+            loginperfect();
             navigate("/");
         } catch (error) {
 
@@ -58,12 +62,22 @@ function Login() {
         }
         
     }
+    const loginperfect = () => {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: `Bienvenido Iniciaste Sesión`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+    }
     
     return (
         <div>
-            <h1 className="text-right px-3 mb-3 h5">{isRegistrando ? <a href="/Registrarse">¿No tenés cuenta? Regístrate</a> : <span role="button" onClick={toggleLogin}>Inicia Sesión</span>}</h1>
+            <h1 className="text-right px-3 mb-3 h5">{isRegistrando ? <a href="/Registrarse">¿No tenés cuenta? Regístrate</a> : null}</h1>
 
-            <div id="containerLogin" className="d-none">
+            <div id="containerLogin" className="containerLogin">
                 {error && <Alert message={error} />}
                 <form action="#" className="flex items-center justify-center relative z-2 m-auto" onSubmit={submitHandler}>
                     <fieldset className="formulario-contacto__contenido">

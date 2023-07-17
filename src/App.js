@@ -9,6 +9,7 @@ import Editar from './componentes/Auth/Editar';
 import Admin from './componentes/Auth/Admin';
 import Mostrar from './componentes/Auth/Mostrar';
 import LogIn from './componentes/Auth/Login';
+import Perfil from './componentes/Auth/Perfil';
 import Registrarse from './componentes/Auth/Registrarse';
 import Compra from './componentes/Compra';
 import DataProvider from './componentes/Datos';
@@ -75,8 +76,8 @@ function App() {
 
       <DataProvider>
 
-        <Header />
-        {user ? <Home user={user} /> : <LogIn />}
+        <Header user={user} />
+        
         <Routes>
           <Route path='/Home' element={<Home />} />
           <Route path='/' element={<Inicio />} />
@@ -90,6 +91,7 @@ function App() {
           <Route path='/MostrarProductos' element={<MostrarProductos />} />
           <Route path='/CrearProductos' element={<CrearProductos />} />
           <Route path='/EditarProductos/:id' element={<EditarProductos />} />
+          <Route path='/perfil/:id' element={<Perfil/>}/>
         </Routes>
         <Footer />
 

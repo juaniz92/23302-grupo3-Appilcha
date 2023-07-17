@@ -1,12 +1,19 @@
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStore, faHouse } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import firebaseApp from "../firebaseConfig/firebase";
+import { getAuth, signOut } from "firebase/auth";
+const MySwal = withReactContent(Swal);
+const auth = getAuth(firebaseApp);
 
-function Header() {
+function Header({user}) {
   
   
   // Función para cerrar el menú hamburguesa al scrollear
@@ -21,6 +28,53 @@ function Header() {
       });
 
   }
+
+  const navigate = useNavigate();
+  const cerrarSesion = () => {
+		Swal.fire({
+			title: 'Cerrar Sesión?',
+			text: "Estas seguro de cerrar sesión ",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Si, Cerrar sesión!'
+		  }).then((result) => {
+			if (result.isConfirmed) {
+			  Swal.fire(
+				'Sesión Cerrada!',
+				'Tu sesión a finalizado.',
+				'success',
+				
+				signOut(auth),
+				navigate("/"),
+				closeMenu()
+			  )
+			}
+		  })
+
+    }
+	
+	  const linkStyles = {
+		textDecoration: 'none'
+	  };
+
+	// Función para cerrar el menú hamburguesa al scrollear
+	const [menuOpen, setMenuOpen] = useState(false);
+  
+	const closeMenu = () => {
+		setMenuOpen(false);
+	  };
+
+	console.log("estado",menuOpen)
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+		  setMenuOpen(false);
+		}, 2000);
+	  
+		return () => clearTimeout(timer);
+	  }, []);
   
 
 return (
@@ -40,6 +94,28 @@ return (
             <Nav.Link as={Link} to="/" className='ms-auto'><FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} /> Inicio</Nav.Link>
             <Nav.Link as={Link} to="/Tienda" className='ms-auto'><FontAwesomeIcon icon={faStore} style={{color: "#000000",}} /> Tienda</Nav.Link>
           </Nav>
+          <Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase ml-4" style={{ maxHeight: '200px' }} navbarScroll>
+									{user === null ? (<>
+										<Nav.Link as={Link} to= "/Login"  onClick={closeMenu} >Iniciar sesion</Nav.Link>
+										
+									</>) : (
+										<>
+											<NavDropdown title={user.nombre} id="basic-navbar-nav" className='text-success'>
+												<NavDropdown.Item as={Link} to= {`/perfil/${user.uid}`} style={linkStyles} onClick={closeMenu} >Perfil</NavDropdown.Item>
+												<NavDropdown.Item as={Link} to= "#" onClick={cerrarSesion} style={linkStyles}>
+													Cerrar sesión
+													
+												</NavDropdown.Item>
+												{user.rol ===  "admin" ? (<>
+												<NavDropdown.Item as={Link} to= "/Admin" onClick={closeMenu}>Administrar</NavDropdown.Item>
+												</>) : null}
+													
+
+												
+											</NavDropdown>
+										</>
+									)}
+								</Nav>	
         </Navbar.Collapse>
       </Container>
     </Navbar>
