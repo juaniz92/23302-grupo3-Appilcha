@@ -8,6 +8,7 @@ import Footer from './componentes/Footer';
 import Editar from './componentes/Auth/Editar';
 import Admin from './componentes/Auth/Admin';
 import Mostrar from './componentes/Auth/Mostrar';
+import MostrarOrdenes from './componentes/Auth/MostrarOrdenes';
 import LogIn from './componentes/Auth/Login';
 import Perfil from './componentes/Auth/Perfil';
 import Registrarse from './componentes/Auth/Registrarse';
@@ -91,7 +92,7 @@ function App() {
           <Route path='/MostrarProductos' element={<MostrarProductos />} />
           <Route path='/CrearProductos' element={<CrearProductos />} />
           <Route path='/EditarProductos/:id' element={<EditarProductos />} />
-          <Route path='/perfil/:id' element={<Perfil/>}/>
+          <Route path='/MostrarOrdenes' element={<MostrarOrdenes />} />
         </Routes>
         <Footer />
 

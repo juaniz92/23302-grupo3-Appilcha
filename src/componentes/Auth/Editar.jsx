@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faFloppyDisk} from '@fortawesome/free-solid-svg-icons'
 import withReactContent from 'sweetalert2-react-content';
-import Select from 'react-select'
+
 const MySwal = withReactContent(Swal);
 
 const Editar = () =>{
