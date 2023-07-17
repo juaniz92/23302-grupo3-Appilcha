@@ -96,18 +96,18 @@ return (
           </Nav>
           <Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase ml-4 fw-bolder" style={{ maxHeight: '200px' }} navbarScroll>
 									{user === null ? (<>
-										<Nav.Link as={Link} to= "/Login"  onClick={closeMenu} >Iniciar sesion</Nav.Link>
+										<Nav.Link as={Link} to= "/Login"  onClick={closeMenu} className='justify-content-end'>Iniciar sesion</Nav.Link>
 										
 									</>) : (
 										<>
 											<NavDropdown title={user.nombre} id="basic-navbar-nav" className='text-success'>
-												<NavDropdown.Item as={Link} to= {`/perfil/${user.uid}`} style={linkStyles} onClick={closeMenu} >Perfil</NavDropdown.Item>
-												<NavDropdown.Item as={Link} to= "#" onClick={cerrarSesion} style={linkStyles}>
+												<NavDropdown.Item as={Link} to= {`/perfil/${user.uid}`} style={linkStyles} onClick={closeMenu} className='fw-bolder'>Perfil</NavDropdown.Item>
+												<NavDropdown.Item as={Link} to= "#" onClick={cerrarSesion} style={linkStyles} className='fw-bolder'>
 													Cerrar sesión
 													
 												</NavDropdown.Item>
 												{user.rol ===  "admin" ? (<>
-												<NavDropdown.Item as={Link} to= "/Admin" onClick={closeMenu}>Administrar</NavDropdown.Item>
+												<NavDropdown.Item as={Link} to= "/Admin" onClick={closeMenu} className='fw-bolder'>Administrar</NavDropdown.Item>
 												</>) : null}
 													
 
