@@ -85,6 +85,7 @@ function App() {
           <Route path='/Registrarse' element={<Registrarse />} />
           <Route path='/Tienda' element={<Tienda user={user} />} />
           <Route path='/editarusuario/:id' element={<Editar />} />
+          <Route path='/Perfil/:id' element={<Perfil />} />
           <Route path='/Admin' element={<Admin />} />
           <Route path='/Mostrar' element={<Mostrar />} />
           <Route path='/Compra' element={<Compra user={user} />} />
