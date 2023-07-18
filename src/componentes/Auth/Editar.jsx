@@ -9,7 +9,11 @@ import Swal from 'sweetalert2';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faFloppyDisk} from '@fortawesome/free-solid-svg-icons'
 import withReactContent from 'sweetalert2-react-content';
+import { updatePassword } from 'firebase/auth';
 
+import { getAuth} from "firebase/auth";
+
+const auth = getAuth();
 const MySwal = withReactContent(Swal);
 
 const Editar = () =>{
@@ -75,6 +79,9 @@ const Editar = () =>{
     const update = async (e) => {
         e.preventDefault();
 
+        const user = auth.currentUser; //usuario autenticado
+        const newPassword = form.Password; // Obtiene la nueva contraseña del formulario
+
         const usuario = doc(db, dbCollection.Usuarios, id);
         const data  = {
             Nombre: form.Nombre,
@@ -94,9 +101,22 @@ const Editar = () =>{
 
         }
         console.log(data);
-        await updateDoc(usuario, data);
-        alertaEditado();
-        navigate("/Mostrar");
+        try {
+            //Actualiza password en el authentication
+            await updatePassword(user, newPassword);
+
+            //Actualiza el cloud firestore
+            await updateDoc(usuario, data);
+            
+        
+            alertaEditado();
+            navigate("/");
+          } catch (error) {
+            // Ocurrió un error al actualizar la contraseña en Firebase.
+            // Maneja el error de acuerdo a tus necesidades.
+            console.error(error);
+          }
+       
 
     }
 

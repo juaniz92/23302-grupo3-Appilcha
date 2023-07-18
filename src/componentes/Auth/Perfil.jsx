@@ -4,18 +4,22 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {getDoc, doc, updateDoc} from 'firebase/firestore';
 import { db } from '../../firebaseConfig/firebase';
 import { dbCollection } from '../../firebaseConfig/collections';
+import { updatePassword } from 'firebase/auth';
 import {async} from '@firebase/util';
+
+import { getAuth} from "firebase/auth";
 import Swal from 'sweetalert2';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faFloppyDisk} from '@fortawesome/free-solid-svg-icons'
 import withReactContent from 'sweetalert2-react-content';
 
+const auth = getAuth();
 const MySwal = withReactContent(Swal);
 
 const Perfil = () =>{
 
     //Declaración de variables
-   
+    
     
     const [form, setForm] = useState({
         Nombre: '',
@@ -75,6 +79,9 @@ const Perfil = () =>{
     const update = async (e) => {
         e.preventDefault();
 
+        const user = auth.currentUser; //usuario autenticado
+        const newPassword = form.Password; // Obtiene la nueva contraseña del formulario
+
         const usuario = doc(db, dbCollection.Usuarios, id);
         const data  = {
             Nombre: form.Nombre,
@@ -93,10 +100,23 @@ const Perfil = () =>{
             rol: form.rol
 
         }
-        console.log(data);
-        await updateDoc(usuario, data);
-        alertaEditado();
-        navigate("/Mostrar");
+        try {
+            //Actualiza password en el authentication
+            await updatePassword(user, newPassword);
+
+            //Actualiza el cloud firestore
+            await updateDoc(usuario, data);
+            
+        
+            alertaEditado();
+            navigate("/");
+          } catch (error) {
+            // Ocurrió un error al actualizar la contraseña en Firebase.
+            // Maneja el error de acuerdo a tus necesidades.
+            console.error(error);
+          }
+       
+        
 
     }
 
@@ -130,6 +150,7 @@ const Perfil = () =>{
         }
     };
 
+   
     
     //useEffect
         
