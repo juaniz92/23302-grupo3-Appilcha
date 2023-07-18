@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStore, faHouse } from '@fortawesome/free-solid-svg-icons';
+import { faStore, faHouse, faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import firebaseApp from "../firebaseConfig/firebase";
@@ -75,7 +75,7 @@ function Header({user}) {
 	  
 		return () => clearTimeout(timer);
 	  }, []);
-  
+	  const navDropDownTitle = (<FontAwesomeIcon icon={faCircleUser} style={{color: "#000000",}} /> );
 
 return (
 
@@ -89,32 +89,33 @@ return (
               alt="Appilcha Logo"
             /></Navbar.Brand>
         <Navbar.Toggle onClick={e => handleTogglerNav(e)} aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto text-uppercase fw-bolder">
+        <Navbar.Collapse id="basic-navbar-nav" className=''>
+          <Nav className="text-uppercase fw-bolder ms-auto">
             <Nav.Link as={Link} to="/" className='ms-auto'><FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} /> Inicio</Nav.Link>
             <Nav.Link as={Link} to="/Tienda" className='ms-auto'><FontAwesomeIcon icon={faStore} style={{color: "#000000",}} /> Tienda</Nav.Link>
+		{user === null ? (<>
+			<Nav.Link as={Link} to= "/Login"  onClick={closeMenu} className='ms-auto'><FontAwesomeIcon icon={faCircleUser} style={{color: "#000000",}} /> Iniciar sesion</Nav.Link>
+			
+		</>) : (
+			<>
+				<NavDropdown title={<>
+    				<FontAwesomeIcon icon={faCircleUser} style={{ color: "#000000" }} />{' ' + user.nombre}</>} id="basic-navbar-nav" className='text-success nav-link ms-auto p-0 ' align={{ sm: 'end' }} style={{textAlign: "right"}}>
+					<NavDropdown.Item as={Link} to= {`/perfil/${user.uid}`} style={linkStyles} onClick={closeMenu} className='fw-bolder'>Perfil</NavDropdown.Item>
+					<NavDropdown.Item as={Link} to= "#" onClick={cerrarSesion} style={linkStyles} className='fw-bolder'>
+						Cerrar sesión
+						
+					</NavDropdown.Item>
+					{user.rol ===  "admin" ? (<>
+					<NavDropdown.Item as={Link} to= "/Admin" onClick={closeMenu} className='fw-bolder'>Administrar</NavDropdown.Item>
+					</>) : null}
+						
+
+					
+				</NavDropdown>
+			</>
+		)}
           </Nav>
           <Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase ml-4 fw-bolder" style={{ maxHeight: '200px' }} navbarScroll>
-									{user === null ? (<>
-										<Nav.Link as={Link} to= "/Login"  onClick={closeMenu} className='justify-content-end'>Iniciar sesion</Nav.Link>
-										
-									</>) : (
-										<>
-											<NavDropdown title={user.nombre} id="basic-navbar-nav" className='text-success'>
-												<NavDropdown.Item as={Link} to= {`/perfil/${user.uid}`} style={linkStyles} onClick={closeMenu} className='fw-bolder'>Perfil</NavDropdown.Item>
-												<NavDropdown.Item as={Link} to= "#" onClick={cerrarSesion} style={linkStyles} className='fw-bolder'>
-													Cerrar sesión
-													
-												</NavDropdown.Item>
-												{user.rol ===  "admin" ? (<>
-												<NavDropdown.Item as={Link} to= "/Admin" onClick={closeMenu} className='fw-bolder'>Administrar</NavDropdown.Item>
-												</>) : null}
-													
-
-												
-											</NavDropdown>
-										</>
-									)}
 								</Nav>	
         </Navbar.Collapse>
       </Container>
