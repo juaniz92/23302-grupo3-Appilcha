@@ -1,14 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { data } from './Datos';
 import ReactPaginate from 'react-paginate';
-import Totalproductos from './TotalProductos';
-import Carrito from './Carrito';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
-function Tienda({ user }) {
-  const [mostrarCarrito, setMostrarCarrito] = useState();
-  const { datos, anadirProducto, carrito } = useContext(data);
+function Tienda() {
+  const { datos, anadirProducto } = useContext(data);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 6; // Número de productos a mostrar por página
 
@@ -22,29 +19,10 @@ function Tienda({ user }) {
     (currentPage + 1) * itemsPerPage
   );
 
-  const flagCarrito = () => {
-    setMostrarCarrito(!mostrarCarrito);
-  };
-
   console.log("Productos tienda: ", paginatedData);
 
   return (
     <div className="d-flex flex-column">
-      <div className="relative flex flex-col self-end">
-        {/* Renderizamos la cantidad de productos en caso de que no sea 0 */}
-        <button className="flex justify-end text-3xl" onClick={flagCarrito}>
-          🛒 {carrito.length > 0 ? <Totalproductos /> : null}
-        </button>
-      </div>
-      {/* Renderizamos el carrito */}
-      <div>
-        {mostrarCarrito && (
-          <div className="">
-            <Carrito user={user} />
-          </div>
-        )}
-      </div>
-
       {/* Renderizamos los productos paginados */}
       <div className="row">
         {paginatedData.map((item) => (

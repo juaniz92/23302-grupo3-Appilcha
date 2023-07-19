@@ -83,7 +83,7 @@ function App() {
           <Route path='/Home' element={<Home />} />
           <Route path='/' element={<Inicio />} />
           <Route path='/Registrarse' element={<Registrarse />} />
-          <Route path='/Tienda' element={<Tienda user={user} />} />
+          <Route path='/Tienda' element={<Tienda />} />
           <Route path='/editarusuario/:id' element={<Editar />} />
           <Route path='/Perfil/:id' element={<Perfil />} />
           <Route path='/Admin' element={<Admin />} />

@@ -19,16 +19,16 @@ export default function Footer() {
                     <h3 className='h4'>Nuestras redes</h3>
                     <div className='d-flex justify-content-center border-dark p-2'>
                         
-                        <Link to="https://www.linkedin.com/in/alexmb356/" className='mr-2 fw-bolder'>
+                        <Link to="https://www.linkedin.com/in/alexmb356/" target="_blank" className='mr-2 fw-bolder'>
                             <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#000000",}} size='lg'/> Alexander Mora
                         </Link>
-                        <Link to="https://www.linkedin.com/in/sebastian-fernando-pozzi/"className='mr-2 fw-bolder'>
+                        <Link to="https://www.linkedin.com/in/sebastian-fernando-pozzi/" target="_blank" className='mr-2 fw-bolder'>
                             <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#000000",}} size='l'/> Sebastian Pozzi
                         </Link>
-                        <Link to="https://www.linkedin.com/in/juan-zalazar-60252a222/"className='mr-2 fw-bolder'>
-                            <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#000000",}} size='lg'/> Juan Salazar
+                        <Link to="https://www.linkedin.com/in/juan-zalazar/" target="_blank" className='mr-2 fw-bolder'>
+                            <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#000000",}} size='lg'/> Juan Zalazar
                         </Link>
-                        <Link to="https://www.linkedin.com/in/gustavoalbinoromero/"className='mr-2 fw-bolder'>
+                        <Link to="https://www.linkedin.com/in/gustavoalbinoromero/" target="_blank" className='mr-2 fw-bolder'>
                             <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#000000",}} size='lg'/> Gustavo Romero
                         </Link>
                     </div>
