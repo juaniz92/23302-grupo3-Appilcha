@@ -8,7 +8,9 @@ import {async} from '@firebase/util';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import withReactContent from 'sweetalert2-react-content';
+import { getAuth} from "firebase/auth";
 const MySwal = withReactContent(Swal);
+
 
 const Mostrar = () => {
 
@@ -45,6 +47,7 @@ const Mostrar = () => {
 
     //configuración sweetalert
     const confirmDelete = (id) => {
+        
         Swal.fire({
             title: 'Vas a eliminar el usuario?',
             text: "Seguro de querer eliminarlo!",
@@ -55,7 +58,9 @@ const Mostrar = () => {
             confirmButtonText: 'Si, Borrar!'
         }).then((result) => {
             if (result.isConfirmed) {
+            
             deleteUsuario(id);
+
             Swal.fire(
                 'Borrado',
                 'El usuario fue eliminado.',

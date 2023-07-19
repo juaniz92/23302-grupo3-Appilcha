@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
+import {faLinkedin} from '@fortawesome/free-brands-svg-icons'
 
 
 export default function Footer() {
@@ -20,16 +20,16 @@ export default function Footer() {
                     <div className='d-flex justify-content-center border-dark p-2'>
                         
                         <Link to="https://www.linkedin.com/in/alexmb356/" target="_blank" className='mr-2 fw-bolder'>
-                            <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#000000",}} size='lg'/> Alexander Mora
+                            <FontAwesomeIcon icon={faLinkedin} style={{color: "#000000",}} size='lg'/> Alexander Mora
                         </Link>
                         <Link to="https://www.linkedin.com/in/sebastian-fernando-pozzi/" target="_blank" className='mr-2 fw-bolder'>
-                            <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#000000",}} size='l'/> Sebastian Pozzi
+                            <FontAwesomeIcon icon={faLinkedin} style={{color: "#000000",}} size='lg'/> Sebastian Pozzi
                         </Link>
                         <Link to="https://www.linkedin.com/in/juan-zalazar/" target="_blank" className='mr-2 fw-bolder'>
-                            <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#000000",}} size='lg'/> Juan Zalazar
+                            <FontAwesomeIcon icon={faLinkedin} style={{color: "#000000",}} size='lg'/> Juan Zalazar
                         </Link>
                         <Link to="https://www.linkedin.com/in/gustavoalbinoromero/" target="_blank" className='mr-2 fw-bolder'>
-                            <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#000000",}} size='lg'/> Gustavo Romero
+                            <FontAwesomeIcon icon={faLinkedin} style={{color: "#000000",}} size='lg'/> Gustavo Romero
                         </Link>
                     </div>
 

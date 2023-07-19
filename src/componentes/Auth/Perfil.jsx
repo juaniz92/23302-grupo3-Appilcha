@@ -169,10 +169,10 @@ const Perfil = () =>{
             <div className='Container'>
                 <form action="#" className=" h-full  relative z-2 m-2 px-10" onSubmit={update}>
                     <fieldset className="formulario-contacto__contenido">
-                        <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2 text-white" style={{fontWeight: 'bold'}}>Bienvenido {form.Nombre}</legend>
+                        <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2 text-black" style={{fontWeight: 'bold'}}>Bienvenido {form.Nombre}</legend>
                             <h1 className="text-right px-3 mb-3 h5">
                                     {form.rol=== "admin" ?(
-									<Link to="/Admin" className=' text-white' style={{fontWeight: 'bold'}}>Administrar</Link>
+									<Link to="/Admin" className=' text-black' style={{fontWeight: 'bold'}}>Administrar</Link>
 								) : null}
                                 </h1>
                                    
@@ -221,15 +221,9 @@ const Perfil = () =>{
                                             <div className="col-md-12">
                                                 <label for='email' className="text-1 text-black"style={{fontWeight: 'bold'}}>E-mail</label>
                                             </div>
-                                            <input 
+                                            <label
                                             name='Email'
-                                            value= {form.Email} 
-                                            type="email" 
-                                            className="form-control rounded-md mb-2 p-1  text-black bg-gray-300" 
-                                            placeholder="Escriba su correo electrónico" 
-                                            data-input="email" 
-                                            id="email" 
-                                            onChange={cambio}/>
+                                           >{form.Email}</label>
                                             {mostrarError && <div className="text-red-500 text-xs"style={{fontWeight: 'bold'}}>Completa el campo</div>}
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
