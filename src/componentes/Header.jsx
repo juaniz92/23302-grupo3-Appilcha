@@ -100,7 +100,7 @@ return (
 			<Navbar.Collapse id="basic-navbar-nav" className=''>
 			<Nav className="text-uppercase fw-bolder w-full">
 				<Nav.Link as={Link} to="/" className='ml-auto'><FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} /> Inicio</Nav.Link>
-				<Nav.Link as={Link} to="/Tienda" className=''><FontAwesomeIcon icon={faStore} style={{color: "#000000",}} /> Tienda</Nav.Link>
+				<Nav.Link as={Link} to="/Tienda" className='ml-auto'><FontAwesomeIcon icon={faStore} style={{color: "#000000",}} /> Tienda</Nav.Link>
 			<div className='ml-auto'>
 				{user === null ? (<>
 					<Nav.Link className='d-flex align-self-end' as={Link} to= "/Login"  onClick={closeMenu}><FontAwesomeIcon icon={faCircleUser} style={{color: "#000000",}} /> Iniciar sesion</Nav.Link>
@@ -124,7 +124,7 @@ return (
 									</Nav>	
 			</Navbar.Collapse>
 		</Container>
-		<div className="relative">
+		<div className="relative ml-auto">
 		{/* Renderizamos la cantidad de productos en caso de que no sea 0 */}
 		<button className="flex justify-end text-3xl" onClick={flagCarrito}>
 		🛒 {carrito.length > 0 ? <Totalproductos /> : null}
