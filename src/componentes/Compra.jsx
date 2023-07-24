@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { data } from './Datos';
 import {addDoc, collection, getFirestore} from "firebase/firestore";
 import { db } from '../firebaseConfig/firebase';
@@ -13,6 +13,9 @@ const MySwal = withReactContent(Swal);
 
 
 const Compra = ({user}) => {
+
+    const elementRef = useRef()
+
     const { carrito } = useContext(data);
 
     //Selecciona forma de pago
@@ -66,8 +69,7 @@ const Compra = ({user}) => {
     //Creacion del boton de descarga: cambia el textContent de Total a Pagar y retorna el boton descargar factura
 
     const btnDescarga = ()=>{
-        const totalPagar = document.getElementById("totalPagar");
-        totalPagar.textContent = "Pagado:"
+        elementRef.current.innerText = "Pagado";
         const contenedorBotones = document.getElementById("contenedorBotones");
         const btn = document.createElement("button");
         btn.textContent = "Descargar factura";
@@ -234,7 +236,7 @@ const Compra = ({user}) => {
                 <p className='h4 my-3'>Fecha: {getCurrentDate()}</p>
                 <h3 className='h3 my-3'>Productos</h3>
                 <CarritoElementos />
-                <CarritoTotal />
+                <CarritoTotal ref={elementRef} />
             </div>
             <h3 className='h4'>Forma de retiro:</h3>
             <Form>
