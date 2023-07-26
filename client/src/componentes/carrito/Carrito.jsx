@@ -4,8 +4,13 @@ import CarritoElementos from "./CarritoElementos";
 import CarritoTotal from "./CarritoTotal";
 import {Link} from 'react-router-dom';
 
-const Carrito = ({user}) => {
+const Carrito = ({user, ocultarCarrito, setOcultarCarrito}) => {
     const { carrito } = useContext(data);
+
+    const compra = () => {
+        setOcultarCarrito(true);
+    }
+
     //Renderizamos el contenido del carrito o si esta vacío
     return carrito.length > 0 ? (
         <div className='flex flex-col p-2 rounded-md shadow-md'>
@@ -13,7 +18,7 @@ const Carrito = ({user}) => {
             <CarritoTotal />
             {user ? (
                 <div className='row g-0'> 
-                <Link to="/Compra" role='button' className='btn btn-dark text-center rounded fw-bold p-1 col col-md-6 mx-auto'>Comprar</Link>
+                <Link to="/Compra" onClick={compra} role='button' className='btn btn-dark text-center rounded fw-bold p-1 col col-md-6 mx-auto'>Comprar</Link>
                 </div>
 
             ) : (

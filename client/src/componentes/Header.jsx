@@ -19,6 +19,8 @@ const auth = getAuth(firebaseApp);
 function Header({user}) {
 	const [mostrarCarrito, setMostrarCarrito] = useState();
 	const { datos, anadirProducto, carrito } = useContext(data);
+
+	const [ocultarCarrito, setOcultarCarrito] = useState(false);
   
   // Función para cerrar el menú hamburguesa al scrollear
   const handleTogglerNav = e =>{
@@ -85,22 +87,26 @@ function Header({user}) {
 		setMostrarCarrito(!mostrarCarrito);
 	  };
 
+	  const ocultar = () => {
+		setOcultarCarrito(false);
+	  };
+
 return (
 	<div>
 		{/*Navbar de react-boostrap*/}
 		<Navbar expand="md" className="light">
 		<Container>
-			<Navbar.Brand href="/"><img
+		<Navbar.Brand onClick={ocultar} ><Link to="/"><img
 				src="../appilcha.png"
 				width="150"
 				className="d-inline-block align-top"
 				alt="Appilcha Logo"
-				/></Navbar.Brand>
+				/></Link></Navbar.Brand>
 			<Navbar.Toggle onClick={e => handleTogglerNav(e)} aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav" className=''>
 			<Nav className="text-uppercase fw-bolder w-full">
-				<Nav.Link as={Link} to="/" className='ml-auto'><FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} /> Inicio</Nav.Link>
-				<Nav.Link as={Link} to="/Tienda" className='ml-auto'><FontAwesomeIcon icon={faStore} style={{color: "#000000",}} /> Tienda</Nav.Link>
+				<Nav.Link as={Link} to="/" onClick={ocultar} className='ml-auto'><FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} /> Inicio</Nav.Link>
+				<Nav.Link as={Link} to="/Tienda" onClick={ocultar} className='ml-auto'><FontAwesomeIcon icon={faStore} style={{color: "#000000",}} /> Tienda</Nav.Link>
 			<div className='ml-auto'>
 				{user === null ? (<>
 					<Nav.Link className='d-flex align-self-end' as={Link} to= "/Login"  onClick={closeMenu}><FontAwesomeIcon icon={faCircleUser} style={{color: "#000000",}} /> Iniciar sesion</Nav.Link>
@@ -126,19 +132,23 @@ return (
 		</Container>
 		<div className="relative ml-auto">
 		{/* Renderizamos la cantidad de productos en caso de que no sea 0 */}
+		{!ocultarCarrito && 
 		<button className="flex justify-end text-3xl" onClick={flagCarrito}>
 		🛒 {carrito.length > 0 ? <Totalproductos /> : null}
-		</button>
+		</button>}
 		</div>
+		
 		</Navbar>
 		{/* Renderizamos el carrito */}
+		{!ocultarCarrito &&
 		<div>
 			{mostrarCarrito && (
 			<div className="">
-				<Carrito user={user} />
+				<Carrito user={user} ocultarCarrito ={ocultarCarrito} setOcultarCarrito ={setOcultarCarrito} />
 			</div>
 			)}
 		</div>
+		}
 	</div>
     
 )

@@ -71,6 +71,7 @@ const Compra = ({user}) => {
     //Creacion del boton de descarga: cambia el textContent de Total a Pagar y retorna el boton descargar factura
 
     const btnDescarga = ()=>{
+        setProcessingPayment(true);
         elementRef.current.innerText = "Pagado";
         const contenedorBotones = document.getElementById("contenedorBotones");
         const btn = document.createElement("button");
@@ -235,6 +236,9 @@ const Compra = ({user}) => {
         quantity: 1
       });
 
+      //Enviamos la orden de compra para ser almacenada en la BBDD
+      //await addDoc(ordenesCollection, orden.compra);
+
       const { id } = response.data;
       return id;
       } catch (error) {
@@ -243,11 +247,10 @@ const Compra = ({user}) => {
     };
 
     const handleBuy = async () => {
+        setProcessingPayment(true);
         const id = await createPreference();
         if (formaRetiro != '' && id) {
         setPreferenceId(id);
-        //Enviamos la orden de compra para ser almacenada en la BBDD
-        await addDoc(ordenesCollection, orden.compra);
         }else{
           setFormaPago("");
           Swal.fire({
@@ -259,6 +262,8 @@ const Compra = ({user}) => {
           });
         }
     }
+
+    const [processingPayment, setProcessingPayment] = useState(false);
 
     return (
         <div className='mt-3'>
@@ -273,7 +278,7 @@ const Compra = ({user}) => {
 
                 <p className='h4 my-3'>Fecha: {getCurrentDate()}</p>
                 <h3 className='h3 my-3'>Productos</h3>
-                <CarritoElementos />
+                <CarritoElementos processingPayment = {processingPayment} />
                 <CarritoTotal ref={elementRef} />
             </div>
             <h3 className='h4'>Forma de retiro:</h3>
@@ -346,7 +351,6 @@ const Compra = ({user}) => {
                         value="mp"
                         checked={formaPago === 'mp'}
                         onChange={seleccionarFormaPago}
-                        onClick={handleBuy}
                     />
                     </div>
                 ))}
@@ -359,10 +363,13 @@ const Compra = ({user}) => {
               </button>
             )}
             {formaPago === 'mp' && (
-              <div className='w-1/5'>
-                <Wallet initialization={{ preferenceId }} />
-              </div>
+              <button className='btn btn-primary mt-3' onClick={handleBuy}>
+              Ir a pagar
+            </button>
             )}
+            <div className='w-1/5'>
+              {preferenceId && <Wallet initialization={{ preferenceId }} />}
+            </div>
             </div>
         </div>
     )
